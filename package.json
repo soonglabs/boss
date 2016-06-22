@@ -1,0 +1,14 @@
+{
+  "name": "term",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "jquery.terminal": "^0.10.10"
+  }
+}

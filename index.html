@@ -1,0 +1,37 @@
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.min.js"></script>
+<script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
+<script src="boss.js"></script>
+<link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
+<script>
+
+var boss = new Boss();
+
+$(document).ready(function() {
+     $('#terminal').terminal(boss.login.exec, {
+        greetings: '',
+        name: 'boss',
+        height: 800,
+        width: 800,
+        prompt: 'login: '
+    });
+});
+
+</script>
+<style>
+span {
+  color: #ddd;
+  /*text-shadow: 0 0 3px #999;*/
+}
+.bar {
+  font-family: monospace;
+  color: #ddd;
+  height: 2vh;
+  padding: 10px;
+}
+</style>
+
+<body style="background-color:#000">
+        <div class='bar'>BOSS 1.0.0 beta | Shell</div>
+        <div id="terminal"></div>
+</body>
