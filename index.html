@@ -2,17 +2,25 @@
 <script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.min.js"></script>
 <script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
 <script src="boss.js"></script>
+<script src="image-builder.js"></script>
 <link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
 <script>
 
-var boss = new Boss();
+var root;
+if(localStorage.fs){
+	root = JSON.parse(localStorage.fs);
+} else{
+  root = DEFAULT_IMAGE;
+}
+
+var boss = new Boss(root);
 
 $(document).ready(function() {
      $('#terminal').terminal(boss.login.exec, {
         greetings: '',
         name: 'boss',
-        height: 800,
-        width: 800,
+        //height: 800,
+        //width: 800,
         prompt: 'login: '
     });
 });
@@ -33,5 +41,5 @@ span {
 
 <body style="background-color:#000">
         <div class='bar'>BOSS 1.0.0 beta | Shell</div>
-        <div id="terminal"></div>
+        <div id="terminal" style="width:100%;height:100%;"></div>
 </body>
