@@ -1,16 +1,18 @@
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.min.js"></script>
+<script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.12.min.js"></script>
 <script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
 <script src="boss.js"></script>
+<script src="boss-ui.js"></script>
+<script src="boss-storage-provider.js"></script>
 <script src="image-builder.js"></script>
-<link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
+<link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.12.css" rel="stylesheet"/>
 <script>
 
 var root;
 if(localStorage.fs){
 	root = JSON.parse(localStorage.fs);
 } else{
-  root = JSON_IMAGE;
+  root = DEFAULT_IMAGE;
 }
 
 var boss = new Boss(root);
