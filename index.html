@@ -10,13 +10,13 @@ var root;
 if(localStorage.fs){
 	root = JSON.parse(localStorage.fs);
 } else{
-  root = DEFAULT_IMAGE;
+  root = JSON_IMAGE;
 }
 
 var boss = new Boss(root);
 
 $(document).ready(function() {
-     $('#terminal').terminal(boss.login.exec, {
+     $('#terminal').terminal(new boss.Login(boss).exec, {
         greetings: '',
         name: 'boss',
         //height: 800,
