@@ -14,6 +14,14 @@ function Boss(root){
         }
     }
 
+    var loadLibraries = fs => {
+        var files = this.fs.get_files('/lib');
+        for(var file in files){
+            var code = this.fs.get_file('/lib',files[file]).data;
+            this.lib[files[file]] = eval(code);
+        }
+    }
+
     var loadCommands = fs => {
         var help = [];
         var files = this.fs.get_files('/bin');
@@ -33,25 +41,17 @@ function Boss(root){
         }
     }
 
-    var loadLibraries = fs => {
-        var files = this.fs.get_files('/lib');
-        for(var file in files){
-            var code = this.fs.get_file('/lib',files[file]).data;
-            this.lib[files[file]] = eval(code);
-        }
-    }
-
     this.reload = function(){
+        loadFileSystem(root);
+        this.fs = new this.FileSystem(root);
+        this.cmd = {};
+        this.lib = {};
+        this.env = {};
         loadEnv(this.fs);
         loadLibraries(this.fs);
         loadCommands(this.fs);
     }
 
-    loadFileSystem(root);
-    this.fs = new this.FileSystem(root);
-    this.cmd = {};
-    this.lib = {};
-    this.env = {};
     this.reload();
 } 
 
