@@ -349,7 +349,7 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                         "boss.fs.set_current_user(boss.fs.get_user(username));\n"+
                         "boss.lib.set_prompt( username + '> ', client);\n"+
                         "boss.fs.set_cwd('/home/' + username);\n"+
-                        "boss.lib.push(new boss.Shell(boss).exec);\n"+
+                        "boss.lib.push(new boss.lib.Shell(boss).exec);\n"+
                         "boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type `help` to see available commands.', client);\n"+
                     "} else {\n"+
                         "boss.lib.print.error('unknown username/password combination', client);\n"+

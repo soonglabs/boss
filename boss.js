@@ -61,6 +61,6 @@ function Boss(root){
     this.reload();
     loadLibraries(this.fs);
     loadCommands(this.fs);
-    this.interpreters = [new this.Login(this).exec];
+    this.interpreters = [new this.lib.Login(this).exec];
 } 
 
