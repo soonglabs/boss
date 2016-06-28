@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "jquery.terminal": "^0.10.10"
+    "jquery.terminal": "0.10.10"
   }
 }

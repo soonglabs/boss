@@ -2,6 +2,12 @@
 
 function Boss(root){
 
+    //defines the object boss returns for a command
+    this.Response = function(prompt, text){
+        this.prompt = prompt;
+        this.text = text;
+    }
+
     var loadFileSystem = root => {
         this.FileSystem = eval(root.dirs.sys.files.FileSystem.data);
     }
@@ -16,12 +22,12 @@ function Boss(root){
                 help.push('\t' + files[file] + ' - ' + this.fs.get_file('/bin',files[file]).meta.description);
             }
         }
-        this.cmd['help'] = function(args){
-            boss.print.log('\n');
+        this.cmd['help'] = function(args, client){
+            boss.print.log('\n', client);
             for(var opt in help){
-                boss.print.log(help[opt]);
+                boss.print.log(help[opt], client);
             }
-            boss.print.log('\n');
+            boss.print.log('\n', client);
         }
     }
 
@@ -34,9 +40,10 @@ function Boss(root){
     }
 
     loadFileSystem(root);
-    this.fs = new this.FileSystem(root);
+    this.fs = new this.FileSystem(root);    
     this.cmd = {};
     loadLibraries(this.fs);
     loadCommands(this.fs);
+    this.interpreters = [new this.Login(this).exec];
 } 
 
