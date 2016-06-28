@@ -32,12 +32,12 @@ function Boss(root){
                 help.push('\t' + files[file] + ' - ' + this.fs.get_file('/bin',files[file]).meta.description);
             }
         }
-        this.cmd['help'] = function(args){
-            boss.lib.print.log('\n');
+        this.cmd['help'] = function(args, client){
+            boss.lib.print.log('\n', client);
             for(var opt in help){
-                boss.lib.print.log(help[opt]);
+                boss.lib.print.log(help[opt], client);
             }
-            boss.lib.print.log('\n');
+            boss.lib.print.log('\n', client);
         }
     }
 
@@ -53,5 +53,6 @@ function Boss(root){
     }
 
     this.reload();
+    this.interpreters = [new this.lib.Login(this).exec];
 } 
 
