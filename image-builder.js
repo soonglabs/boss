@@ -33,13 +33,13 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['ls'] = new File('root',
                 "(function(args){\n"+
                 "var str = ' \\n';\n"+
-                "var path = boss.utils.calcAbsPath(args[1],args);\n"+
+                "var path = boss.lib.utils.calcAbsPath(args[1],args);\n"+
                 "var list = boss.fs.get_contents(path);\n"+
                 "for( var i in list ){\n"+
                     "str += list[i] + '\\n';\n"+
                 "}\n"+
-                    "boss.print.log(String(str));\n"+
-                    "boss.print.log('\\n');\n"+
+                    "boss.lib.print.log(String(str));\n"+
+                    "boss.lib.print.log('\\n');\n"+
                 "})"
                 , {
                     description : 'list files in current dir'
@@ -48,7 +48,7 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['mkdir'] = new File('root',
                 "(function(args){\n"+
                 "if(args.length > 1){\n"+
-                    "var result = boss.utils.splitPathFilename(args[1]);\n"+
+                    "var result = boss.lib.utils.splitPathFilename(args[1]);\n"+
                     "var path = result.path;\n"+
                     "var dirname = result.name;\n"+
                 "}\n"+
@@ -56,11 +56,11 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                     "try{\n"+
                         "boss.fs.add_dir(path, new boss.fs.Dir(dirname, boss.fs.get_current_username(), path));\n"+
                     "} catch(err){\n"+
-                        "boss.print.error('error : ' + err);\n"+
+                        "boss.lib.print.error('error : ' + err);\n"+
                     "}\n"+
                     "boss.fs.save();\n"+
                 "} else if(!dirname) {\n"+
-                   "boss.print.error('error: no dir argument');\n"+
+                   "boss.lib.print.error('error: no dir argument');\n"+
                 "}\n"+
                 "})", {
                     description : 'create new dir'
@@ -69,31 +69,31 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['read'] = new File('root', 
                 "(function(args){\n"+
                 "if(args.length > 1){\n"+
-                   "var result = boss.utils.splitPathFilename(args[1]);\n"+
+                   "var result = boss.lib.utils.splitPathFilename(args[1]);\n"+
                    "var path = result.path;\n"+
                    "var filename = result.name;\n"+
                 "}\n"+
                 "if(filename){\n"+
                    "try{\n"+
-                        "boss.print.log(boss.fs.get_file(path, filename).data);\n"+
+                        "boss.lib.print.log(boss.fs.get_file(path, filename).data);\n"+
                     "} catch(err){\n"+
-                        "boss.print.error('error : ' + err);\n"+
+                        "boss.lib.print.error('error : ' + err);\n"+
                     "}\n"+
                 "} else if(!filename) {\n"+
-                   "boss.print.error('error: no file argument');\n"+
+                   "boss.lib.print.error('error: no file argument');\n"+
                 "}\n"+
                 "})", {
                     description : 'read file'
                 });
 
-        bin.files['logout'] = new File('root', "(function(args){\nboss.pop();\n})", {
+        bin.files['logout'] = new File('root', "(function(args){\nboss.lib.pop();\n})", {
                     description : 'logout'
                 });
 
         bin.files['edit'] = new File('root',  
             "(function(args){"+
                 "if(args.length > 1){"+
-                    "var result = boss.utils.splitPathFilename(args[1]);"+
+                    "var result = boss.lib.utils.splitPathFilename(args[1]);"+
                     "var path = result.path;"+
                     "var filename = result.name;"+
                 "}"+
@@ -104,12 +104,12 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                             "try{"+
                                 "boss.fs.set_file(path,filename, new boss.fs.File(boss.fs.get_current_username,args[2] ? args[2] : ''));"+
                             "} catch(err){"+
-                                "boss.print.error('error : ' + err);"+
+                                "boss.lib.print.error('error : ' + err);"+
                             "}"+
                         "}"+
                         "boss.fs.save();"+
                 "} else if(!filename) {"+
-                    "boss.print.error('error: no file argument'); "+
+                    "boss.lib.print.error('error: no file argument'); "+
                 "}"+
             "})"
         , {
@@ -120,15 +120,15 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
             "(function(args){\n"+
                     "if(args[1]){\n"+
                         "try{\n"+
-                            "var path = boss.utils.calcAbsPath(args[1]);\n"+
+                            "var path = boss.lib.utils.calcAbsPath(args[1]);\n"+
                             "boss.fs.set_cwd(path);\n"+
                             "var list = path.split('/');\n"+
-                            "boss.set_prompt((list.length <= 1 ? 'root' : list[list.length - 1]) + '> ');\n"+
+                            "boss.lib.set_prompt((list.length <= 1 ? 'root' : list[list.length - 1]) + '> ');\n"+
                         "} catch(err){\n"+
-                            "boss.print.error('error : ' + err);\n"+
+                            "boss.lib.print.error('error : ' + err);\n"+
                         "}\n"+
                     "} else if(!args[1]){\n"+
-                        "boss.print.error('error: no directory argument');\n"+
+                        "boss.lib.print.error('error: no directory argument');\n"+
                     "}\n"+
             "})"
         , {description:'move to dir'});
@@ -136,12 +136,12 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['cp'] = new File('root', 
             "(function(args){"+
                     "if(args.length > 1){"+
-                        "var result = boss.utils.splitPathFilename(args[1]);"+
+                        "var result = boss.lib.utils.splitPathFilename(args[1]);"+
                         "var path = result.path;"+
                         "var filename = result.name;"+
                     "}"+
                     "if(args.length > 2){"+
-                        "var result2 = boss.utils.splitPathFilename(args[2]);"+
+                        "var result2 = boss.lib.utils.splitPathFilename(args[2]);"+
                         "var path2 = result2.path;"+
                         "var filename2 = result2.name;"+
                     "}"+
@@ -151,10 +151,10 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                             "boss.fs.set_file(path2, filename2, file);"+
                             "boss.fs.save();"+
                         "} catch(err){"+
-                            "boss.print.error('error : ' + err);"+
+                            "boss.lib.print.error('error : ' + err);"+
                         "}"+
                     "} else if(!filename) {"+
-                        "boss.print.error('error: no file argument');" +
+                        "boss.lib.print.error('error: no file argument');" +
                     "}"+
                 "})"
         , {
@@ -164,12 +164,12 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['mv'] = new File('root', 
             "(function(args){"+
                     "if(args.length > 1){"+
-                        "var result = boss.utils.splitPathFilename(args[1]);"+
+                        "var result = boss.lib.utils.splitPathFilename(args[1]);"+
                         "var path = result.path;"+
                         "var filename = result.name;"+
                     "}"+
                     "if(args.length > 2){"+
-                        "var result2 = boss.utils.splitPathFilename(args[2]);"+
+                        "var result2 = boss.lib.utils.splitPathFilename(args[2]);"+
                         "var path2 = result2.path;"+
                         "var filename2 = result2.name;"+
                     "}"+
@@ -180,10 +180,10 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                             "boss.fs.remove(path, filename, 'file');"+
                             "boss.fs.save();"+
                         "} catch(err){"+
-                            "boss.print.error('error : ' + err);"+
+                            "boss.lib.print.error('error : ' + err);"+
                         "}"+
                     "} else if(!filename) {"+
-                        "boss.print.error('error: no file argument'); "+
+                        "boss.lib.print.error('error: no file argument'); "+
                     "}"+
                  "})"
         , { description: 'move file'});
@@ -191,7 +191,7 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['rm'] = new File('root', 
             "(function(args){\n"+
                     "if(args.length > 1){\n"+
-                       "var result = boss.utils.splitPathFilename(args[1]);\n"+
+                       "var result = boss.lib.utils.splitPathFilename(args[1]);\n"+
                         "var path = result.path;\n"+
                         "var name = result.name;\n"+
                     "}\n"+
@@ -209,7 +209,7 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                             "//error('error : ' + err);\n"+
                         "}\n"+
                     "} else if(!name) {\n"+
-                        "boss.print.error('error: no file/dir argument');\n"+
+                        "boss.lib.print.error('error: no file/dir argument');\n"+
                     "}\n"+
             "})"
         , { description:'remove file or dir'});
@@ -217,25 +217,25 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['js'] = new File('root' , 
          "(function(args){\n"+
               "if(args.length > 1){"+
-                        "var result = boss.utils.splitPathFilename(args[1]);"+
+                        "var result = boss.lib.utils.splitPathFilename(args[1]);"+
                         "var path = result.path;"+
                         "var name = result.name;"+
                     "}"+
                     "if(name){"+
                     "try{"+
-                            "boss.print.log(eval(boss.fs.get_file(path,name).data));"+
+                            "boss.lib.print.log(eval(boss.fs.get_file(path,name).data));"+
                         "} catch(err){"+
-                            "boss.print.error('error : ' + err);"+
+                            "boss.lib.print.error('error : ' + err);"+
                         "}"+
                     "} else if(!name) {"+
-                        "boss.print.error('error: no file argument'); "+
+                        "boss.lib.print.error('error: no file argument'); "+
                     "}"+
                 "})"
         , { description: 'run js file'});
 
         bin.files['export'] = new File('root',
             "(function(args){\n"+
-                "boss.print.log(JSON.stringify(boss.fs.export()));\n"+
+                "boss.lib.print.log(JSON.stringify(boss.fs.export()));\n"+
                 "console.log(JSON.stringify(boss.fs.export()));\n"+
              "})"
          , {
@@ -245,9 +245,9 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
         bin.files['adduser'] = new File('root', 
          "(function(args){\n"+
                     "if(args.length < 4){"+
-                        "boss.print.error('error: not enough arguments');"+
+                        "boss.lib.print.error('error: not enough arguments');"+
                     "} else if( args[2] !== 'root' && args[2] !== 'user') {"+
-                        "boss.print.error('error : invalid type ' + args[2]);"+
+                        "boss.lib.print.error('error : invalid type ' + args[2]);"+
                     "} else { "+
                         "boss.fs.add_user(args[1], new boss.fs.User(args[1], args[2], args[3]));"+
                         "boss.fs.save();"+
@@ -255,15 +255,19 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
             "})"
         , { description: 'add new user'});
 
-        bin.files['echo'] = new File('root', "(function(args){boss.print.log(args[1])})", {
+        bin.files['echo'] = new File('root', "(function(args){boss.lib.print.log(args[1])})", {
              description : 'echo string to console'
         });
 
-        bin.files['inspect'] = new File('root', "(function(args){console.log(boss)})", {
-             description : 'log boss object for inspection'
+        bin.files['inspect'] = new File('root', "(function(args){console.log(window)})", {
+             description : 'log window object for inspection'
         });
 
-        bin.files['test'] = new File('root', "(function(args){boss.print.log('test ls');boss.cmd.ls(args);})", {
+        bin.files['reload'] = new File('root', "(function(args){boss.reload();})", {
+             description : 'reload BOSS'
+        });
+
+        bin.files['test'] = new File('root', "(function(args){boss.lib.print.log('test ls');boss.cmd.ls(args);})", {
              description : 'test fn. Calls ls'
         });
 
@@ -300,7 +304,7 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                     "var parts = full.split('/');\n"+
                     "if(parts.length > 1){\n"+
                         "name = parts.pop();\n"+
-                        "path = boss.utils.calcAbsPath(parts.join('/'));\n"+
+                        "path = boss.lib.utils.calcAbsPath(parts.join('/'));\n"+
                     "}\n"+
                     "return {\n"+
                         "path: path,\n"+
@@ -321,7 +325,7 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                             "boss.cmd[args[0]](args);   "+
                         "}"+
                         "else if(args[0] != undefined) {"+
-                            "boss.print.error('unknown command : ' + command);"+
+                            "boss.lib.print.error('unknown command : ' + command);"+
                         "}"+
                     "}"+
                 "} "+
@@ -337,25 +341,25 @@ var DEFAULT_IMAGE = new Dir('root', 'root', null);
                     "boss.term = term;\n"+
                     
                     "if(!boss.fs.get_user(command) && !password){\n"+
-                        "boss.print.error( 'unknown user');\n"+
+                        "boss.lib.print.error( 'unknown user');\n"+
                     "} else if(!password && boss.fs.get_user(command).password){\n"+
-                        "boss.set_prompt('password: ');\n"+
+                        "boss.lib.set_prompt('password: ');\n"+
                         "username = command;\n"+
                         "password = true;\n"+
                     "} else if(boss.fs.get_user(username).password === command){\n"+
                         "password = false;\n"+
-                        "boss.set_prompt('login: ');\n"+
+                        "boss.lib.set_prompt('login: ');\n"+
                         "boss.fs.set_current_user(boss.fs.get_user(username));\n"+
                         "boss.fs.set_cwd('/home/' + username);\n"+
-                        "boss.print.log('Hello ' + username + '. Welcome to BOSS. Type `help` to see available commands.');\n"+
-                        "//var shell = new boss.Shell(boss)\n"+
-                        "boss.push(new boss.Shell(boss).exec, {\n"+
+                        "boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type `help` to see available commands.');\n"+
+                        "//var shell = new boss.lib.Shell(boss)\n"+
+                        "boss.lib.push(new boss.lib.Shell(boss).exec, {\n"+
                             "'prompt' : boss.fs.get_current_username() + '> '\n"+
                         "});\n"+
                     "} else {\n"+
-                        "boss.print.error('unknown username/password combination');\n"+
+                        "boss.lib.print.error('unknown username/password combination');\n"+
                         "password = false;\n"+
-                        "boss.set_prompt(prompt);\n"+
+                        "boss.lib.set_prompt(prompt);\n"+
                     "}\n"+
                 "}\n"+
             "})"

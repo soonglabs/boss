@@ -6,6 +6,14 @@ function Boss(root){
         this.FileSystem = eval(root.dirs.sys.files.FileSystem.data);
     }
 
+    var loadEnv = fs => {
+        var files = this.fs.get_files('/etc');
+        for(var file in files){
+            var code = this.fs.get_file('/etc',files[file]).data;
+            this.env[files[file]] = eval(code);
+        }
+    }
+
     var loadCommands = fs => {
         var help = [];
         var files = this.fs.get_files('/bin');
@@ -17,11 +25,11 @@ function Boss(root){
             }
         }
         this.cmd['help'] = function(args){
-            boss.print.log('\n');
+            boss.lib.print.log('\n');
             for(var opt in help){
-                boss.print.log(help[opt]);
+                boss.lib.print.log(help[opt]);
             }
-            boss.print.log('\n');
+            boss.lib.print.log('\n');
         }
     }
 
@@ -29,14 +37,21 @@ function Boss(root){
         var files = this.fs.get_files('/lib');
         for(var file in files){
             var code = this.fs.get_file('/lib',files[file]).data;
-            this[files[file]] = eval(code);
+            this.lib[files[file]] = eval(code);
         }
+    }
+
+    this.reload = function(){
+        loadEnv(this.fs);
+        loadLibraries(this.fs);
+        loadCommands(this.fs);
     }
 
     loadFileSystem(root);
     this.fs = new this.FileSystem(root);
     this.cmd = {};
-    loadLibraries(this.fs);
-    loadCommands(this.fs);
+    this.lib = {};
+    this.env = {};
+    this.reload();
 } 
 
