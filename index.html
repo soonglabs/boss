@@ -1,11 +1,11 @@
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.12.min.js"></script>
+<script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.min.js"></script>
 <script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
 <script src="boss.js"></script>
-<script src="boss-ui.js"></script>
+<script src="boss-term-client.js"></script>
 <script src="boss-storage-provider.js"></script>
 <script src="image-builder.js"></script>
-<link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.12.css" rel="stylesheet"/>
+<link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
 <script>
 
 var root;
@@ -16,9 +16,11 @@ if(localStorage.fs){
 }
 
 var boss = new Boss(root);
+var client = new BossTermClient(boss);
+
 
 $(document).ready(function() {
-     $('#terminal').terminal(new boss.lib.Login(boss).exec, {
+     $('#terminal').terminal(client.exec, {
         greetings: '',
         name: 'boss',
         //height: 800,
@@ -36,12 +38,12 @@ span {
 .bar {
   font-family: monospace;
   color: #ddd;
-  height: 2vh;
+  height: 5%;
   padding: 10px;
 }
 </style>
 
 <body style="background-color:#000">
         <div class='bar'>BOSS 1.0.0 beta | Shell</div>
-        <div id="terminal" style="width:100%;height:100%;"></div>
+        <div id="terminal" style="width:100%;height:95%;"></div>
 </body>
