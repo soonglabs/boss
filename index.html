@@ -19,7 +19,6 @@ if(localStorage.fs){
 var boss = new Boss(root);
 var client = new BossTermClient(boss);
 
-
 $(document).ready(function() {
      $('#terminal').terminal(client.exec, {
         greetings: '',

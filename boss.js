@@ -9,8 +9,8 @@ function Boss(root){
     var loadEnv = fs => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
-            var code = this.fs.get_file('/etc',files[file]).data;
-            this.env[files[file]] = eval(code);
+            var json = this.fs.get_file('/etc',files[file]).data;
+            this.env[files[file]] = JSON.parse(json);
         }
     }
 
@@ -42,8 +42,6 @@ function Boss(root){
     }
 
     this.reload = function(){
-        loadFileSystem(root);
-        this.fs = new this.FileSystem(root);
         this.cmd = {};
         this.lib = {};
         this.env = {};
@@ -52,7 +50,25 @@ function Boss(root){
         loadCommands(this.fs);
     }
 
+    loadFileSystem(root);
+    this.fs = new this.FileSystem(root);
     this.reload();
     this.interpreters = [new this.lib.Login(this).exec];
 } 
+
+var ConsoleClient = function(b){
+    var boss = b;
+
+    this.out = function(text){
+        console.log(text);
+    }
+
+    this.set_prompt = function(prompt){
+        //Do nothing
+    }
+
+    this.exec = (command) => {
+        boss.interpreters[boss.interpreters.length - 1](command, this);
+    }
+}
 
