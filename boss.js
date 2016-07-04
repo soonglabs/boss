@@ -29,7 +29,7 @@ function Boss(root){
             var code = this.fs.get_file('/bin',files[file]).data;
             this.cmd[files[file]] = eval(code);
             if(this.fs.get_file('/bin',files[file]).meta && this.fs.get_file('/bin',files[file]).meta.description){
-                help.push('\t' + files[file] + ' - ' + this.fs.get_file('/bin',files[file]).meta.description);
+                help.push(files[file] + ' - ' + this.fs.get_file('/bin',files[file]).meta.description);
             }
         }
         this.cmd['help'] = function(args, client){
@@ -53,7 +53,7 @@ function Boss(root){
     loadFileSystem(root);
     this.fs = new this.FileSystem(root);
     this.reload();
-    this.interpreters = [new this.lib.Login(this).exec];
+    this.interpreters = [new this.lib.Login(this).username];
 } 
 
 var ConsoleClient = function(b){
