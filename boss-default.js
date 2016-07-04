@@ -1,6 +1,6 @@
 'use strict'
 
-var JSON_IMAGE =  {
+var JSON_IMAGE = {
    "name":"root",
    "owner":"root",
    "parent":null,
@@ -45,14 +45,6 @@ var JSON_IMAGE =  {
                "data":"(function(args, client){\n    client.set_prompt('username: ');\n    boss.lib.pop();\n})",
                "meta":{
                   "description":"logout"
-               }
-            },
-            "ace":{
-               "owner":"root",
-               "created":1467084745397,
-               "data":"(function(args){\n    \n    if(args.length > 1){\n        var result = boss.lib.utils.splitPathFilename(args[1]);\n        var path = result.path;var filename = result.name;\n    }\n\n    if(filename){\n        \n        var run = function(){\n            \n            $('body').append(\n                \"<div id='editor' style='position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;'></div>\"\n            )\n        \n            var editor = ace.edit('editor');\n            editor.setTheme('ace/theme/monokai');\n            editor.getSession().setMode('ace/mode/javascript');\n            editor.getSession().setValue(boss.fs.get_file(path,filename).data);\n            $('#editor').keydown(function(e) {\n                if(e.keyCode === 27){\n                    boss.fs.get_file(path,filename).data = editor.getSession().getValue();\n                    $('#editor').remove();\n                }\n            });\n        };\n        \n        $.getScript(\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js\", run);\n        \n    } else if(!filename) {\n        boss.lib.print.error('error: no file argument');\n    }\n})\n",
-               "meta":{
-                  "description":"open ace editor"
                }
             },
             "cd":{
@@ -156,6 +148,14 @@ var JSON_IMAGE =  {
                "data":"(function(args, client){\n    if(args.length > 1){\n        var result = boss.lib.utils.splitPathFilename(args[1]);\n        var path = result.path;var filename = result.name;\n    }\n    \n    if(filename){\n        try{\n            boss.fs.get_file(path,filename).data = args[2] ? args[2] : '';\n        } catch(err){\n            try{\n                boss.fs.set_file(path,filename, new boss.fs.File(boss.fs.get_current_username,args[2] ? args[2] : ''));\n            } catch(err){\n                boss.lib.print.error('error : ' + err, client);\n            }\n        }\n        \n        boss.fs.save();\n    } else if(!filename) {\n        boss.lib.print.error('error: no file argument', client); \n    }\n})",
                "meta":{
                   "description":"edit file"
+               }
+            },
+            "edit":{
+               "owner":"root",
+               "created":1467084745397,
+               "data":"(function(args){\n    \n    if(args.length > 1){\n        var result = boss.lib.utils.splitPathFilename(args[1]);\n        var path = result.path;var filename = result.name;\n    }\n\n    if(filename){\n        \n        var run = function(){\n            \n            $('body').append(\n                \"<div id='editor' style='position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;'></div>\"\n            )\n        \n            var editor = ace.edit('editor');\n            editor.setTheme('ace/theme/monokai');\n            editor.getSession().setMode('ace/mode/javascript');\n            editor.getSession().setValue(boss.fs.get_file(path,filename).data);\n            $('#editor').keydown(function(e) {\n                if(e.keyCode === 27){\n                    boss.fs.get_file(path,filename).data = editor.getSession().getValue();\n                    $('#editor').remove();\n                }\n            });\n        };\n        \n        $.getScript(\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js\", run);\n        \n    } else if(!filename) {\n        boss.lib.print.error('error: no file argument');\n    }\n})\n",
+               "meta":{
+                  "description":"open ace editor"
                }
             }
          }
