@@ -127,14 +127,6 @@ var JSON_IMAGE = {
                   "description":"log boss object for inspection"
                }
             },
-            "test":{
-               "owner":"root",
-               "created":1467084745397,
-               "data":"(function(args, client){\n    client.toolbar.set_title(args[1]);\n})",
-               "meta":{
-                  "description":"test fn. Calls ls"
-               }
-            },
             "reload":{
                "created":1467087647737,
                "data":"(function(args, client){\n    boss.reload();\n    boss.cmd.logout('', client);\n})",
@@ -161,9 +153,16 @@ var JSON_IMAGE = {
             "edit":{
                "owner":"root",
                "created":1467084745397,
-               "data":"(function(args,client){\n    \n    var result,path,filename,editor;\n    \n    return new boss.lib.App(args, client, {\n        \n        selector: \"#editor\",\n        template: \"<div id='editor'></div>\",\n        css: \"position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;\",\n        controller : {\n            onLoad : (args, client) => {\n                \n                client.toolbar.set_title('Editor');\n                \n                if(args.length > 1){\n                    result = boss.lib.utils.splitPathFilename(args[1]);\n                    path = result.path;\n                    filename = result.name;\n                }\n            \n                if(filename){\n                    \n                    var run = function(){\n                        editor = ace.edit('editor');\n                        editor.setTheme('ace/theme/monokai');\n                        editor.getSession().setMode('ace/mode/javascript');\n                        editor.getSession().setValue(boss.fs.get_file(path,filename).data);\n                    };\n                    \n                    $.getScript(\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js\", run);\n                    \n                } else if(!filename) {\n                    boss.lib.print.error('error: no file argument');\n                }\n            },\n            onDestroy : (args, client) => {\n                boss.fs.get_file(path,filename).data = editor.getSession().getValue();\n                client.toolbar.set_title('Shell');\n            }\n        }\n    })\n})\n",
+               "data":"(function(args,client){\n    \n    var result,path,filename,editor;\n    \n    return new boss.lib.App(args, client, {\n        \n        selector: \"#editor\",\n        template: \"<div id='editor'></div>\",\n        css: \"position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;\",\n        controller : {\n            onLoad : (args, client) => {\n                \n                client.toolbar.set_title('<i class=\"fa fa-book app-icon\"></i>Editor');\n                \n                if(args.length > 1){\n                    result = boss.lib.utils.splitPathFilename(args[1]);\n                    path = result.path;\n                    filename = result.name;\n                }\n            \n                if(filename){\n                    \n                    var run = function(){\n                        editor = ace.edit('editor');\n                        editor.setTheme('ace/theme/monokai');\n                        editor.getSession().setMode('ace/mode/javascript');\n                        editor.getSession().setValue(boss.fs.get_file(path,filename).data);\n                    };\n                    \n                    $.getScript(\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js\", run);\n                    \n                } else if(!filename) {\n                    boss.lib.print.error('error: no file argument');\n                }\n            },\n            onDestroy : (args, client) => {\n                boss.fs.get_file(path,filename).data = editor.getSession().getValue();\n                client.toolbar.set_title('<i class=\"fa fa-terminal app-icon\"></i>Shell');\n            }\n        }\n    })\n})\n",
                "meta":{
                   "description":"open ace editor"
+               }
+            },
+            "removeuser":{
+               "created":1467771258234,
+               "data":"",
+               "meta":{
+                  "description":"remove user"
                }
             }
          }
