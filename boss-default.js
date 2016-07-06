@@ -130,7 +130,7 @@ var JSON_IMAGE = {
             "test":{
                "owner":"root",
                "created":1467084745397,
-               "data":"(function(args, client){\n    alert(args[1]);\n    boss.cmd.ls(['ls'], client);\n})",
+               "data":"(function(args, client){\n    client.toolbar.set_title(args[1]);\n})",
                "meta":{
                   "description":"test fn. Calls ls"
                }
@@ -150,10 +150,18 @@ var JSON_IMAGE = {
                   "description":"edit file"
                }
             },
+            "about":{
+               "owner":"root",
+               "created":1467084745397,
+               "data":"(function(args, client){\n    boss.lib.print.log(\"\\n\", client); \n    boss.lib.print.log(\".______     ______        _______.     _______.\", client);\n    boss.lib.print.log(\"|   _  \\\\   /  __  \\\\      /       |    /       |\", client);\n    boss.lib.print.log(\"|  |_)  | |  |  |  |    |   (----`   |   (----`\", client);\n    boss.lib.print.log(\"|   _  <  |  |  |  |     \\\\   \\\\        \\\\   \\\\   \", client); \n    boss.lib.print.log(\"|  |_)  | |  `--'  | .----)   |   .----)   |  \", client); \n    boss.lib.print.log(\"|______/   \\\\\\______/  |_______/    |_______/    \", client);\n    boss.lib.print.log(\"\\n\", client);                                           \n    boss.lib.print.log(\"Boss 0.0.1. Browser Operating System Simulator\", client);\n    boss.lib.print.log(\"created by Scott Russell\", client);\n    boss.lib.print.log(\"copyright 2016\", client);\n})",
+               "meta":{
+                  "description":"test fn. Calls ls"
+               }
+            },
             "edit":{
                "owner":"root",
                "created":1467084745397,
-               "data":"(function(args){\n    \n    if(args.length > 1){\n        var result = boss.lib.utils.splitPathFilename(args[1]);\n        var path = result.path;var filename = result.name;\n    }\n\n    if(filename){\n        \n        var run = function(){\n            \n            $('body').append(\n                \"<div id='editor' style='position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;'></div>\"\n            )\n        \n            var editor = ace.edit('editor');\n            editor.setTheme('ace/theme/monokai');\n            editor.getSession().setMode('ace/mode/javascript');\n            editor.getSession().setValue(boss.fs.get_file(path,filename).data);\n            $('#editor').keydown(function(e) {\n                if(e.keyCode === 27){\n                    boss.fs.get_file(path,filename).data = editor.getSession().getValue();\n                    $('#editor').remove();\n                }\n            });\n        };\n        \n        $.getScript(\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js\", run);\n        \n    } else if(!filename) {\n        boss.lib.print.error('error: no file argument');\n    }\n})\n",
+               "data":"(function(args,client){\n    \n    var result,path,filename,editor;\n    \n    return new boss.lib.App(args, client, {\n        \n        selector: \"#editor\",\n        template: \"<div id='editor'></div>\",\n        css: \"position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;\",\n        controller : {\n            onLoad : (args, client) => {\n                \n                client.toolbar.set_title('Editor');\n                \n                if(args.length > 1){\n                    result = boss.lib.utils.splitPathFilename(args[1]);\n                    path = result.path;\n                    filename = result.name;\n                }\n            \n                if(filename){\n                    \n                    var run = function(){\n                        editor = ace.edit('editor');\n                        editor.setTheme('ace/theme/monokai');\n                        editor.getSession().setMode('ace/mode/javascript');\n                        editor.getSession().setValue(boss.fs.get_file(path,filename).data);\n                    };\n                    \n                    $.getScript(\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js\", run);\n                    \n                } else if(!filename) {\n                    boss.lib.print.error('error: no file argument');\n                }\n            },\n            onDestroy : (args, client) => {\n                boss.fs.get_file(path,filename).data = editor.getSession().getValue();\n                client.toolbar.set_title('Shell');\n            }\n        }\n    })\n})\n",
                "meta":{
                   "description":"open ace editor"
                }
@@ -402,7 +410,11 @@ var JSON_IMAGE = {
             "Login":{
                "owner":"root",
                "created":1467084745397,
-               "data":"(function(boss){\n    \n    var username = false;\n    \n    this.username = (command, client) => {\n        \n        if(!boss.fs.get_user(command)){\n            boss.lib.print.error( 'unknown user', client);\n        } else if(boss.fs.get_user(command).password){\n            boss.lib.set_prompt('password: ', client);\n            username = command;\n            boss.lib.push(this.password);\n        }\n    }\n    \n    this.password = (command, client) => {\n        \n        //console.log(boss.lib.utils.hashCode(command) + ' : ' + boss.fs.get_user(username).password + ' : ' + (boss.lib.utils.hashCode(command) == boss.fs.get_user(username).password));\n        if(boss.fs.get_user(username).password == boss.lib.utils.hashCode(command)){\n            boss.fs.set_current_user(boss.fs.get_user(username));\n            boss.lib.set_prompt( username + '> ', client);\n            boss.fs.set_cwd('/home/' + username);\n            boss.lib.pop();\n            boss.lib.push(new boss.lib.Shell(boss).exec);\n            boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type `help` to see available commands.', client);\n        } else {\n            boss.lib.print.error('unknown username/password combination', client);\n            boss.lib.set_prompt('username: ', client);\n            boss.lib.pop();\n        }\n    }\n})"
+               "data":"(function(boss){\n    \n    var username = false;\n    \n    this.username = (command, client) => {\n        \n        if(!boss.fs.get_user(command)){\n            boss.lib.print.error( 'unknown user', client);\n        } else if(boss.fs.get_user(command).password){\n            boss.lib.set_prompt('password: ', client);\n            username = command;\n            boss.lib.push(this.password);\n        }\n    }\n    \n    this.password = (command, client) => {\n        \n        if(boss.fs.get_user(username).password == boss.lib.utils.hashCode(command)){\n            boss.fs.set_current_user(boss.fs.get_user(username));\n            boss.lib.set_prompt( username + '> ', client);\n            boss.fs.set_cwd('/home/' + username);\n            boss.lib.pop();\n            boss.lib.push(new boss.lib.Shell(boss).exec);\n            boss.cmd.about('', client);\n            boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type `help` to see available commands.', client);\n        } else {\n            boss.lib.print.error('unknown username/password combination', client);\n            boss.lib.set_prompt('username: ', client);\n            boss.lib.pop();\n        }\n    }\n})"
+            },
+            "App":{
+               "created":1467649101124,
+               "data":"(function(args, client, config){\n    \n    //config object\n    //selector\n    //template\n    //css\n    //controller\n    \n    //add template to body        \n    $('body').append(config.template);\n    \n    //add css\n    var target = $(config.selector);\n    target.attr(\"style\", target.attr(\"style\") + \"; \" + config.css);\n    \n    //call controller onload\n    config.controller.onLoad(args, client);\n        \n    //add escape key\n    $(config.selector).keydown(function(e) {\n        if(e.keyCode === 27){\n            config.controller.onDestroy(args, client);\n            $(config.selector).remove();\n        }\n    });\n})"
             }
          }
       },
