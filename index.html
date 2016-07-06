@@ -1,49 +1,62 @@
-<script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.min.js"></script>
-<script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
-<script src="boss.js"></script>
-<script src="boss-term-client.js"></script>
-<script src="boss-storage-provider.js"></script>
-<script src="boss-default.js"></script>
-<link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
-<script>
-var root;
-if(localStorage.fs){
-	root = JSON.parse(localStorage.fs);
-} else{
-  root = JSON_IMAGE;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.js"></script>
+    <script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
+    <script src="boss.js"></script>
+    <script src="boss-term-client.js"></script>
+    <script src="boss-storage-provider.js"></script>
+    <script src="boss-default.js"></script>
+    <link rel="icon" type="image/ico" href="assets/favicon.ico">
+    <link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <script>
+    var root;
+    if(localStorage.fs){
+      root = JSON.parse(localStorage.fs);
+    } else{
+      root = JSON_IMAGE;
+    }
 
-var boss = new Boss(root);
-var client = new BossTermClient(boss);
+    var boss = new Boss(root);
+    var client = new BossTermClient(boss);
 
-$(document).ready(function() {
-     $('#terminal').terminal(client.exec, {
-        greetings: '',
-        name: 'boss',
-        //height: 800,
-        //width: 800,
-        prompt: 'username: '
+    $(document).ready(function() {
+        $('#terminal').terminal(client.exec, {
+            greetings: '',
+            name: 'boss',
+            //height: 800,
+            //width: 800,
+            prompt: 'username: '
+        });
     });
-});
-</script>
+    </script>
 
-<style>
-span {
-  color: #ddd;
-  /*text-shadow: 0 0 3px #999;*/
-}
-.toolbar {
-  font-family: monospace;
-  color: #ddd;
-  height: 5%;
-  padding: 10px;
-}
-</style>
+    <style>
+    span {
+      color: #ddd;
+      /*text-shadow: 0 0 3px #999;*/
+    }
+    .toolbar {
+      font-family: monospace;
+      color: #ddd;
+      height: 5%;
+      padding: 10px;
+    }
+    .app-icon {
+      padding-right: 10px;
+    }
+    </style>
+    <title>BOSS</title>
+  </head>
+  <body style="background-color:#000">
+          <div class='toolbar'>
+            <span id="toolbar-title"><i class="fa fa-terminal app-icon"></i>Shell</span>
+            <span id="toolbar-message"></span>
+            <span id="toolbar-notifications"></span>
+          </div>
+          <div id="terminal" style="width:100%;height:95%;"></div>
+  </body>
+</html>
 
-<body style="background-color:#000">
-        <div class='toolbar'>
-          <span id="toolbar-title">Shell</span>
-        </div>
-        <div id="terminal" style="width:100%;height:95%;"></div>
-</body>

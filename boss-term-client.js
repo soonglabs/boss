@@ -7,8 +7,13 @@ function BossTermClient(b){
 
     this.toolbar = {
         set_title: function(title){
-            console.log('set title');
-            $('#toolbar-title').text(title);
+            $('#toolbar-title').html(title);
+        },
+         set_message: function(message){
+            $('#toolbar-message').html(message);
+        },
+         set_notification: function(app){
+            $('#toolbar-notification').html(app);
         }
     }
 

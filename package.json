@@ -1,12 +1,12 @@
 {
-  "name": "term",
-  "version": "1.0.0",
-  "description": "test",
+  "name": "boss",
+  "version": "0.0.1",
+  "description": "browser operating system simulator",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
-  "author": "",
+  "author": "Scott Russell",
   "license": "MIT",
   "dependencies": {
     "jquery.terminal": "0.10.10"
