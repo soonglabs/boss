@@ -57,7 +57,7 @@ function Boss(root){
 } 
 
 var ConsoleClient = function(b){
-    var boss = b;
+    var daBoss = b;
 
     this.out = function(text){
         console.log(text);
@@ -68,7 +68,7 @@ var ConsoleClient = function(b){
     }
 
     this.exec = (command) => {
-        boss.interpreters[boss.interpreters.length - 1](command, this);
+        daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
     }
 }
 

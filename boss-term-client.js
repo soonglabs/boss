@@ -27,6 +27,6 @@ function BossTermClient(b){
 
     this.exec = (command, term) => {
         terminal = term;
-        daBoss.interpreters[boss.interpreters.length - 1](command, this);
+        daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
     }
 }
