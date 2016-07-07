@@ -2,7 +2,7 @@
 
 function BossTermClient(b){
 
-    var boss = b;
+    var daBoss = b;
     var terminal;
 
     this.toolbar = {
@@ -27,6 +27,6 @@ function BossTermClient(b){
 
     this.exec = (command, term) => {
         terminal = term;
-        boss.interpreters[boss.interpreters.length - 1](command, this);
+        daBoss.interpreters[boss.interpreters.length - 1](command, this);
     }
 }
