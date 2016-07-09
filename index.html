@@ -19,8 +19,8 @@
       root = JSON_IMAGE;
     }
 
-    var boss = new Boss(root, 'main');
-    var client = new BossTermClient(boss);
+    var main_boss = new Boss(root, 'main');
+    var client = new BossTermClient(main_boss);
 
     $(document).ready(function() {
         $('#terminal').terminal(client.exec, {

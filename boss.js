@@ -2,6 +2,8 @@
 
 function Boss(root, name){
 
+    var boss = this;
+
     var loadFileSystem = root => {
         this.FileSystem = eval(root.dirs.sys.files.FileSystem.data);
     }
@@ -54,7 +56,7 @@ function Boss(root, name){
     this.fs = new this.FileSystem(root, name);
     this.reload();
     this.interpreters = [new this.lib.Login(this).username];
-} 
+}
 
 var ConsoleClient = function(b){
     var daBoss = b;
