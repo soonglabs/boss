@@ -1,59 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/jquery.terminal/js/jquery.terminal-0.10.10.js"></script>
-    <script src="./node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
-    <script src="boss.js"></script>
-    <script src="boss-term-client.js"></script>
-    <script src="boss-console-client.js"></script>
-    <script src="boss-default.js"></script>
-    <link rel="icon" type="image/ico" href="assets/favicon.ico">
-    <link href="./node_modules/jquery.terminal/css/jquery.terminal-0.10.10.css" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <script>
-    var root;
-    if(localStorage['fs.main']){
-      root = JSON.parse(localStorage['fs.main']);
-    } else{
-      root = JSON_IMAGE;
-    }
-
-    var main_boss = new Boss(root, 'main');
-    var client = new BossTermClient(main_boss);
-
-    $(document).ready(function() {
-        $('#terminal').terminal(client.exec, {
-            greetings: '',
-            name: 'boss',
-            prompt: 'username: '
-        });
-    });
-    </script>
-
-    <style>
-    span {
-      color: #ddd;
-    }
-    .toolbar {
-      font-family: monospace;
-      color: #ddd;
-      height: 5%;
-      padding: 10px;
-    }
-    .app-icon {
-      padding-right: 10px;
-    }
-    </style>
     <title>BOSS</title>
   </head>
   <body style="background-color:#000">
-          <div class='toolbar'>
-            <span id="toolbar-title"><i class="fa fa-terminal app-icon"></i>Shell</span>
-            <span id="toolbar-message"></span>
-            <span id="toolbar-notifications"></span>
-          </div>
-          <div id="terminal" style="width:100%;height:95%;"></div>
+    <div style="overflow:hidden;">
+      <iframe sandbox="allow-scripts allow-same-origin" src="./boss.html" style="width:100%; padding:0; border:0; height:100vh;"></iframe>
+     </div> 
   </body>
 </html>
-
