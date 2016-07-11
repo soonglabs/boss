@@ -81,6 +81,10 @@ var ConsoleClient = function(b){
         //Do nothing
     }
 
+    this.get_prompt = function(){
+        return '';
+    }
+
     this.exec = (command) => {
         daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
     }
