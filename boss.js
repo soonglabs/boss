@@ -8,14 +8,6 @@ function Boss(root, name){
         this.FileSystem = eval(root.dirs.sys.files.FileSystem.data);
     }
 
-    var loadEnv = fs => {
-        var files = this.fs.get_files('/etc');
-        for(var file in files){
-            var json = this.fs.get_file('/etc',files[file]).data;
-            this.env[files[file]] = JSON.parse(json);
-        }
-    }
-
     var loadLibraries = fs => {
         var files = this.fs.get_files('/lib');
         for(var file in files){
@@ -43,13 +35,21 @@ function Boss(root, name){
         }
     }
 
+    var runInit = fs => {
+        var files = this.fs.get_files('/etc');
+        for(var file in files){
+            var code = this.fs.get_file('/etc',files[file]).data;
+            var fn = eval(code);
+            fn();
+        }
+    }
+
     this.reload = function(){
         this.cmd = {};
         this.lib = {};
-        this.env = {};
-        loadEnv(this.fs);
         loadLibraries(this.fs);
         loadCommands(this.fs);
+        runInit();
     }
 
     loadFileSystem(root);
