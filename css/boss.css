@@ -1,0 +1,22 @@
+span {
+    color: #ddd;
+}
+
+#shell {
+    height:100%;
+    width: 99%;
+}
+
+.toolbar {
+    font-family: monospace;
+    color: #ddd;
+    height: 5%;
+    padding: 10px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #ddd;
+}
+
+.app-icon {
+    padding-right: 10px;
+}
