@@ -4,7 +4,6 @@ var _ = require('lodash');
 var fs = require('fs-extra');
 var root = require(process.argv[2]);
 
-//console.log(root);
 var cwd = process.cwd();
 createDir(root, cwd + '/');
 

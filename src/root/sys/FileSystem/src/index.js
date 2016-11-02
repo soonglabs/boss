@@ -1,7 +1,7 @@
 (function FileSystem(r, name){
     
     this.name = name;
-    r.users = JSON.parse(r.files.users['data'])
+    r.users = JSON.parse(r.files['users.json']['data']);
     //VARS
     var root;
     var cwd;

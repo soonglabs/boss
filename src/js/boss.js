@@ -5,33 +5,29 @@ function Boss(root, name){
     var boss = this;
 
     var loadFileSystem = root => {
-        this.FileSystem = eval(root.dirs.sys.files.FileSystem.data);
+        this.FileSystem = eval(root.dirs.sys.dirs.FileSystem.dirs.src.files['index.js'].data);
     }
 
     var loadLibraries = fs => {
-        var files = this.fs.get_files('/lib');
-        for(var file in files){
-            var code = this.fs.get_file('/lib',files[file]).data;
-            this.lib[files[file]] = eval(code);
-        }
+        var dirs = this.fs.get_dirs('/lib');
+        for(var dir in dirs){
+            var file = this.fs.get_file('/lib/' + dirs[dir]  + '/src', 'index.js');
+            var code = file.data
+            this.lib[dirs[dir]] = eval(code);
+         }
     }
 
     var loadCommands = fs => {
-        var help = [];
-        var files = this.fs.get_files('/bin');
-        for(var file in files){
-            var code = this.fs.get_file('/bin',files[file]).data;
-            this.cmd[files[file]] = eval(code);
-            if(this.fs.get_file('/bin',files[file]).meta && this.fs.get_file('/bin',files[file]).meta.description){
-                help.push(files[file] + ' - ' + this.fs.get_file('/bin',files[file]).meta.description);
+        var dirs = this.fs.get_dirs('/bin');
+        for(var dir in dirs){
+            var files = this.fs.get_files('/bin/' + dirs[dir] + '/bin');
+            for(var file in files){
+                var code = this.fs.get_file('/bin/' + dirs[dir] + '/bin', files[file]).data;
+                this.cmd[dirs[dir]] = eval(code);
+                if(this.fs.get_file('/bin/' + dirs[dir] + '/bin',files[file]).meta && this.fs.get_file('/bin/' + dirs[dir] + '/bin',files[file]).meta.description){
+                    help.push(files[file] + ' - ' + this.fs.get_file('/bin/' + dirs[dir] + '/bin',files[file]).meta.description);
+                }
             }
-        }
-        this.cmd['help'] = function(args, client){
-            boss.lib.print.log('\n', client);
-            for(var opt in help){
-                boss.lib.print.log(help[opt], client);
-            }
-            boss.lib.print.log('\n', client);
         }
     }
 
