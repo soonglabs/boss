@@ -20,14 +20,9 @@ function Boss(root, name){
     var loadCommands = fs => {
         var dirs = this.fs.get_dirs('/bin');
         for(var dir in dirs){
-            var files = this.fs.get_files('/bin/' + dirs[dir] + '/bin');
-            for(var file in files){
-                var code = this.fs.get_file('/bin/' + dirs[dir] + '/bin', files[file]).data;
-                this.cmd[dirs[dir]] = eval(code);
-                if(this.fs.get_file('/bin/' + dirs[dir] + '/bin',files[file]).meta && this.fs.get_file('/bin/' + dirs[dir] + '/bin',files[file]).meta.description){
-                    help.push(files[file] + ' - ' + this.fs.get_file('/bin/' + dirs[dir] + '/bin',files[file]).meta.description);
-                }
-            }
+            var file = this.fs.get_file('/bin/' + dirs[dir] + '/src', 'index.js');
+            var code = file.data;
+            this.cmd[dirs[dir]] = eval(code);
         }
     }
 
