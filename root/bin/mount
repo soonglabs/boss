@@ -1,0 +1,26 @@
+(function(args, client){
+    if(!args[1]){
+        boss.lib.print.error('error, please specify a boss instance to mount', client);
+        return;
+    }
+    
+    if(!localStorage['fs.' + args[1]]){
+         boss.lib.print.error('error, boss fs not found in localStorage', client);
+         return;
+    }
+    
+    var key = 'fs.' + args[1];
+    var root = JSON.parse(localStorage[key]);
+    
+    if(!boss.mounts){
+        boss.mounts = [];
+    }
+    
+    boss.mounts.push(args[1]);
+    
+    var dir = new boss.fs.Dir(args[1], 'root', '');
+    dir.dirs = {
+        'root' : root
+    }
+    boss.fs.add_dir('/mnt', dir);
+})

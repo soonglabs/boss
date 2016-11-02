@@ -1,0 +1,128 @@
+(function(args, client){
+    
+    if(!args[1]){
+        boss.lib.print.error('error, please command', client);
+    }
+    
+    else if(args[1] === 'create' || args[1] === '-c'){
+        
+        if(!args[2]){
+            boss.lib.print.error('error, please supply name', client);
+            return;
+        }
+        var image = jQuery.extend(true, {}, boss.fs.export());
+    
+        //let's remove some stuff we don't want copied
+        image.dirs.mnt.dirs = {};
+        image.dirs.etc.files = {};
+        
+        if(!boss.supervisor){
+            boss.supervisor = {};
+        }
+        
+        if(!boss.supervisor.instances){
+            boss.supervisor.instances = [];
+        } 
+        
+        boss.supervisor.instances.push(new Boss(image, args[2]));
+    }
+    
+     else if(args[1] === 'load' || args[1] === '-l'){
+        
+        if(!args[2]){
+            boss.lib.print.error('error, please supply name', client);
+            return;
+        } else if(!localStorage['fs.' + args[2]]){
+            boss.lib.print.error('error, not in local storage', client);
+            return;
+        }
+        
+        var image = JSON.parse(localStorage['fs.' + args[2]]);
+        
+        if(!boss.supervisor){
+            boss.supervisor = {};
+        }
+        
+        if(!boss.supervisor.instances){
+            boss.supervisor.instances = [];
+        } 
+        
+        boss.supervisor.instances.push(new Boss(image, args[2]));
+    }
+    
+    else if(args[1] === 'ls'){
+        
+       if(!boss.supervisor || !boss.supervisor.instances || boss.supervisor.instances.length <= 0){
+            return;
+       }
+       
+       boss.supervisor.instances.forEach(function(b){
+           boss.lib.print.log(b.fs.name, client);
+       });
+    }
+    
+    else if(args[1] === 'connect' || args[1] === '-r'){
+        if(!args[2]){
+            boss.lib.print.error('error, please sned name of system to connect to', client);
+        }
+        
+        var connectBoss;
+        boss.supervisor.instances.forEach(function(b){
+           if(b.fs.name === args[2]){
+               connectBoss = b;
+               return;
+           }
+        });
+        
+        var ProxyClient = function(b, client){
+            var daBoss = b;
+            
+            this.toolbar = {
+                set_title: function(title){
+                    client.toolbar.set_title(title);
+                },
+                 set_message: function(message){
+                    client.toolbar.set_message(message);
+                },
+                 set_notification: function(app){
+                    client.toolbar.set_notification(app);
+                }
+            }
+        
+            this.out = function(text){
+               client.out(text);
+            }
+        
+            this.set_prompt = function(prompt){
+                client.set_prompt(daBoss.fs.name + ':' + prompt)
+            }
+            
+            this.get_prompt = function(){
+                return client.get_prompt();
+            }
+        
+            this.exec = (command) => {
+                daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
+            }
+        }
+        
+        var connectClient = new ProxyClient(connectBoss, client);
+        var origPrompt = client.get_prompt();
+        connectClient.set_prompt('username: ');
+        
+        //connect interpreter
+       boss.lib.push(function(command, client){
+            if(command === 'disconnect'){
+                client.set_prompt(origPrompt);
+                boss.lib.pop();
+            } else {
+                connectClient.exec(command);
+            }
+        });
+        
+    }
+    
+    else {
+       boss.lib.print.error('error, unknown command', client);  
+    }
+})

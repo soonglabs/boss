@@ -9,6 +9,8 @@
   "author": "Scott Russell",
   "license": "MIT",
   "dependencies": {
-    "jquery.terminal": "0.10.10"
+    "fs-extra": "^1.0.0",
+    "jquery.terminal": "0.10.10",
+    "lodash": "^4.16.6"
   }
 }
