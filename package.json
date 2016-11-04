@@ -4,13 +4,14 @@
   "description": "browser operating system simulator",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "build": "node ./scripts/dirs2json.js"
   },
   "author": "Scott Russell",
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^1.0.0",
-    "jquery.terminal": "0.10.10",
+    "http-server": "^0.9.0",
+    "jquery.terminal": "^0.11.12",
     "lodash": "^4.16.6"
   }
 }
