@@ -16,7 +16,7 @@ function Boss(root, name){
             this.lib[dirs[dir]] = eval(code);
          }
     }
-
+ 
     var loadCommands = fs => {
         var dirs = this.fs.get_dirs('/bin');
         for(var dir in dirs){

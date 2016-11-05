@@ -1,0 +1,75 @@
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0.3em;
+  padding: 0;
+  font-weight: normal; }
+
+h1 {
+  font-size: 1.5em; }
+
+h2 {
+  font-size: 1.4em; }
+
+h3 {
+  font-size: 1.3em; }
+
+h4 {
+  font-size: 1.2em; }
+
+h5 {
+  font-size: 1.1em; }
+
+p {
+  font-size: 1em; }
+
+.bs-body {
+  font-family: "Lucida Console", Monaco, monospace;
+  background-color: blue;
+  color: white; }
+
+.bs-box {
+  margin: 15px; }
+
+.bs-box-title-primary {
+  background-color: blue;
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  left: 20px;
+  color: lightgrey; }
+
+.bs-bg-primary {
+  background-color: blue;
+  color: lightgrey; }
+
+.bs-box-title-secondary {
+  background-color: lightgrey;
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  left: 20px;
+  color: #333333; }
+
+.bs-bg-secondary {
+  background-color: lightgrey;
+  color: #333333; }
+
+.bs-bdr-grey {
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 3px; }
+
+.bs-bdr-black {
+  border-color: #333333;
+  border-style: solid;
+  border-width: 3px; }
+
+.bs-highlight-red {
+  background-color: darkred;
+  color: papayawhip; }
+
+.bs-highlight-black {
+  background-color: black;
+  color: papayawhip; }
+
+.bs-shadow {
+  box-shadow: 5px 5px #000000; }

@@ -2,10 +2,12 @@
 //a json file
 var _ = require('lodash');
 var fs = require('fs-extra');
-var rootDir = process.argv[2];
 
-var image = createJDir(rootDir, 'root', null);
-writeJSONFile(image);
+function dirs2Json(rootDir, buildDir){
+    var image = createJDir(rootDir, 'root', null);
+    writeJSONFile(image, buildDir);
+}
+
 
 function createJDir(path, name, parent){
     
@@ -38,7 +40,9 @@ function createJFile(path){
     return fs.readFileSync(path, 'utf8');
 }
 
-function writeJSONFile(json){
+function writeJSONFile(json, buildDir){
     var data = "'use strict'\n\nvar JSON_IMAGE =" + JSON.stringify(json, null, 2);
-    fs.writeFileSync('./build/image.js', data, 'utf-8');
+    fs.writeFileSync(buildDir + '/image.js', data, 'utf-8');
 }
+
+module.exports = dirs2Json
