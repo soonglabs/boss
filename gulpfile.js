@@ -33,7 +33,3 @@ gulp.task('test', ['build'], function() {
 gulp.task('run', ['test'], function() {
   connect.server();
 });
-
-// gulp.task('watch', ['run'], function() {
-//   gulp.watch('src/**', ['run']);
-// });
