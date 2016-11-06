@@ -134,17 +134,16 @@
     
     //save to localStorage
     this.save =  () => {
-        var image = jQuery.extend(true, {}, root);
-        image.dirs.mnt.dirs = {};
-        localStorage.setItem('fs.' + this.name , JSON.stringify(image));
+        // var image = jQuery.extend(true, {}, root);
+        // image.dirs.mnt.dirs = {};
+        // localStorage.setItem('fs.' + this.name , JSON.stringify(image));
         
-        if(boss.mounts){
-            boss.mounts.forEach(function(mount){
-                //console.log(root.dirs['mnt'].dirs[mount].dirs['root']);
-                localStorage.setItem('fs.' + mount , JSON.stringify(root.dirs['mnt'].dirs[mount].dirs['root']));
-            });  
-        }
-       
+        // if(boss.mounts){
+        //     boss.mounts.forEach(function(mount){
+        //         //console.log(root.dirs['mnt'].dirs[mount].dirs['root']);
+        //         localStorage.setItem('fs.' + mount , JSON.stringify(root.dirs['mnt'].dirs[mount].dirs['root']));
+        //     });  
+        // }
     }
     root = r;
     //zero out mnt dir

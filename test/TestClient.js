@@ -1,5 +1,7 @@
-var ConsoleClient = function(b){
+var TestClient = function(b){
     var daBoss = b;
+
+    this.lastLog;
 
     this.toolbar = {
         set_title: function(title){
@@ -13,8 +15,8 @@ var ConsoleClient = function(b){
         }
     }
 
-    this.out = function(text){
-        console.log(text);
+    this.out = (text) => {
+        this.lastLog = text;
     }
 
     this.set_prompt = function(prompt){
@@ -26,12 +28,13 @@ var ConsoleClient = function(b){
     }
 
     this.exec = (command) => {
+        this.lastLog = '';
         daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
     }
 }
 
 try{
-    module.exports = ConsoleClient;
+    module.exports = TestClient;
 } catch(err){
     //do nothing, assuming the file is being run in a browser
 }

@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Scott Russell",
   "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "jquery.terminal": "^0.11.12",
     "lodash": "^4.16.6"
@@ -15,6 +18,8 @@
     "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.10",
     "http-server": "^0.9.0",
-    "lodash": "^4.16.6"
+    "lodash": "^4.16.6",
+    "mocha": "^3.1.2",
+    "should": "^11.1.1"
   }
 }

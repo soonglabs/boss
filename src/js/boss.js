@@ -49,3 +49,9 @@ function Boss(root, name){
     this.interpreters = [new this.lib.Login(this).username];
 }
 
+try{
+    module.exports = Boss;
+} catch(err){
+    //do nothing, assuming the file is being run in a browser
+}
+
