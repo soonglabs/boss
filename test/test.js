@@ -1,24 +1,26 @@
+'use strict';
+
 var TestClient = require('./TestClient.js');
 var Boss = require('../src/js/boss.js');
 var image = require('../build/image.js');
 var should = require('should');
 
 var boss = new Boss(image, 'main');
-client = new TestClient(boss);
+var client = new TestClient(boss);
 client.exec('root');
 client.exec('pass');
 
-describe('Boss', function() {
+describe('Boss', function () {
   console.log('test');
-  describe('about', function() {
-    it('return system info', function() {
+  describe('about', function () {
+    it('return system info', function () {
         client.exec('about');
         client.lastLog.should.be.exactly('copyright 2016');
     });
   });
 
-  describe('adduser', function() {
-    it('add new user', function() {
+  describe('adduser', function () {
+    it('add new user', function () {
         client.exec('adduser');
         client.lastLog.should.be.exactly('error: not enough arguments');
         client.exec('adduser testuser test password');
@@ -28,8 +30,8 @@ describe('Boss', function() {
     });
   });
 
-  describe('cd', function() {
-    it('should change dir', function() {
+  describe('cd', function () {
+    it('should change dir', function () {
         client.exec('cd');
         client.lastLog.should.be.exactly('error: no directory argument');
         client.exec('cd ..');
@@ -42,8 +44,8 @@ describe('Boss', function() {
     });
   });
 
-  describe('cp', function() {
-    it('should copy file/dir', function() {
+  describe('cp', function () {
+    it('should copy file/dir', function () {
         client.exec('cd /bin');
         client.exec('cp');
         client.lastLog.should.be.exactly('error: no file argument');
@@ -52,15 +54,15 @@ describe('Boss', function() {
     });
   });
 
-  describe('echo', function() {
-    it('should print to console', function() {
+  describe('echo', function () {
+    it('should print to console', function () {
         client.exec('echo test');
         client.lastLog.should.be.exactly('test');
     });
   });
 
-  describe('exit', function() {
-    it('should pop interpreter', function() {
+  describe('exit', function () {
+    it('should pop interpreter', function () {
         client.exec('exit');
         client.lastLog.should.be.exactly('');
         //TODO test this
@@ -71,14 +73,14 @@ describe('Boss', function() {
     });
   });
 
-  describe('inspect', function() {
-    it('should return boss object', function() {
+  describe('inspect', function () {
+    it('should return boss object', function (){
          //TODO
     });
   });
 
-  describe('js', function() {
-    it('should evaluate javascript', function() {
+  describe('js', function () {
+    it('should evaluate javascript', function () {
         client.exec('cd ~');
         client.exec('write test.js 2+2');
         client.exec('js test.js');
@@ -86,21 +88,21 @@ describe('Boss', function() {
     });
   });
 
-  describe('logout', function() {
-    it('should logout user', function() {
+  describe('logout', function () {
+    it('should logout user', function () {
         //TODO
     });
   });
 
-  describe('ls', function() {
-    it('should return list of directories', function() {
+  describe('ls', function () {
+    it('should return list of directories', function () {
         client.exec('ls');
         client.lastLog.split('\n')[0].should.be.exactly('Documents');
     });
   });
 
-  describe('mkdir', function() {
-    it('should create new dir', function() {
+  describe('mkdir', function () {
+    it('should create new dir', function () {
         client.exec('mkdir');
         client.lastLog.should.be.exactly('error: no dir argument');
         client.exec('mkdir test');
@@ -108,8 +110,8 @@ describe('Boss', function() {
     });
   });
 
-  describe('mv', function() {
-    it('should move dir/file', function() {
+  describe('mv', function () {
+    it('should move dir/file', function () {
         client.exec('mv');
         client.lastLog.should.be.exactly('error: no file argument');
         client.exec('mv test.js Documents/test.js');
@@ -118,8 +120,8 @@ describe('Boss', function() {
     });
   });
 
-  describe('read', function() {
-    it('should print file', function() {
+  describe('read', function () {
+    it('should print file', function () {
         client.exec('read');
         client.lastLog.should.be.exactly('error: no file argument');
         client.exec('read Documents/test.js');
@@ -127,8 +129,8 @@ describe('Boss', function() {
     });
   });
 
-  describe('rm', function() {
-    it('should remove file/dir', function() {
+  describe('rm', function () {
+    it('should remove file/dir', function () {
         client.exec('cd ~');
         client.exec('rm');
         client.lastLog.should.be.exactly('error: no file/dir argument');
@@ -137,15 +139,15 @@ describe('Boss', function() {
     });
   });
 
-  describe('rmuser', function() {
-    it('should remove user', function() {
+  describe('rmuser', function () {
+    it('should remove user', function () {
         client.exec('rmuser');
         //TODO
     });
   });
 
-  describe('write', function() {
-    it('should write to file', function() {
+  describe('write', function () {
+    it('should write to file', function () {
         client.exec('write');
         client.lastLog.should.be.exactly('error: no file argument');
         client.exec('write test2.js');

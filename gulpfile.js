@@ -1,5 +1,6 @@
 var gulp = require('gulp');
-var watch = require('gulp-watch');
+var mocha = require('gulp-mocha');
+var connect = require('gulp-connect');
 var exec = require('child_process').exec;
 var sass = require('gulp-sass');
 var dirs2json = require('./scripts/dirs2json');
@@ -7,62 +8,32 @@ var dirs2json = require('./scripts/dirs2json');
 var BUILD_DIR = './build/';
 var ROOT_DIR = './src/root';
 
-gulp.task('default', function() {
-   build();
-   runserver();
-});
+gulp.task('build', function() { 
+   dirs2json(ROOT_DIR, BUILD_DIR);
 
-gulp.task('build', function() {
-   build();
-});
+     gulp.src('./src/js/**')
+    .pipe(gulp.dest(BUILD_DIR + 'js'));
 
-gulp.task('sass', function() {
-   css();
-});
+    gulp.src('./src/html/**')
+    .pipe(gulp.dest(BUILD_DIR + 'html'));
 
-gulp.task('lint', function() {
-   //lint
-});
+     gulp.src('./assets/**')
+    .pipe(gulp.dest(BUILD_DIR + 'assets'));
 
-gulp.task('test', function() {
-   test();
-});
-
-gulp.task('watch', function() {
-  build();
-  test();
-  runserver();
-  return watch('./src/**', function(){
-      build();
-  });
-});
-
-function test(){
-  console.log('run tests...');
-  exec('node ./node_modules/mocha/bin/mocha', function(error, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    console.log(error);
-  });
-}
-
-function css(){
-    console.log('compiling css...'); 
     return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(BUILD_DIR + 'css'));
-}
+});
 
-function build(){
-    console.log('build image...');  
-    dirs2json(ROOT_DIR, BUILD_DIR);
-    css();
-}
+gulp.task('test', ['build'], function() {
+  return gulp.src('test/test.js', {read: false})
+      .pipe(mocha({reporter: 'nyan'}));
+});
 
-function runserver(){
-  console.log('starting local server on port 8080...');
-  exec('node node_modules/http-server/bin/http-server', function(error, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-  });
-}
+gulp.task('run', ['test'], function() {
+  connect.server();
+});
+
+// gulp.task('watch', ['run'], function() {
+//   gulp.watch('src/**', ['run']);
+// });
