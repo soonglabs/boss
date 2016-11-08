@@ -97,7 +97,7 @@ describe('Boss', function () {
   describe('ls', function () {
     it('should return list of directories', function () {
         client.exec('ls');
-        client.lastLog.split('\n')[0].should.be.exactly('Documents');
+        client.lastLog.split('\n')[0].should.be.exactly('Apps');
     });
   });
 

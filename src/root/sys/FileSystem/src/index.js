@@ -72,9 +72,9 @@
     }
 
     //add directroy
-    this.add_dir = (path, dir) => { 
-        if(!get_dir(path).dirs[dir.name]){
-            get_dir(path).dirs[dir.name] = dir;
+    this.set_dir = (path, dirname) => { 
+        if(!get_dir(path).dirs[dirname]){
+            get_dir(path).dirs[dirname] = new this.Dir(dirname, this.get_current_username(), path);
         } else {
             throw 'dir already exists';
         }
@@ -113,17 +113,14 @@
         return Object.keys(dirs);
     }
 
-    //User stuff
+    //USER
     this.add_user = (key, user) => {
         root.users[key] = user;
-        var homeDir = new this.Dir(key, key, 'home');
-        homeDir.dirs = {
-            'Documents' : new this.Dir('Documents', key, 'home/' + key),
-            'Downloads' : new this.Dir('Downloads', key, 'home/' + key),
-            'Email' : new this.Dir('Email', key, 'home/' + key),
-            'Images' : new this.Dir('Images', key, 'home/' + key)
-        }
-        this.add_dir('/home', homeDir);
+        this.set_dir('/home', key);
+        this.set_dir('/home/' + key, 'Apps');
+        this.set_dir('/home/' + key, 'Documents');
+        this.set_dir('/home/' + key, 'Downloads');
+        this.set_dir('/home/' + key, 'Images');
     }
 
     this.get_user = (key) => { return root.users[key]; };
