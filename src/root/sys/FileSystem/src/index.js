@@ -1,11 +1,13 @@
 (function FileSystem(r, name){
 
+    //SYSTEM NAME
     this.name = name;
-    r.users = JSON.parse(r.files['users.json']['data']);
+
     //VARS
-    var root;
     var cwd;
     var user;
+    var root = r;
+    root.users = JSON.parse(r.files['users.json'].data);
 
     //CLASSES
     this.Dir = function(name, owner, parent){
@@ -30,6 +32,7 @@
         this.password = password;
     }
 
+    //FUNCTIONS
     var get_dir = (path) => {
         var parts = path.split('/');
         var directory = root;
@@ -64,14 +67,12 @@
         }
     }
 
-
-
     this.set_file = (path, filename, data) => {
         get_dir(path).files[filename] = new this.File(this.get_current_username, data, null);
     }
 
     //add directroy
-    this.add_dir = (path,dir) => { 
+    this.add_dir = (path, dir) => { 
         if(!get_dir(path).dirs[dir.name]){
             get_dir(path).dirs[dir.name] = dir;
         } else {
@@ -113,7 +114,7 @@
     }
 
     //User stuff
-    this.add_user = (key, user) => { 
+    this.add_user = (key, user) => {
         root.users[key] = user;
         var homeDir = new this.Dir(key, key, 'home');
         homeDir.dirs = {
@@ -122,21 +123,16 @@
             'Email' : new this.Dir('Email', key, 'home/' + key),
             'Images' : new this.Dir('Images', key, 'home/' + key)
         }
-
-        this.add_dir('/home', homeDir); 
+        this.add_dir('/home', homeDir);
     }
 
-    this.get_user = (key) => { return root.users[key]; }
-    this.set_current_user = u => { user = u } 
-    this.get_current_username = () => { return user.username }
-    this.get_current_user_type = () => { return user.type }
+    this.get_user = (key) => { return root.users[key]; };
+    this.set_current_user = (key) => { user = root.users[key]; };
+    this.get_current_username = () => { return user.username };
+    this.get_current_user_type = () => { return user.type };
 
     //return root
     this.export = () => {
         return root;
     }
-
-    root = r;
-    //zero out mnt dir
-    root.dirs.mnt.dirs = {};
 })

@@ -16,7 +16,7 @@
     this.password = (command, client) => {
         
         if(boss.fs.get_user(username).password == boss.lib.utils.hashCode(command)){
-            boss.fs.set_current_user(boss.fs.get_user(username));
+            boss.fs.set_current_user(username);
             boss.lib.set_prompt( username + '> ', client);
             boss.fs.set_cwd('/home/' + username);
             boss.lib.pop();
