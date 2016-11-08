@@ -58,7 +58,6 @@
         }
     }
 
-    //TODO should return data not file object
     this.get_file = (path, filename) => {
         if(get_dir(path).files[filename]){
             return get_dir(path).files[filename].data;
@@ -71,7 +70,6 @@
         get_dir(path).files[filename] = new this.File(this.get_current_username, data, null);
     }
 
-    //add directroy
     this.set_dir = (path, dirname) => { 
         if(!get_dir(path).dirs[dirname]){
             get_dir(path).dirs[dirname] = new this.Dir(dirname, this.get_current_username(), path);
@@ -80,7 +78,6 @@
         }
     }
 
-    //remove file or dir
     this.remove = (path, name, type) => {
         if(type === 'file' && get_dir(path).files[name]){
             delete get_dir(path).files[name];
