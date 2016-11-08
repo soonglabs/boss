@@ -12,9 +12,8 @@
     
     if(filename){
         try{
-            var file = boss.fs.get_file(path, filename);
-            boss.fs.set_file(path2, filename2, file);
-            boss.fs.save();
+            var data = boss.fs.get_file(path, filename);
+            boss.fs.set_file(path2, filename2, data);
         } catch(err){
             boss.lib.print.error('error : ' + err, client);
         }

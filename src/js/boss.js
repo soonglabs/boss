@@ -11,17 +11,15 @@ function Boss(root, name){
     var loadLibraries = fs => {
         var dirs = this.fs.get_dirs('/lib');
         for(var dir in dirs){
-            var file = this.fs.get_file('/lib/' + dirs[dir]  + '/src', 'index.js');
-            var code = file.data
+            var code = this.fs.get_file('/lib/' + dirs[dir]  + '/src', 'index.js');
             this.lib[dirs[dir]] = eval(code);
          }
     }
- 
+
     var loadCommands = fs => {
         var dirs = this.fs.get_dirs('/bin');
         for(var dir in dirs){
-            var file = this.fs.get_file('/bin/' + dirs[dir] + '/src', 'index.js');
-            var code = file.data;
+            var code = this.fs.get_file('/bin/' + dirs[dir] + '/src', 'index.js');
             this.cmd[dirs[dir]] = eval(code);
         }
     }
@@ -29,7 +27,7 @@ function Boss(root, name){
     var runInit = fs => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
-            var code = this.fs.get_file('/etc',files[file]).data;
+            var code = this.fs.get_file('/etc',files[file]);
             var fn = eval(code);
             fn();
         }

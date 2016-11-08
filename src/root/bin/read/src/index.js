@@ -8,7 +8,7 @@
     
     if(filename){
         try{
-            boss.lib.print.log(boss.fs.get_file(path, filename).data, client);
+            boss.lib.print.log(boss.fs.get_file(path, filename), client);
         } catch(err){
             boss.lib.print.error('error : ' + err, client);
         }

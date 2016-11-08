@@ -13,7 +13,6 @@
             boss.lib.print.error('error : ' + err, client);
         }
     
-        boss.fs.save();
     } else if(!dirname) {
         boss.lib.print.error('error: no dir argument', client);
     }

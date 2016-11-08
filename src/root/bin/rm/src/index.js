@@ -8,12 +8,10 @@
     if(name){
         try{
             boss.fs.remove(path, name, 'file');
-            boss.fs.save();
         } catch(err){
             //error('error : ' + err);
         }
         try{boss.fs.remove(path, name, 'dir');
-            boss.fs.save();
         } catch(err){
             //error('error : ' + err);
         }

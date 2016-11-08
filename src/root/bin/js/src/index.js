@@ -6,7 +6,8 @@
         var name = result.name;
     }if(name){
         try{
-            boss.lib.print.log(eval(boss.fs.get_file(path,name).data), client);
+            console.log(boss.fs.get_file(path, name));
+            boss.lib.print.log(eval(boss.fs.get_file(path, name)), client);
         } catch(err){
             boss.lib.print.error('error : ' + err, client);
         }

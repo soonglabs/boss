@@ -27,7 +27,7 @@
                     app.editor.$blockScrolling = Infinity;
                     app.editor.setTheme('ace/theme/monokai');
                     app.editor.getSession().setMode('ace/mode/javascript');
-                    app.editor.getSession().setValue(boss.fs.get_file(path,filename).data);
+                    app.editor.getSession().setValue(boss.fs.get_file(path,filename));
                     
                     //on editor change
                     app.editor.on('change', function(data){
@@ -39,8 +39,7 @@
                     $(app.config.selector).keydown(function(e) {
                         if(e.keyCode === 83 && e.ctrlKey  && e.shiftKey){
                             app.change = false;
-                            boss.fs.get_file(path,filename).data = app.editor.getSession().getValue();
-                            boss.fs.save();
+                            boss.fs.get_file(path,filename) = app.editor.getSession().getValue();
                             $('.change-icon').css('color','green');
                         }
                     });

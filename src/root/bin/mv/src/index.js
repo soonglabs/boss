@@ -7,10 +7,9 @@
         var path2 = result2.path;var filename2 = result2.name;
     }if(filename){
         try{
-            var file = boss.fs.get_file(path, filename);
-            boss.fs.set_file(path2, filename2, file);
+            var data = boss.fs.get_file(path, filename);
+            boss.fs.set_file(path2, filename2, data);
             boss.fs.remove(path, filename, 'file');
-            boss.fs.save();
         } catch(err){
                 boss.lib.print.error('error : ' + err, client);
         }
