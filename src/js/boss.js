@@ -34,6 +34,7 @@ function Boss(root, name){
     }
 
     this.reload = function(){
+        this.fs.set_current_user('root');
         this.cmd = {};
         this.lib = {};
         loadLibraries(this.fs);
