@@ -6,6 +6,6 @@
     for(var i in list){
         str += list[i] + '\n';
     }
-    str.slice(0,-2);
-    boss.lib.print.log(String(str), client);
+    str = str.substring(0, str.length-2);
+    boss.lib.print.log(str, client);
 })

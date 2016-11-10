@@ -11,7 +11,6 @@ client.exec('root');
 client.exec('pass');
 
 describe('Boss', function () {
-  console.log('test');
   describe('about', function () {
     it('return system info', function () {
         client.exec('about');
