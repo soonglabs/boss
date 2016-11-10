@@ -22,7 +22,7 @@ function BossTermClient(b){
     }
 
     this.set_prompt = function(prompt){
-        terminal.set_prompt(prompt);
+        terminal.set_prompt(daBoss.fs.name + '$ ' + prompt);
     }
 
     this.get_prompt = function(prompt){
