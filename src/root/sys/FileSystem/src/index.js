@@ -46,6 +46,13 @@
         return directory;
     }
 
+    /**
+     * The fileSystem permissions system is very simple.
+     * If, you are a root user you can do anything. If you
+     * are a regular user you can read all files (it's js so
+     * really this can't be hidden so why fake it) but can't
+     * write on other users files/dirs
+     */
     var validate = (object) => {
         if(this.get_current_user_type() !== 'root' &&
            this.get_current_username() !== object.owner){
@@ -69,7 +76,6 @@
     this.get_file = (path, filename) => {
         if(get_dir(path).files[filename]){
             var file = get_dir(path).files[filename];
-            validate(file);
             return get_dir(path).files[filename].data;
         } else {
             throw 'file does not exist';
@@ -77,13 +83,16 @@
     }
 
     this.set_file = (path, filename, data) => {
-        get_dir(path).files[filename] = new this.File(this.get_current_username, data, null);
+        var dir = get_dir(path);
+        validate(dir);
+        dir.files[filename] = new this.File(this.get_current_username, data, null);
     }
 
-    this.set_dir = (path, dirname) => { 
+    this.set_dir = (path, dirname, user) => { 
         if(!get_dir(path).dirs[dirname]){
             var dir = get_dir(path);
-            dir.dirs[dirname] = new this.Dir(dirname, this.get_current_username(), path);
+            validate(dir);
+            dir.dirs[dirname] = new this.Dir(dirname, user ? user.username : this.get_current_username(), path);
         } else {
             throw 'dir already exists';
         }
@@ -91,9 +100,13 @@
 
     this.remove = (path, name, type) => {
         if(type === 'file' && get_dir(path).files[name]){
-            delete get_dir(path).files[name];
+            var dir = get_dir(path);
+            validate(dir);
+            delete dir.files[name];
         } else if( type === 'dir' && get_dir(path).dirs[name] ){
-            delete get_dir(path).dirs[name];
+            var dir = get_dir(path);
+            validate(dir);
+            delete dir.dirs[name];
         } else {
             throw 'error : does not exist';
         }
@@ -124,11 +137,11 @@
     //USER
     this.add_user = (key, user) => {
         _root.users[key] = user;
-        this.set_dir('/home', key);
-        this.set_dir('/home/' + key, 'Apps');
-        this.set_dir('/home/' + key, 'Documents');
-        this.set_dir('/home/' + key, 'Downloads');
-        this.set_dir('/home/' + key, 'Images');
+        this.set_dir('/home', key, user);
+        this.set_dir('/home/' + key, 'Apps', user);
+        this.set_dir('/home/' + key, 'Documents', user);
+        this.set_dir('/home/' + key, 'Downloads', user);
+        this.set_dir('/home/' + key, 'Images', user);
     }
 
     this.get_user = (key) => { return _root.users[key]; };
