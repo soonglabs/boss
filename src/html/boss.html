@@ -5,17 +5,20 @@
     <script src="../../node_modules/jquery.terminal/js/jquery.terminal-0.11.13.js"></script>
     <script src="../../node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
     <script src="../js/boss.js"></script>
-    <script src="../js/boss-term-client.js"></script>
-    <script src="../js/boss-console-client.js"></script>
     <script src="../image.js"></script>
-    <script src="../js/index.js"></script>
     <link href="../../node_modules/jquery.terminal/css/jquery.terminal-0.11.13.css" rel="stylesheet"/>
     <link href="../css/boss.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" 
           rel="stylesheet" 
           integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
           crossorigin="anonymous">
-    
+    <script>
+      'use strict';
+      ($(document).ready(function() {
+          var boss = new Boss(JSON_IMAGE, 'BOSS-dev');
+          boss.app.shell(boss);
+      }));
+    </script>           
     <title>BOSS</title>
   </head>
   <body style="background-color:#000">
