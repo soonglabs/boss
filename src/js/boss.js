@@ -24,6 +24,14 @@ function Boss(root, name){
         }
     }
 
+    var loadApps = fs => {
+        var dirs = this.fs.get_dirs('/app');
+        for(var dir in dirs){
+            var code = this.fs.get_file('/app/' + dirs[dir] + '/src', 'index.js');
+            this.app[dirs[dir]] = eval(code);
+        }
+    }
+
     var runInit = fs => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
@@ -36,8 +44,10 @@ function Boss(root, name){
     this.reload = function(){
         this.cmd = {};
         this.lib = {};
+        this.app = {};
         loadLibraries(this.fs);
         loadCommands(this.fs);
+        loadApps(this.fs); //Should this be at runtime?
         runInit();
     }
 

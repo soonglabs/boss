@@ -7,7 +7,7 @@
         message: ' - <i class="fa fa-circle change-icon" style="color:green;"></i> ',
         selector: "#editor",
         template: "<div id='editor'></div>",
-        css: "position:absolute;top:50px;left:0px;width:100%;height:95%;margin:5px;",
+        css: "position:absolute;top:0px;left:0px;width:100%;height:100%;",
         onLoad : (app, args, client) => {
 
             if(args.length > 1){
