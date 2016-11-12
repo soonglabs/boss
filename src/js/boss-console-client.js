@@ -1,18 +1,6 @@
 var ConsoleClient = function(b){
     var daBoss = b;
 
-    this.toolbar = {
-        set_title: function(title){
-            //nothing
-        },
-         set_message: function(message){
-            //nothing
-        },
-         set_notification: function(app){
-            //nothing
-        }
-    }
-
     this.out = function(text){
         console.log(text);
     }
