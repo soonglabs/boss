@@ -8,6 +8,6 @@
     $('#terminal').terminal(client.exec, {
         greetings: '',
         name: 'boss',
-        prompt: name + '$ username:'
+        prompt: name + ': username$ '
     });
 }));
