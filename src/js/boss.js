@@ -16,9 +16,18 @@ function Boss(root, name){
          }
     }
 
-    var loadLibraries = () => {loadJS('lib', 'lib');}
-    var loadCommands = () => {loadJS('bin', 'cmd');}
-    var loadApps = () => {loadJS('app', 'app');}
+    var loadLibraries = () => {
+        loadJS('lib', 'lib');
+    }
+
+    var loadCommands = () => {
+        loadJS('bin', 'cmd');
+    }
+
+    var loadApps = () => {
+        loadJS('app', 'app');
+    }
+
     var runInit = () => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
@@ -29,7 +38,9 @@ function Boss(root, name){
     }
 
     this.reload = function(){
-        this.cmd, this.lib, this.app = {};
+        this.cmd = {};
+        this.lib = {};
+        this.app = {};
         loadLibraries();
         loadCommands();
         loadApps(); //Should this be at runtime?

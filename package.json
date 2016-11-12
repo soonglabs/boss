@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "jquery.terminal": "^0.11.13",
-    "lodash": "^4.16.6"
+    "lodash": "^4.16.6",
+    "vue": "^2.0.5"
   },
   "devDependencies": {
     "fs-extra": "^1.0.0",
