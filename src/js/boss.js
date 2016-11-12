@@ -8,31 +8,18 @@ function Boss(root, name){
         this.FileSystem = eval(root.dirs.sys.dirs.FileSystem.dirs.src.files['index.js'].data);
     }
 
-    var loadLibraries = fs => {
-        var dirs = this.fs.get_dirs('/lib');
+    var loadJS = (folder, name) => {
+        var dirs = this.fs.get_dirs('/' + folder);
         for(var dir in dirs){
-            var code = this.fs.get_file('/lib/' + dirs[dir]  + '/src', 'index.js');
-            this.lib[dirs[dir]] = eval(code);
+            var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
+            this[name][dirs[dir]] = eval(code);
          }
     }
 
-    var loadCommands = fs => {
-        var dirs = this.fs.get_dirs('/bin');
-        for(var dir in dirs){
-            var code = this.fs.get_file('/bin/' + dirs[dir] + '/src', 'index.js');
-            this.cmd[dirs[dir]] = eval(code);
-        }
-    }
-
-    var loadApps = fs => {
-        var dirs = this.fs.get_dirs('/app');
-        for(var dir in dirs){
-            var code = this.fs.get_file('/app/' + dirs[dir] + '/src', 'index.js');
-            this.app[dirs[dir]] = eval(code);
-        }
-    }
-
-    var runInit = fs => {
+    var loadLibraries = () => {loadJS('lib', 'lib');}
+    var loadCommands = () => {loadJS('bin', 'cmd');}
+    var loadApps = () => {loadJS('app', 'app');}
+    var runInit = () => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
             var code = this.fs.get_file('/etc',files[file]);
@@ -42,12 +29,10 @@ function Boss(root, name){
     }
 
     this.reload = function(){
-        this.cmd = {};
-        this.lib = {};
-        this.app = {};
-        loadLibraries(this.fs);
-        loadCommands(this.fs);
-        loadApps(this.fs); //Should this be at runtime?
+        this.cmd, this.lib, this.app = {};
+        loadLibraries();
+        loadCommands();
+        loadApps(); //Should this be at runtime?
         runInit();
     }
 
