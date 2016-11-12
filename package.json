@@ -9,7 +9,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "jquery.terminal": "^0.11.12",
+    "jquery.terminal": "^0.11.13",
     "lodash": "^4.16.6"
   },
   "devDependencies": {

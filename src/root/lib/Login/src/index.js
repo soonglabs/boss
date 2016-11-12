@@ -24,7 +24,7 @@
             client.toolbar.set_title('<i class="fa fa-terminal app-icon"></i>Shell');
             client.toolbar.set_message('');
             boss.cmd.about('', client);
-            boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type `help` to see available commands.', client);
+            boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type [[;orange;]help] to see available commands.', client);
         } else {
             boss.lib.print.error('unknown username/password combination', client);
             boss.lib.set_prompt('username:', client);
