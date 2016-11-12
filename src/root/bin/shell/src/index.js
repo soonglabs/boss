@@ -1,5 +1,7 @@
-(function(args, client){
+(function(args){
     'use strict';
+
+    var client = new boss.lib.TerminalClient(boss);
 
     return new boss.lib.App(args, client, {
         name: '<i class="fa fa-book app-icon"></i>Editor',

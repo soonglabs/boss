@@ -4,7 +4,7 @@
         var path = result.path;
         var name = result.name;
     }
-    
+
     if(name){
         try{
             boss.fs.remove(path, name, 'file');

@@ -21,8 +21,6 @@
             boss.fs.set_cwd('/home/' + username);
             boss.lib.pop();
             boss.lib.push(new boss.lib.Shell(boss).exec);
-            client.toolbar.set_title('<i class="fa fa-terminal app-icon"></i>Shell');
-            client.toolbar.set_message('');
             boss.cmd.about('', client);
             boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type [[;orange;]help] to see available commands.', client);
         } else {

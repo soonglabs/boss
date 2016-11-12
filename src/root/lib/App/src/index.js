@@ -2,8 +2,6 @@
     
     this.config = config;
     
-    client.toolbar.set_title(config.name);
-    
     //add template to body        
     $('body').append(config.template);
     
