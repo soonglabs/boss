@@ -1,10 +1,12 @@
 (function(args, client){
     'use strict';
 
+     var filename;
+
      if(args.length > 1){
         var result = boss.lib.utils.splitPathFilename(args[1]);
         var path = result.path;
-        var filename = result.name;
+        filename = result.name;
      }
 
     if(filename){
@@ -24,15 +26,13 @@
         //on editor change
         vm.editor.on('change', function(data){
             vm.change = true;
-            $('.change-icon').css('color','red');
         });
 
         //on save
         $(vm.$el).keydown(function(e) {
-            if(e.keyCode === 83 && e.ctrlKey  && e.shiftKey){
+            if(e.keyCode === 83 && e.ctrlKey && e.shiftKey){
                 vm.change = false;
                 boss.fs.set_file(path, filename, vm.editor.getSession().getValue());
-                $('.change-icon').css('color','green');
             }
         });
 

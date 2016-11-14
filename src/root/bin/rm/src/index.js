@@ -18,4 +18,4 @@
     } else if(!name) {
         boss.lib.print.error('error: no file/dir argument', client);
     }
-})
+});

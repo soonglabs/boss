@@ -2,10 +2,10 @@
     'use strict';
 
     var client = new boss.lib.TerminalClient(boss);
-    var template = '<div id="content"></div>';
+    var template = '<div class="shell"></div>';
 
     var vm = new boss.lib.VueApp(template, {
-        el: '#content'
+        el: '.shell'
     });
 
     $(vm.$el).terminal(client.exec, {
