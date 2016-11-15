@@ -1,10 +1,10 @@
 ({
-    calcAbsPath : (arg, args) => {
-        var path = boss.fs.get_cwd();
+    calcAbsPath : (arg, args, client) => {
+        var path = client.cwd;
         if(arg && arg.startsWith('/')){
             path = arg;
         } else if(arg && arg.startsWith('~')){
-            path = '/home/' + boss.fs.get_current_username() + arg.slice(1);
+            path = '/home/' + client.user.username + arg.slice(1);
         } else if(arg && arg === '..'){
             var parts = path.split('/');
             parts = parts.slice(0, parts.length - 1);
@@ -16,13 +16,13 @@
         }
         return path;
     },
-    splitPathFilename : full => {
-        var path = boss.fs.get_cwd();
+    splitPathFilename : (full, client) => {
+        var path = client.cwd;
         var name = full;
         var parts = full.split('/');
         if(parts.length > 1){
             name = parts.pop();
-            path = boss.lib.utils.calcAbsPath(parts.join('/'));
+            path = boss.lib.utils.calcAbsPath(parts.join('/'), null, client);
         }
         return {
             path: path,

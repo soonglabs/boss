@@ -1,8 +1,8 @@
 (function(args, client){
     if(args[1]){
         try{
-            var path = boss.lib.utils.calcAbsPath(args[1]);
-            boss.fs.set_cwd(path);
+            var path = boss.lib.utils.calcAbsPath(args[1], null, client);
+           client.cwd = path;
             var list = path.split('/');
             boss.lib.set_prompt((list.length <= 1 ? '' : list[list.length - 1]), client);
         } catch(err){

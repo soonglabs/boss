@@ -5,8 +5,6 @@
     this.name = name;
 
     //VARS
-    var _cwd;
-    var _user;
     var _root = root;
     _root.users = JSON.parse(_root.files['users.json'].data);
 
@@ -18,20 +16,20 @@
         this.created = Date.now();
         this.dirs = {};
         this.files = {};
-    }
+    };
 
     this.File = function(owner, data, meta){
         this.owner = owner;
         this.created = Date.now();
         this.data = data;
         this.meta = meta;
-    }
+    };
 
     this.User = function(username, type, password){
         this.username = username;
         this.type = type;
         this.password = password;
-    }
+    };
 
     //FUNCTIONS
     var get_dir = (path) => {
@@ -53,26 +51,15 @@
      * really this can't be hidden so why fake it) but can't
      * write on other users files/dirs
      */
-    var validate = (object) => {
-        if(this.get_current_user_type() !== 'root' &&
-           this.get_current_username() !== object.owner){
+    var validate = (object, user) => {
+        if(user.type !== 'root' &&
+           user.username !== object.owner &&
+           !this.validate_user(user.username, user.password)){
             throw Error('You are not permitted to execute this action');
         }
     };
 
     //METHODS
-    this.get_cwd = () => {
-        return _cwd;
-    }
-
-    this.set_cwd = (path) => {
-        if(get_dir(path)){
-            _cwd = path;
-        } else{
-            throw 'dir does not exist';
-        }
-    }
-
     this.get_file = (path, filename) => {
         if(get_dir(path).files[filename]){
             var file = get_dir(path).files[filename];
@@ -82,26 +69,26 @@
         }
     }
 
-    this.set_file = (path, filename, data) => {
+    this.set_file = (path, filename, data, user) => {
         var dir = get_dir(path);
-        validate(dir);
+        validate(dir, user);
         dir.files[filename] = new this.File(this.get_current_username, data, null);
     }
 
     this.set_dir = (path, dirname, user) => { 
         if(!get_dir(path).dirs[dirname]){
             var dir = get_dir(path);
-            validate(dir);
+            validate(dir, user);
             dir.dirs[dirname] = new this.Dir(dirname, user ? user.username : this.get_current_username(), path);
         } else {
             throw 'dir already exists';
         }
     }
 
-    this.remove = (path, name, type) => {
+    this.remove = (path, name, type, user) => {
         if(type === 'file' && get_dir(path).files[name]){
             var dir = get_dir(path);
-            validate(dir);
+            validate(dir, user);
             delete dir.files[name];
         } else if( type === 'dir' && get_dir(path).dirs[name] ){
             var dir = get_dir(path);
@@ -144,10 +131,16 @@
         this.set_dir('/home/' + key, 'Images', user);
     }
 
-    this.get_user = (key) => { return _root.users[key]; };
-    this.set_current_user = (key) => { _user = _root.users[key]; };
-    this.get_current_username = () => { return _user.username };
-    this.get_current_user_type = () => { return _user.type };
+    this.remove_user = (key, user) => {
+       //TODO
+    }
+
+    this.validate_user = (name, pass) => {
+        if(_root.users[name] && _root.users[name].password == pass){
+            return _root.users[name];
+        }
+        return false;
+    };
 
     //return root
     this.export = () => {

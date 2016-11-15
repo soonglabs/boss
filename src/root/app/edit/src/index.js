@@ -4,7 +4,7 @@
      var filename;
 
      if(args.length > 1){
-        var result = boss.lib.utils.splitPathFilename(args[1]);
+        var result = boss.lib.utils.splitPathFilename(args[1], client);
         var path = result.path;
         filename = result.name;
      }
@@ -32,7 +32,7 @@
         $(vm.$el).keydown(function(e) {
             if(e.keyCode === 83 && e.ctrlKey && e.shiftKey){
                 vm.change = false;
-                boss.fs.set_file(path, filename, vm.editor.getSession().getValue());
+                boss.fs.set_file(path, filename, vm.editor.getSession().getValue(), client.user);
             }
         });
 
