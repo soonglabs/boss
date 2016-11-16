@@ -1,14 +1,13 @@
 (function(){
     'use strict';
-
     var client = new boss.lib.TerminalClient(boss);
-    var template = '<div class="shell"></div>';
-
+    var template = '<div id="app-1" class="app"><shell></shell></div>';
     var layoutConfig = {
         content: [{
             type: 'row',
             content: [
                 {
+                    title: 'shell',
                     type: 'component',
                     componentName: 'shell',
                     componentState: {}
@@ -22,15 +21,21 @@
         container.getElement().html(template);
     });
     layout.init();
-    boss.layout = layout;
+
+    Vue.component('shell', {
+        template: '<div class="shell"></div>',
+        mounted: function(){
+            console.log('mounted');
+            $(this.$el).terminal(client.exec, {
+                greetings: '',
+                name: boss.fs.name,
+                prompt: name + ': username$ '
+            });
+        }
+    });
 
     var vm = new Vue({
-        el: '.shell'
+        el: '#app-1'
     });
-
-    $(vm.$el).terminal(client.exec, {
-        greetings: '',
-        name: boss.fs.name,
-        prompt: name + ': username$ '
-    });
+    boss.layout = layout;
 });
