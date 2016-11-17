@@ -5,7 +5,7 @@
     newClient.cwd = client.cwd;
     var parts = newClient.cwd.split('/');
     var dir = parts[parts.length - 1];
-    var counter = 2;
+    var counter = boss.numberShells++;
 
     var config = {
         title: 'shell',
