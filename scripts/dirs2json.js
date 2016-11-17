@@ -11,7 +11,7 @@ function dirs2Json(rootDir, buildDir){
 
 function createJDir(path, name, parent){
 
-    var jdir = {'dirs':{},'files':{}};
+    var jdir = {'dirs': {}, 'files': {}};
     jdir['name'] = name;
     jdir['parent'] = parent;
     jdir['owner'] = 'root';
@@ -33,7 +33,7 @@ function createJDir(path, name, parent){
        }
    }); 
 
-   return jdir   
+   return jdir;
 }
 
 function createJFile(path){
