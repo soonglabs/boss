@@ -1,7 +1,7 @@
 (function(boss){
 
-    if(!boss.numberShells){
-        boss.numberShells = 0;
+    if(!boss.app_number){
+        boss.app_number = 0;
     }
 
     this.exec = (command, client) => {

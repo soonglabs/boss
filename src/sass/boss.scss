@@ -3,20 +3,18 @@ body {
     width: 100%;
 }
 
-.shell {
+.app {
+    height:100%;
+}
+
+.editor {
     margin: 2px;
     padding:5px;
     height:98.5%;
 }
 
-.app {
-    height:100%;
-}
-
-#editor {
-    position:absolute;
-    top:0px;
-    left:0px;
-    width:100%;
-    height:100%;
+.shell {
+    margin: 2px;
+    padding:5px;
+    height:98.5%;
 }
