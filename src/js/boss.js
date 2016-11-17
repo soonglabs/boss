@@ -31,7 +31,7 @@ function Boss(root, name){
     var runInit = () => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
-            var code = this.fs.get_file('/etc',files[file]);
+            var code = this.fs.get_file('/etc', files[file]);
             var fn = eval(code);
             fn();
         }
