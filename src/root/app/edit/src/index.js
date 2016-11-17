@@ -14,23 +14,18 @@
 
         var counter = boss.app_number++;
 
-        var layoutConfig = {
-            type: 'row',
-            content: [
-                {
-                    title: 'edit',
-                    type: 'component',
-                    componentName: 'editor-' + counter,
-                    componentState: {}
-                }
-            ]
+        var config = {
+            title: 'edit',
+            type: 'component',
+            componentName: 'editor-' + counter,
+            componentState: {}
         };
 
         boss.layout.registerComponent('editor-' + counter, function( container, state ){
             container.getElement().html('<div id="app-' + counter + '" class="editor"><editor :path="path" :filename="filename" :client="client"></editor></div>');
         });
 
-        boss.layout.root.contentItems[0].addChild(layoutConfig);
+        boss.layout.root.contentItems[0].addChild(config);
 
         var vm = new Vue({
             el: '#app-' + counter,
