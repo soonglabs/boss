@@ -9,7 +9,8 @@
             $(this.$el).terminal(this.$parent.client, {
                 greetings: this.greeting,
                 name: this.name,
-                prompt: this.prompt
+                prompt: this.prompt,
+                history: false
             });
         }
     });

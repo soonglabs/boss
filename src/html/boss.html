@@ -21,7 +21,8 @@
       'use strict';
       ($(document).ready(function() {
           var boss = new Boss(JSON_IMAGE, 'BOSS-dev');
-          boss.app.shell();
+          var client = new boss.lib.TerminalClient(boss);
+          boss.cmd.shell('', client);
       }));
     </script>           
     <title>BOSS</title>

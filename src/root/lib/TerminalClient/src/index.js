@@ -1,5 +1,5 @@
 (function(boss){
-    'use strict'
+    'use strict';
     var daBoss = boss;
     var terminal;
 
