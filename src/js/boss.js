@@ -16,6 +16,15 @@ function Boss(root, name){
          }
     }
 
+    var loadApp = (folder, name) => {
+        var dirs = this.fs.get_dirs('/' + folder);
+        for(var dir in dirs){
+            var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
+            this[name][dirs[dir]] = eval(code);
+            eval(this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'components.js'));
+         }
+    }
+
     var loadLibraries = () => {
         loadJS('lib', 'lib');
     }
@@ -25,7 +34,7 @@ function Boss(root, name){
     }
 
     var loadApps = () => {
-        loadJS('app', 'app');
+        loadApp('app', 'app');
     }
 
     var runInit = () => {

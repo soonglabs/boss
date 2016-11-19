@@ -1,9 +1,5 @@
 (function(boss){
 
-    if(!boss.app_number){
-        boss.app_number = 0;
-    }
-
     this.exec = (command, client) => {
         if (command !== '') {
             var args = command.split(' ');
