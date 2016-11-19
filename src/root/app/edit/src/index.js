@@ -22,7 +22,7 @@
         };
 
         boss.layout.registerComponent('editor-' + counter, function( container, state ){
-            container.getElement().html('<div id="app-' + counter + '" class="editor"><editor :path="path" :filename="filename" :client="client"></editor></div>');
+            container.getElement().html('<div id="app-' + counter + '" class="app"><editor :path="path" :filename="filename" :client="client"></editor></div>');
         });
 
         boss.layout.root.contentItems[0].addChild(config);

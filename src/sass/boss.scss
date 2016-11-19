@@ -3,18 +3,22 @@ body {
     width: 100%;
 }
 
-.app {
-    height:99.2%;
-}
+#boss {
+    background-color:#111111;
 
-.editor {
-    margin: 2px;
-    padding:5px;
-    height:98.5%;
-}
+    .app {
+        height:99.2%;
 
-.shell {
-    margin: 2px;
-    padding:5px;
-    height:98.5%;
+        .editor {
+            margin: 2px;
+            padding:5px;
+            height:98.5%;
+        }
+
+        .shell {
+            margin: 2px;
+            padding:5px;
+            height:98.5%;
+        }
+    }
 }
