@@ -9,6 +9,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "ace-builds": "^1.2.5",
     "golden-layout": "^1.5.6",
     "jquery.terminal": "^0.11.13",
     "lodash": "^4.16.6",
