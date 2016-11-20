@@ -30,7 +30,7 @@ function Boss(root, name){
     }
 
     var loadCommands = () => {
-        loadJS('bin', 'cmd');
+        loadJS('cmd', 'cmd');
     }
 
     var loadApps = () => {

@@ -37,7 +37,7 @@ describe('Boss', function () {
         client.lastLog.should.be.exactly('');
         client.exec('cd /');
         client.lastLog.should.be.exactly('');
-        client.exec('cd bin');
+        client.exec('cd cmd');
         client.lastLog.should.be.exactly('');
         //TODO more types of paths
     });
@@ -45,7 +45,7 @@ describe('Boss', function () {
 
   describe('cp', function () {
     it('should copy file/dir', function () {
-        client.exec('cd /bin');
+        client.exec('cd /cmd');
         client.exec('cp');
         client.lastLog.should.be.exactly('error: no file argument');
         client.exec('cp about/src/index.js about/src/test.js');
