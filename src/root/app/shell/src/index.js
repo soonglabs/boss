@@ -35,7 +35,20 @@
             greeting: null
         },
         methods: {
-            client: client.exec
+            client: client.exec,
+            completion: function(terminal, string, callback){
+                var completions = Object.keys(boss.cmd);
+                completions = completions.concat(boss.fs.get_contents(client.cwd));
+                var parts = string.split('/');
+                parts.splice(-1, 1);
+                var str = parts.join('/');
+                var path = boss.lib.utils.calcAbsPath(str, null, client);
+                var subContents = boss.fs.get_contents(path);
+                subContents.forEach(function(content){
+                    completions.push(str + '/' + content);
+                });
+                callback(completions);
+            }
         }
     });
 });

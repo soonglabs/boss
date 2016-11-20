@@ -8,7 +8,9 @@ Vue.component('shell', {
             greetings: this.greeting,
             name: this.name,
             prompt: this.prompt,
-            memory: true
+            memory: true,
+            history: false,
+            completion: this.$parent.completion
         });
     }
 });
