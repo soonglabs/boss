@@ -5,6 +5,7 @@
     this.username = (command, client) => {
         boss.lib.set_prompt('password', client);
         username = command;
+        client.set_mask('*');
         boss.lib.push(this.password);
     };
 
@@ -14,6 +15,7 @@
             client.user = user;
             client.cwd = '/home/' + username;
 
+            client.set_mask(false);
             boss.lib.set_prompt( username, client);
             boss.lib.pop();
             boss.lib.push(new boss.lib.Shell(boss).exec);
@@ -22,6 +24,7 @@
          } else {
             boss.lib.print.error('unknown username/password combination', client);
             boss.lib.set_prompt('username', client);
+            client.set_mask(false);
             boss.lib.pop();
         }
     };
