@@ -1,7 +1,13 @@
 'use strict';
+
+Vue.component('toolbar', {
+    template: `<div class="toolbar">{{filename}}</div>`,
+    props: ['filename']
+});
+
 //Ace Editor component
 Vue.component('editor', {
-    template: '<div class="editor"></div>',
+    template: `<div class="editor"></div>`,
     props: ['path', 'filename', 'client'],
     mounted: function(){
         this.editor = ace.edit(this.$el);
