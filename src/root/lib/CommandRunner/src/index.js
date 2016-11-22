@@ -8,6 +8,7 @@
             } else if(args[0] != undefined) {
                 boss.lib.print.error('unknown command : ' + command, client);
             }
+            client.flush();
         }
     };
 });

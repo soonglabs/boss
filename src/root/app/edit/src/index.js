@@ -38,5 +38,6 @@
 
     } else if(!filename) {
         boss.lib.print.error('error: no file argument', client);
+        client.flush();
     }
 });

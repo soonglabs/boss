@@ -21,11 +21,12 @@
             boss.lib.push(new boss.lib.CommandRunner(boss).exec);
             boss.cmd.about('', client);
             boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type [[;orange;]help] to see available commands.', client);
-         } else {
+        } else {
             boss.lib.print.error('unknown username/password combination', client);
             boss.lib.set_prompt('username', client);
             client.set_mask(false);
             boss.lib.pop();
         }
+        client.flush();
     };
 });

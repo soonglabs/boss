@@ -3,24 +3,31 @@
     var daBoss = boss;
     var terminal;
 
-        this.out = function(text){
-            terminal.echo(text);
-        };
+    this.text = null;
 
-        this.set_prompt = function(prompt){
-            terminal.set_prompt(daBoss.fs.name + ': ' + prompt + '$ ');
-        };
+    this.out = (text) => {
+       this.text = this.text ? this.text + "\n" + text : text;
+    };
 
-        this.get_prompt = function(prompt){
-            return terminal.get_prompt();
-        };
+    this.flush = () => {
+        terminal.echo(this.text);
+        this.text = null;
+    };
 
-        this.set_mask = function(boolOrChar){
-            terminal.set_mask(boolOrChar);
-        };
+    this.set_prompt = function(prompt){
+        terminal.set_prompt(daBoss.fs.name + ': ' + prompt + '$ ');
+    };
 
-        this.exec = (command, term) => {
-            terminal = term;
-            daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
-        };
+    this.get_prompt = function(prompt){
+        return terminal.get_prompt();
+    };
+
+    this.set_mask = function(boolOrChar){
+        terminal.set_mask(boolOrChar);
+    };
+
+    this.exec = (command, term) => {
+        terminal = term;
+        daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
+    };
 });
