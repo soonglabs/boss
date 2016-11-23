@@ -11,6 +11,10 @@
 
     this.flush = () => {
         terminal.echo(this.text);
+        this.clear();
+    };
+
+    this.clear = () => {
         this.text = null;
     };
 
