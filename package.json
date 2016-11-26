@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "ace-builds": "^1.2.5",
+    "font-awesome": "^4.7.0",
     "golden-layout": "^1.5.6",
     "jquery.terminal": "git+https://github.com/scrussell24/jquery.terminal.git",
     "lodash": "^4.16.6",
