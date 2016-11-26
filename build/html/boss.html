@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/jquery.terminal/js/jquery.terminal.js"></script>
+    <script src="../../node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/golden-layout/dist/goldenlayout.min.js"></script>
+    <script src="../../node_modules/ace-builds/src-min/ace.js"></script>
+    <script src="../js/boss.js"></script>
+    <script src="../image.js"></script>
+    <link href="../../node_modules/jquery.terminal/css/jquery.terminal.css" rel="stylesheet"/>
+    <link href="../css/boss.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../../node_modules/golden-layout/src/css/goldenlayout-base.css" />
+    <link type="text/css" rel="stylesheet" href="../../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css" />
+    <script>
+      'use strict';
+      ($(document).ready(function() {
+          var newBoss = new Boss(JSON_IMAGE, 'BOSS-dev');
+          newBoss.cmd.shell('', null);
+      }));
+    </script>           
+    <title>BOSS</title>
+  </head>
+  <body id="boss">
+  </body>
+</html>
+
