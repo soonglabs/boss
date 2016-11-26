@@ -6,6 +6,6 @@
             content: []
         }]
     };
-    boss.layout = new GoldenLayout(layoutConfig, $('#boss'));
+    boss.layout = new GoldenLayout(layoutConfig);
     boss.layout.init();
 });
