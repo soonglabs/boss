@@ -21,7 +21,6 @@ function Boss(root, name){
         for(var dir in dirs){
             var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
             this[name][dirs[dir]] = eval(code);
-            eval(this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'components.js'));
          }
     }
 

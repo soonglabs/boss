@@ -13,6 +13,8 @@
     if(filename){
 
         var counter = boss.app_number++;
+        //load componenets
+        eval(boss.fs.get_file('/app/edit/src', 'components.js'));
 
         var config = {
             title: 'edit',
@@ -22,7 +24,12 @@
         };
 
         boss.layout.registerComponent('editor-' + counter, function( container, state ){
-            container.getElement().html('<div id="app-' + counter + '" class="app"><toolbar :filename="filename"></toolbar><editor :path="path" :filename="filename" :client="client"></editor></div>');
+            container.getElement().html(
+                '<div id="app-' + counter + '" class="app">' +
+                    '<editor-app :path="path" :filename="filename" :client="client" :app_number="app_number">' +
+                    '</editor-app>' +
+                '</div>'
+            );
         });
 
         boss.layout.root.contentItems[0].addChild(config);
@@ -32,7 +39,8 @@
             data: {
                 path: path,
                 filename: filename,
-                client: client
+                client: client,
+                app_number: counter
             }
         });
 

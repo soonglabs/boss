@@ -1,6 +1,8 @@
 (function(args, client){
     'use strict';
     var counter = boss.app_number++;
+    //load componenets
+    eval(boss.fs.get_file('/app/shell/src', 'components.js'));
     var prompt = ': username$ ';
     var config = {
         title: 'shell',
@@ -22,7 +24,9 @@
     }
 
     boss.layout.registerComponent('shell-' + counter, function(container, state){
-        container.getElement().html('<div id="app-' + counter + '" class="app"><shell :prompt="prompt" :name="name" :greeting="greeting"></shell></div>');
+        container.getElement().html('<div id="app-' + counter + '" class="app">' +
+                                        '<shell :prompt="prompt" :name="name" :greeting="greeting"></shell>' +
+                                    '</div>');
     });
 
     boss.layout.root.contentItems[0].addChild(config);

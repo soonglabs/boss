@@ -8,18 +8,31 @@ body {
 
     .app {
         height:99.2%;
-        
-         .toolbar {
-            color: lightgrey;
-            font-family: monospace;
-            padding: 5px;
-        }
 
-        .editor {
+        .editor-app {
             margin: 2px;
             padding:5px;
             height:98.5%;
+
+            .dirty {
+                color: orangered;
+            }
+
+            .clean {
+                color: limegreen;
+            }
+            
+            #toolbar {
+                color: lightgrey;
+                font-family: monospace;
+                padding: 5px;
+            }
+
+            .editor {
+                height:95.5%;
+            }
         }
+
 
         .shell {
             margin: 2px;
