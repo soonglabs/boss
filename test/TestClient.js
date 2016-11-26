@@ -1,13 +1,26 @@
 var TestClient = function(b){
     var daBoss = b;
 
-    this.lastLog;
+    this.text = null;
 
     this.out = (text) => {
-        this.lastLog = text;
+        this.text = text;
     }
 
+     this.flush = () => {
+        console.log(this.text);
+        this.clear();
+    };
+
+    this.clear = () => {
+        this.text = null;
+    };
+
     this.set_prompt = function(prompt){
+        //Do nothing
+    }
+
+    this.set_mask = function(boolOrChar){
         //Do nothing
     }
 

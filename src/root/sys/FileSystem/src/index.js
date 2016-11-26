@@ -125,10 +125,6 @@
     this.add_user = (key, user) => {
         _root.users[key] = user;
         this.set_dir('/home', key, user);
-        this.set_dir('/home/' + key, 'Apps', user);
-        this.set_dir('/home/' + key, 'Documents', user);
-        this.set_dir('/home/' + key, 'Downloads', user);
-        this.set_dir('/home/' + key, 'Images', user);
     }
 
     this.remove_user = (key, user) => {

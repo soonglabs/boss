@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
+var Server = require('karma').Server;
 var connect = require('gulp-connect');
 var exec = require('child_process').exec;
 var sass = require('gulp-sass');
@@ -25,9 +25,13 @@ gulp.task('build', function() {
     .pipe(gulp.dest(BUILD_DIR + 'css'));
 });
 
-gulp.task('test', ['build'], function() {
-  // return gulp.src('test/test.js', {read: false})
-  //     .pipe(mocha({reporter: 'nyan'}));
+gulp.task('test', ['build'], function(done) {
+   new Server({
+     configFile: __dirname + '/karma.conf.js',
+     singleRun: true
+   }, function() {
+        done();
+    }).start();
 });
 
 gulp.task('run', ['test'], function() {
