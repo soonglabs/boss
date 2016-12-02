@@ -65,7 +65,7 @@
             var file = get_dir(path).files[filename];
             return get_dir(path).files[filename].data;
         } else {
-            throw 'file does not exist';
+            throw filename + 'does not exist';
         }
     }
 

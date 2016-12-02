@@ -5,13 +5,13 @@ function Boss(root, name){
     var boss = this;
 
     var loadFileSystem = root => {
-        this.FileSystem = eval(root.dirs.sys.files['FileSystem.js'].data);
+        this.FileSystem = eval(root.dirs.sys.dirs.FileSystem.dirs.src.files['index.js'].data);
     }
 
     var loadJS = (folder, name) => {
         var dirs = this.fs.get_dirs('/' + folder);
         for(var dir in dirs){
-            var code = this.fs.get_file('/' + folder + '/' + dirs[dir], dirs[dir] + '.js');
+            var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
             this[name][dirs[dir]] = eval(code);
          }
     }
@@ -19,7 +19,7 @@ function Boss(root, name){
     var loadApp = (folder, name) => {
         var dirs = this.fs.get_dirs('/' + folder);
         for(var dir in dirs){
-            var code = this.fs.get_file('/' + folder + '/' + dirs[dir], dirs[dir] + '.js');
+            var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
             this[name][dirs[dir]] = eval(code);
          }
     }

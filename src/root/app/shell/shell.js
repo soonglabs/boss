@@ -2,7 +2,7 @@
     'use strict';
     var counter = boss.app_number++;
     //load componenets
-    eval(boss.fs.get_file('/app/shell/src', 'components.js'));
+    eval(boss.fs.get_file('/app/shell', 'components.js'));
     var prompt = ': username$ ';
     var config = {
         title: 'shell',
