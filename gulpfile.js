@@ -7,7 +7,7 @@ var dirs2json = require('./scripts/dirs2json');
 
 var BUILD_DIR = './build/';
 var DIST_DIR = './dist/';
-var ROOT_DIR = './src/root';
+var ROOT_DIR = './example/root';
 
 gulp.task('build', function() { 
      dirs2json(ROOT_DIR, BUILD_DIR);
