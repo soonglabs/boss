@@ -1,4 +1,4 @@
-(function FileSystem(root, name){
+(function FileSystem(root, name, env){
     'use strict';
 
     //SYSTEM NAME
@@ -6,7 +6,7 @@
 
     //VARS
     var _root = root;
-    _root.users = JSON.parse(_root.files['users.json'].data);
+    _root.users = JSON.parse(_root.dirs['var'].files[env +'-users.json'].data);
 
     //CLASSES
     this.Dir = function(name, owner, parent){
