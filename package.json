@@ -2,11 +2,11 @@
   "name": "boss",
   "version": "0.0.1",
   "description": "browser operating system simulator",
-  "main": "index.js",
+  "main": "dist/js/boss.js",
   "author": "Scott Russell",
   "license": "MIT",
   "scripts": {
-    "test": "mocha"
+    "test": "gulp test"
   },
   "dependencies": {
     "ace-builds": "^1.2.5",
