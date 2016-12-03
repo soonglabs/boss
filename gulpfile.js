@@ -10,13 +10,10 @@ var DIST_DIR = './dist/';
 var ROOT_DIR = './src/root';
 
 gulp.task('build', function() { 
-   dirs2json(ROOT_DIR, BUILD_DIR);
+     dirs2json(ROOT_DIR, BUILD_DIR);
 
      gulp.src('./src/js/**')
     .pipe(gulp.dest(BUILD_DIR + 'js'));
-
-    gulp.src('./src/html/**')
-    .pipe(gulp.dest(BUILD_DIR + 'html'));
 
     return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -24,13 +21,10 @@ gulp.task('build', function() {
 });
 
 gulp.task('release', function() { 
-   dirs2json(DIST_DIR, DIST_DIR);
+     dirs2json(DIST_DIR, DIST_DIR);
 
      gulp.src('./src/js/**')
     .pipe(gulp.dest(DIST_DIR + 'js'));
-
-    gulp.src('./src/html/**')
-    .pipe(gulp.dest(DIST_DIR + 'html'));
 
     return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
