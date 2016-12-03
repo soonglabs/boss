@@ -18,9 +18,6 @@ gulp.task('build', function() {
     gulp.src('./src/html/**')
     .pipe(gulp.dest(BUILD_DIR + 'html'));
 
-     gulp.src('./assets/**')
-    .pipe(gulp.dest(BUILD_DIR + 'assets'));
-
     return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(BUILD_DIR + 'css'));
@@ -34,9 +31,6 @@ gulp.task('release', function() {
 
     gulp.src('./src/html/**')
     .pipe(gulp.dest(DIST_DIR + 'html'));
-
-     gulp.src('./assets/**')
-    .pipe(gulp.dest(DIST_DIR + 'assets'));
 
     return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
