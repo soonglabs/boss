@@ -9,3 +9,7 @@ Install dependencies
 
 `npm install`
 
+## Usage
+
+It recomended to always run boss in an sandboxed iframe.
+

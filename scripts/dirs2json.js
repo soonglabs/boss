@@ -41,7 +41,7 @@ function createJFile(path){
 }
 
 function writeJSONFile(json, buildDir){
-    var data = "'use strict';\n\nvar JSON_IMAGE =" + JSON.stringify(json);
+    var data = "'use strict';\n\nvar boss_image =" + JSON.stringify(json);
     data += '\n\ntry{\n\tmodule.exports = JSON_IMAGE;\n} catch(err){\n\t//do nothing, assuming the file is being run in a browser\n}'
     fs.writeFileSync(buildDir + '/image.js', data, 'utf-8');
 }

@@ -26,7 +26,7 @@ module.exports = function(config) {
       'node_modules/golden-layout/src/css/goldenlayout-dark-theme.css',
       'build/js/boss.js',
       'build/css/boss.css',
-      'build/image.js',
+      'example/image.js',
       'test/TestClient.js',
       'test/test.js',
       'src/**/**/*.spec.js'
