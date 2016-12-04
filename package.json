@@ -6,9 +6,7 @@
   "author": "Scott Russell",
   "license": "MIT",
   "scripts": {
-    "test": "gulp test",
-    "run": "gulp run",
-    "release": "gulp release"
+    "test": "gulp test"
   },
   "dependencies": {
     "ace-builds": "^1.2.5",

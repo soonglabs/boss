@@ -1,4 +1,4 @@
-(function FileSystem(root, name, env){
+(function FileSystem(root, name, env, persistance){
     'use strict';
 
     //SYSTEM NAME
@@ -73,6 +73,7 @@
         var dir = get_dir(path);
         validate(dir, user);
         dir.files[filename] = new this.File(this.get_current_username, data, null);
+        persistance.save(this._root);
     }
 
     this.set_dir = (path, dirname, user) => { 
@@ -80,6 +81,7 @@
             var dir = get_dir(path);
             validate(dir, user);
             dir.dirs[dirname] = new this.Dir(dirname, user ? user.username : this.get_current_username(), path);
+            persistance.save(this._root);
         } else {
             throw 'dir already exists';
         }
@@ -125,6 +127,7 @@
     this.add_user = (key, user) => {
         _root.users[key] = user;
         this.set_dir('/home', key, user);
+        persistance.save(this._root);
     }
 
     this.remove_user = (key, user) => {
