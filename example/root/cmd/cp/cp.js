@@ -1,12 +1,15 @@
 (function(args, client){
+
     if(args.length > 1){
         var result = boss.lib.utils.splitPathFilename(args[1], client);
-        var path = result.path;var filename = result.name;
+        var path = result.path;
+        var filename = result.name;
     }
 
     if(args.length > 2){
         var result2 = boss.lib.utils.splitPathFilename(args[2], client);
-        var path2 = result2.path;var filename2 = result2.name;
+        var path2 = result2.path;
+        var filename2 = result2.name;
     }
 
     if(filename){
