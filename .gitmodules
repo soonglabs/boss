@@ -1,0 +1,3 @@
+[submodule "example/boss-image"]
+	path = example/boss-image
+	url = https://github.com/soonglabs/boss-image.git
