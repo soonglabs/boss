@@ -11,7 +11,7 @@ var DIST_DIR = './dist/';
 var ROOT_DIR = './example/root';
 
 gulp.task('build', function() { 
-     dirs2json(ROOT_DIR, EXAMPLE_DIR);
+     dirs2json(ROOT_DIR, BUILD_DIR);
 
      gulp.src('./src/js/**')
     .pipe(gulp.dest(BUILD_DIR + 'js'));
@@ -22,7 +22,7 @@ gulp.task('build', function() {
 });
 
 gulp.task('release', function() { 
-     dirs2json(DIST_DIR, EXAMPLE_DIR);
+     dirs2json(ROOT_DIR, DIST_DIR);
 
      gulp.src('./src/js/**')
     .pipe(gulp.dest(DIST_DIR + 'js'));

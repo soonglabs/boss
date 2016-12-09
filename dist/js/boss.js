@@ -1,25 +1,17 @@
 'use strict'
 
-function Boss(root, name){
+function Boss(root, name, env, persistance){
 
     var boss = this;
 
     var loadFileSystem = root => {
-        this.FileSystem = eval(root.dirs.sys.dirs.FileSystem.dirs.src.files['index.js'].data);
+        this.FileSystem = eval(root.dirs.sys.files['FileSystem.js'].data);
     }
 
     var loadJS = (folder, name) => {
         var dirs = this.fs.get_dirs('/' + folder);
         for(var dir in dirs){
-            var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
-            this[name][dirs[dir]] = eval(code);
-         }
-    }
-
-    var loadApp = (folder, name) => {
-        var dirs = this.fs.get_dirs('/' + folder);
-        for(var dir in dirs){
-            var code = this.fs.get_file('/' + folder + '/' + dirs[dir]  + '/src', 'index.js');
+            var code = this.fs.get_file('/' + folder + '/' + dirs[dir], dirs[dir] + '.js');
             this[name][dirs[dir]] = eval(code);
          }
     }
@@ -33,7 +25,7 @@ function Boss(root, name){
     }
 
     var loadApps = () => {
-        loadApp('app', 'app');
+        loadJS('app', 'app');
     }
 
     var runInit = () => {
@@ -56,7 +48,7 @@ function Boss(root, name){
     }
 
     loadFileSystem(root);
-    this.fs = new this.FileSystem(root, name);
+    this.fs = new this.FileSystem(root, name, env, persistance);
     this.reload();
     this.interpreters = [new this.lib.Login(this).username];
 }
