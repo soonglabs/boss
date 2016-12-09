@@ -87,6 +87,17 @@
         }
     }
 
+    this.copy_dir = (path1, dirname1, path2, dirname2, user) => { 
+        if(!get_dir(path2).dirs[dirname2]){
+            var dir = get_dir(path2);
+            validate(dir, user);
+            dir.dirs[dirname2] = get_dir(path1 + '/' + dirname1);
+            persistance.save(this._root);
+        } else {
+            throw 'dir already exists';
+        }
+    }
+
     this.remove = (path, name, type, user) => {
         if(type === 'file' && get_dir(path).files[name]){
             var dir = get_dir(path);
