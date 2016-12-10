@@ -11,4 +11,4 @@
     } else if(!args[1]){
         boss.lib.print.error('error: no directory argument', client);
     }
-})
+});
