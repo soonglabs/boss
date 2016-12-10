@@ -18,7 +18,7 @@
             boss.fs.set_file(path2, objectName2, data, client.user);
             boss.fs.remove(path, objectName, 'file', client.user);
         } catch(err){
-                boss.lib.print.error('error : ' + err, client);
+            boss.lib.print.error('error : ' + err, client);
         }
     } else if(objectName && boss.fs.get_dirs(path).indexOf(objectName) >= 0){
         try{

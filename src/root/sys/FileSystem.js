@@ -105,7 +105,7 @@
             delete dir.files[name];
         } else if( type === 'dir' && get_dir(path).dirs[name] ){
             var dir = get_dir(path);
-            validate(dir);
+            validate(dir, user);
             delete dir.dirs[name];
         } else {
             throw 'error : does not exist';
