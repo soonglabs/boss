@@ -1,3 +1,3 @@
 (function(){
-    boss.interpreters.pop()
-})
+    boss.interpreters.pop();
+});

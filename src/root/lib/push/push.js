@@ -1,3 +1,3 @@
 (function(fn){
-    boss.interpreters.push(fn)
-})
+    boss.interpreters.push(fn);
+});

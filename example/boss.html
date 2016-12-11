@@ -19,7 +19,7 @@
       ($(document).ready(function() {
           var boss = new Boss(boss_image, 'BOSS-EX', 'prod');
           boss.lib.event.subscribe('save', function(data){
-            console.log(data);
+            console.log('update to filesystem');
           });
           boss.cmd.shell('', null);
       }));
