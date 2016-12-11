@@ -1,3 +1,3 @@
 (function(txt, client){
-    client.set_prompt(txt)
-})
+    client.set_prompt(boss.fs.name + ': ' + txt + '$ ');
+});
