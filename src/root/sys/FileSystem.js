@@ -73,7 +73,7 @@
         var dir = get_dir(path);
         validate(dir, user);
         dir.files[filename] = new this.File(this.get_current_username, data, null);
-        boss.lib.event.send('save', this._root);
+        boss.lib.event.send('save', _root);
     }
 
     this.set_dir = (path, dirname, user) => { 
@@ -81,7 +81,7 @@
             var dir = get_dir(path);
             validate(dir, user);
             dir.dirs[dirname] = new this.Dir(dirname, user ? user.username : this.get_current_username(), path);
-            boss.lib.event.send('save', this._root);
+            boss.lib.event.send('save', _root);
         } else {
             throw 'dir already exists';
         }
@@ -92,7 +92,7 @@
             var dir = get_dir(path2);
             validate(dir, user);
             dir.dirs[dirname2] = get_dir(path1 + '/' + dirname1);
-            boss.lib.event.send('save', this._root);
+            boss.lib.event.send('save', _root);
         } else {
             throw 'dir already exists';
         }
@@ -138,7 +138,7 @@
     this.add_user = (key, user) => {
         _root.users[key] = user;
         this.set_dir('/home', key, user);
-        boss.lib.event.send('save', this._root);
+        boss.lib.event.send('save', _root);
     }
 
     this.remove_user = (key, user) => {
