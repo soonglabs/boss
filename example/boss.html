@@ -17,11 +17,7 @@
     <script>
       'use strict';
       ($(document).ready(function() {
-          var boss = new Boss(boss_image, 'BOSS-EX', 'prod', {
-            save: function(root){
-              console.log('save');
-            }
-          });
+          var boss = new Boss(boss_image, 'BOSS-EX', 'prod');
           boss.cmd.shell('', null);
       }));
     </script>           

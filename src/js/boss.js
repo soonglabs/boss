@@ -1,6 +1,6 @@
 'use strict'
 
-function Boss(root, name, env, persistance){
+function Boss(root, name, env){
 
     var boss = this;
 
@@ -48,7 +48,7 @@ function Boss(root, name, env, persistance){
     }
 
     loadFileSystem(root);
-    this.fs = new this.FileSystem(root, name, env, persistance);
+    this.fs = new this.FileSystem(root, name, env);
     this.reload();
     this.interpreters = [new this.lib.Login(this).username];
 }

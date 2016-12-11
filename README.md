@@ -29,11 +29,7 @@ boss.html
     <script>
       'use strict';
       ($(document).ready(function() {
-          var newBoss = new Boss(boss_image, 'BOSS-dev', 'prod', {
-            save: function(root){
-              console.log('save');
-            }
-          });
+          var newBoss = new Boss(boss_image, 'BOSS-dev', 'prod');
           newBoss.cmd.shell('', null);
       }));
     </script>           
