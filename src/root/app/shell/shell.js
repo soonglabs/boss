@@ -25,13 +25,13 @@
         client = newClient;
     }
 
-    boss.layout.registerComponent('shell-' + counter, function(container, state){
+    window.layout.registerComponent('shell-' + counter, function(container, state){
         container.getElement().html('<div id="app-' + counter + '" class="app">' +
                                         '<shell :prompt="prompt" :name="name" :greeting="greeting"></shell>' +
                                     '</div>');
     });
 
-    boss.layout.root.contentItems[0].addChild(config);
+    window.layout.root.contentItems[0].addChild(config);
 
     var vm = new Vue({
         el: '#app-' + counter,

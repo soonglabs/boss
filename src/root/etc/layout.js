@@ -32,6 +32,8 @@
             content: []
         }]
     };
-    boss.layout = new GoldenLayout(layoutConfig);
-    boss.layout.init();
+    if(!window.layout){
+        window.layout = new GoldenLayout(layoutConfig);
+        window.layout.init();
+    }
 });

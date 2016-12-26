@@ -23,7 +23,7 @@
             componentState: {}
         };
 
-        boss.layout.registerComponent('editor-' + counter, function( container, state ){
+        window.layout.registerComponent('editor-' + counter, function( container, state ){
             container.getElement().html(
                 '<div id="app-' + counter + '" class="app">' +
                     '<editor-app :path="path" :filename="filename" :client="client" :app_number="app_number">' +
@@ -32,7 +32,7 @@
             );
         });
 
-        boss.layout.root.contentItems[0].addChild(config);
+        window.layout.root.contentItems[0].addChild(config);
 
         var vm = new Vue({
             el: '#app-' + counter,
