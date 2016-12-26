@@ -1,4 +1,4 @@
-var TestClient = function(boss){
+var TestClient = function(){
 
     this.interpreters = [];
 

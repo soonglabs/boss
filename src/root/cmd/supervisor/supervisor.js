@@ -46,9 +46,19 @@
             }
         });
 
-        var ProxyClient = function(b, client){
-            var daBoss = b;
+        var ProxyClient = function(client){
             this.text = null;
+
+            this.interpreters = [];
+
+            this.push = function(fn){
+                this.interpreters.push(fn);
+            };
+
+            this.pop = function(){
+                this.interpreters.pop();
+            };
+
             this.out = (text) => {
                 client.out(text);
             };
@@ -69,11 +79,12 @@
                 client.set_mask(boolOrChar);
             };
             this.exec = (command) => {
-                daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
+                this.interpreters[this.interpreters.length - 1](command, this);
             };
         };
 
-        var connectClient = new ProxyClient(connectBoss, client);
+        var connectClient = new ProxyClient(client);
+        connectClient.push(new connectBoss.lib.Login(connectBoss).username);
         var origPrompt = client.get_prompt();
         connectClient.set_prompt(connectBoss.fs.name + ': username$ ');
 
@@ -81,8 +92,8 @@
         client.push(function(command){
             if(command === 'disconnect'){
                 client.set_prompt(origPrompt);
-                boss.lib.pop(client);
-                connectBoss.lib.pop(client);
+                client.pop();
+                connectClient.pop();
             } else {
                 connectClient.exec(command, connectClient);
             }

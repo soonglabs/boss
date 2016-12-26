@@ -48,7 +48,7 @@
 
         this.destroy = (chat) => {
             boss.fs.set_file('/var/chat', chatHistoryFileName, JSON.stringify(chats), client.user);
-            boss.lib.event.unsubscribe('chat', 'chat-listener');
+            boss.lib.event.unsubscribe('chat-' + nameFrom + '-' + nameTo, 'chat-listener');
         };
     };
 
@@ -68,7 +68,7 @@
             //stop listening to this chat
             chatter.destroy();
             client.set_prompt(origPrompt);
-            boss.lib.pop(client);
+           client.pop();
         } else {
             //write to file and send event
             //remove the last line

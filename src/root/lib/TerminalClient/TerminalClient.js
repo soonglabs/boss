@@ -1,4 +1,4 @@
-(function(boss){
+(function(){
     'use strict';
     var terminal;
 

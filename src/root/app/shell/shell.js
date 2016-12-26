@@ -12,10 +12,10 @@
     };
 
     if(!client){
-        client = new boss.lib.TerminalClient(boss);
+        client = new boss.lib.TerminalClient();
         client.push(new boss.lib.Login(boss).username);
     } else {
-        var newClient = new boss.lib.TerminalClient(boss);
+        var newClient = new boss.lib.TerminalClient();
         newClient.user = client.user;
         newClient.cwd = client.cwd;
         newClient.interpreters = client.interpreters.slice(0);
