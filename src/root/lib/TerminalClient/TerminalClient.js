@@ -30,6 +30,10 @@
         terminal.set_mask(boolOrChar);
     };
 
+    this.update = function(line, text){
+        terminal.update(line, text);
+    };
+
     this.exec = (command, term) => {
         terminal = term;
         daBoss.interpreters[daBoss.interpreters.length - 1](command, this);

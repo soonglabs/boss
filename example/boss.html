@@ -18,7 +18,7 @@
       'use strict';
       ($(document).ready(function() {
           var boss = new Boss(boss_image, 'BOSS-EX', 'prod');
-          boss.lib.event.subscribe('save', function(data){
+          boss.lib.event.subscribe('save', 'save', function(data){
             console.log('update to filesystem');
           });
           boss.cmd.shell('', null);
