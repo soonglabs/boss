@@ -9,6 +9,8 @@
             var parts = path.split('/');
             parts = parts.slice(0, parts.length - 1);
             path = parts.join('/');
+        } else if(arg && arg.startsWith('.')){
+          path += arg.slice(1);
         } else if(args && args.length >= 2 && args[1]){
             path += '/' + arg;
         } else if(!args){
