@@ -12,7 +12,7 @@
 
     if(filename){
 
-        var counter = boss.app_number++;
+        var counter = window.app_number++;
         //load componenets
         eval(boss.fs.get_file('/app/edit', 'components.js'));
 

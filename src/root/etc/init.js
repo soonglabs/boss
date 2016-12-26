@@ -1,4 +1,6 @@
 (function(){
     'use strict';
-    boss.app_number = 0;
+    if(!window.app_number){
+        window.app_number = 0;
+    }
 });

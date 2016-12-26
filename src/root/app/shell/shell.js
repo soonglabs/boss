@@ -1,6 +1,6 @@
 (function(args, client){
     'use strict';
-    var counter = boss.app_number++;
+    var counter = window.app_number++;
     //load componenets
     eval(boss.fs.get_file('/app/shell', 'components.js'));
     var prompt = ': username$ ';
