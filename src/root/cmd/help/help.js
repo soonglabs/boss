@@ -20,7 +20,7 @@
 
     boss.lib.print.log("[[;Yellow;]User:]", client);
     boss.lib.print.log(pad('\tadduser ', 15, ' ') + 'Create User', client);
-    boss.lib.print.log(pad('\trmuser ', 15, ' ') + 'Remove User', client);
+    //boss.lib.print.log(pad('\trmuser ', 15, ' ') + 'Remove User', client);
 
     boss.lib.print.log("[[;Orange;]Apps:]", client);
     boss.lib.print.log("\tshell", client);

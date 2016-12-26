@@ -4,31 +4,22 @@
         boss.lib.print.error('error, please command', client);
     } 
 
-    else if(args[1] === 'create' || args[1] === '-c'){
+    else if(args[1] === 'create'){
 
         if(!args[2]){
             boss.lib.print.error('error, please supply name', client);
             return;
         }
-        var image = jQuery.extend(true, {}, boss.fs.export());
-
-        if(!boss.supervisor){
-            boss.supervisor = {};
-        }
-
-        if(!boss.supervisor.instances){
-            boss.supervisor.instances = [];
-        }
-
-        boss.supervisor.instances.push(new Boss(image, args[2], 'prod'));
+        var image = jQuery.extend(true, {}, boss_image);
+        new Boss(image, args[2], 'prod');
     }
 
     else if(args[1] === 'ls'){
-        if(!boss.supervisor || !boss.supervisor.instances || boss.supervisor.instances.length <= 0){
+        if(!window.instances || window.instances.length <= 0){
             return;
         }
 
-        boss.supervisor.instances.forEach(function(b){
+        window.instances.forEach(function(b){
             boss.lib.print.log(b.fs.name, client);
         });
     }
@@ -39,7 +30,7 @@
         }
 
         var connectBoss;
-        boss.supervisor.instances.forEach(function(b){
+        window.instances.forEach(function(b){
             if(b.fs.name === args[2]){
                 connectBoss = b;
                 return;

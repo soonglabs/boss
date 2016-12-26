@@ -1,8 +1,8 @@
 (function(args, client){
 
     var Chatter = function(nameFrom, nameTo, settings){
-        this.from = nameFrom;
-        this.to = nameTo;
+
+        //set colors from settings
         var colorMap = {};
         colorMap[nameFrom] = settings.from_color;
         colorMap[nameTo] = settings.to_color;
@@ -41,24 +41,25 @@
         //instnace methods
         this.sendMessage = (chat) => {
             boss.lib.event.send('chat-' + nameFrom + '-' + nameTo, {
-                name: this.from,
+                name: nameFrom,
                 message: chat
             });
         };
 
+        //unsubscribe listener function and write new chats to file
         this.destroy = (chat) => {
             boss.fs.set_file('/var/chat', chatHistoryFileName, JSON.stringify(chats), client.user);
             boss.lib.event.unsubscribe('chat-' + nameFrom + '-' + nameTo, 'chat-listener');
         };
     };
 
-     if(args.length < 2){
+    //validation
+    if(args.length < 2){
         boss.lib.print.error('Who are you trying to chat with?', client);
         return;
     }
 
     var settings = JSON.parse(boss.fs.get_file('/var/chat', 'settings.json'));
-
     var origPrompt = client.get_prompt();
     client.set_prompt("[[;" + settings.from_color + ";]" + client.user.username + '>] ');
     var chatter = new Chatter(client.user.username, args[1], settings);
@@ -68,7 +69,7 @@
             //stop listening to this chat
             chatter.destroy();
             client.set_prompt(origPrompt);
-           client.pop();
+            client.pop();
         } else {
             //write to file and send event
             //remove the last line
