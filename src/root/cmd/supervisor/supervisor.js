@@ -78,11 +78,11 @@
         connectClient.set_prompt(connectBoss.fs.name + ': username$ ');
 
         //connect interpreter
-        boss.lib.push(function(command, client){
+        client.push(function(command){
             if(command === 'disconnect'){
                 client.set_prompt(origPrompt);
-                boss.lib.pop();
-                connectBoss.lib.pop();
+                boss.lib.pop(client);
+                connectBoss.lib.pop(client);
             } else {
                 connectClient.exec(command, connectClient);
             }

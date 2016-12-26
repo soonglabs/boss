@@ -1,7 +1,16 @@
 (function(boss){
     'use strict';
-    var daBoss = boss;
     var terminal;
+
+    this.interpreters = [];
+
+    this.push = function(fn){
+        this.interpreters.push(fn);
+    };
+
+    this.pop = function(){
+        this.interpreters.pop();
+    };
 
     this.text = null;
 
@@ -36,6 +45,6 @@
 
     this.exec = (command, term) => {
         terminal = term;
-        daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
+        this.interpreters[this.interpreters.length - 1](command, this);
     };
 });

@@ -6,7 +6,7 @@
         boss.lib.set_prompt('password', client);
         username = command;
         client.set_mask('*');
-        boss.lib.push(this.password);
+        client.push(this.password);
     };
 
     this.password = (command, client) => {
@@ -17,15 +17,15 @@
 
             client.set_mask(false);
             boss.lib.set_prompt( username, client);
-            boss.lib.pop();
-            boss.lib.push(new boss.lib.CommandRunner(boss).exec);
+            client.pop();
+            client.push(new boss.lib.CommandRunner(boss).exec);
             boss.cmd.about('', client);
             boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type [[;orange;]help] to see available commands.', client);
         } else {
             boss.lib.print.error('unknown username/password combination', client);
             boss.lib.set_prompt('username', client);
             client.set_mask(false);
-            boss.lib.pop();
+            client.pop();
         }
         client.flush();
     };

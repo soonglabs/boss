@@ -36,11 +36,11 @@
             boss.lib.print.log("[[;" + colorMap[chat.name] + ";]" + chat.name + ">] " + chat.message, client);
             client.flush();
         };
-        boss.lib.event.subscribe('chat', 'chat-listener', listener);
+        boss.lib.event.subscribe('chat-' + nameFrom + '-' + nameTo, 'chat-listener', listener);
 
         //instnace methods
         this.sendMessage = (chat) => {
-            boss.lib.event.send('chat', {
+            boss.lib.event.send('chat-' + nameFrom + '-' + nameTo, {
                 name: this.from,
                 message: chat
             });
@@ -63,12 +63,12 @@
     client.set_prompt("[[;" + settings.from_color + ";]" + client.user.username + '>] ');
     var chatter = new Chatter(client.user.username, args[1], settings);
 
-    boss.lib.push(function(command, client) {
+    client.push(function(command) {
         if(command === '//quit'){
             //stop listening to this chat
             chatter.destroy();
             client.set_prompt(origPrompt);
-            boss.lib.pop();
+            boss.lib.pop(client);
         } else {
             //write to file and send event
             //remove the last line

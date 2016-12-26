@@ -1,5 +1,14 @@
-var TestClient = function(b){
-    var daBoss = b;
+var TestClient = function(boss){
+
+    this.interpreters = [];
+
+    this.push = function(fn){
+        this.interpreters.push(fn);
+    };
+
+    this.pop = function(){
+        this.interpreters.pop();
+    };
 
     this.text = null;
 
@@ -30,7 +39,7 @@ var TestClient = function(b){
 
     this.exec = (command) => {
         this.lastLog = '';
-        daBoss.interpreters[daBoss.interpreters.length - 1](command, this);
+        this.interpreters[this.interpreters.length - 1](command, this);
     }
 }
 

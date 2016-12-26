@@ -13,10 +13,12 @@
 
     if(!client){
         client = new boss.lib.TerminalClient(boss);
+        client.push(new boss.lib.Login(boss).username);
     } else {
         var newClient = new boss.lib.TerminalClient(boss);
         newClient.user = client.user;
         newClient.cwd = client.cwd;
+        newClient.interpreters = client.interpreters.slice(0);
         var parts = newClient.cwd.split('/');
         var dir = parts[parts.length - 1];
         prompt = ': ' + dir + '$ ';

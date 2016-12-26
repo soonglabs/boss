@@ -50,7 +50,6 @@ function Boss(root, name, env){
     loadFileSystem(root);
     this.fs = new this.FileSystem(root, name, env);
     this.reload();
-    this.interpreters = [new this.lib.Login(this).username];
 }
 
 try{
