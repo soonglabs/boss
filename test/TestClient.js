@@ -18,7 +18,6 @@ var TestClient = function(){
 
      this.flush = () => {
         console.log(this.text);
-        this.clear();
     };
 
     this.clear = () => {
@@ -38,7 +37,7 @@ var TestClient = function(){
     }
 
     this.exec = (command) => {
-        this.lastLog = '';
+        this.clear();
         this.interpreters[this.interpreters.length - 1](command, this);
     }
 }
