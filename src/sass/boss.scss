@@ -2,15 +2,17 @@ body {
     margin: 0px;
     height: 100%;
 
-    #boss {
-        
-        #header {
-            font-family: monospace;
-            font-size: 1.5em;
-            background-color: blue;
-            color: lightgrey;
-            height: 25px;
+    nav {
+        height: 30px;
+
+        a {
+            margin-left:15px;
         }
+    }
+
+    #boss {
+        background-color: black;
+        height: 100vh;
 
         #logo {
             position: absolute;
@@ -24,20 +26,20 @@ body {
         }
 
         #glayout {
+            padding-top: 34px;
             width: 100%;
-            height: 95.2vh;
+            height: 100vh;
 
             .lm_header .lm_tab{
                 box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
             }
 
             .app {
-                height:98.5%;
+                height:99%;
 
                 .editor-app {
                     margin: 2px;
-                    padding: 5px;
-                    height: 98.5%;
+                    height: 100%;
 
                     .dirty {
                         color: orangered;
@@ -63,7 +65,7 @@ body {
                 .shell {
                     margin: 2px;
                     padding: 5px;
-                    height: 98.5%;
+                    height: 100%;
                 }
             }
         }
