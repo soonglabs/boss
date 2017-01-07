@@ -28,7 +28,7 @@
         //     popout: 'open in new window'
         // },
         content: [{
-            type: 'row',
+            type: 'stack',
             content: []
         }]
     };
