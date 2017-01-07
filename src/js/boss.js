@@ -12,7 +12,11 @@ function Boss(root, name, env){
         var dirs = this.fs.get_dirs('/' + folder);
         for(var dir in dirs){
             var code = this.fs.get_file('/' + folder + '/' + dirs[dir], dirs[dir] + '.js');
-            this[name][dirs[dir]] = eval(code);
+            try{
+                this[name][dirs[dir]] = eval(code);
+            } catch(err){
+                console.log(err);
+            }
          }
     }
 
