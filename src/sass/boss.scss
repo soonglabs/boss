@@ -1,40 +1,68 @@
-#boss {
-    background-color:#111111;
-    width: 100%;
-    height: 100vh;
+body {
+    margin: 0px;
+    height: 100%;
 
-    .app {
-        height:99.2%;
+    #header {
+        font-family: monospace;
+        font-size: 1.5em;
+        background-color: blue;
+        color: lightgrey;
+        height: 25px;
+    }
 
-        .editor-app {
-            margin: 2px;
-            padding:5px;
-            height:98.5%;
+    #logo {
+        position: absolute;
+        top: 50%;
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        font-family: monospace;
+        font-size: 200px;
+        color: rgba(100,100,100,0.3);
+        z-index:1;
+    }
 
-            .dirty {
-                color: orangered;
-            }
+    .lm_header .lm_tab{
+        box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+    }
 
-            .clean {
-                color: limegreen;
-            }
-            
-            #toolbar {
-                color: lightgrey;
-                font-family: monospace;
+    #boss {
+        width: 100%;
+        height: 95.2vh;
+
+        .app {
+            height:99%;
+
+            .editor-app {
+                margin: 2px;
                 padding: 5px;
+                height: 98.5%;
+
+                .dirty {
+                    color: orangered;
+                }
+
+                .clean {
+                    color: limegreen;
+                }
+                
+                #toolbar {
+                    color: lightgrey;
+                    font-family: monospace;
+                    padding: 5px;
+                }
+
+                .editor {
+                    height: 95.5%;
+                    z-index:2;
+                }
             }
 
-            .editor {
-                height:95.5%;
+
+            .shell {
+                margin: 2px;
+                padding: 5px;
+                height: 98.5%;
             }
-        }
-
-
-        .shell {
-            margin: 2px;
-            padding: 5px;
-            height: 98.5%;
         }
     }
 }
