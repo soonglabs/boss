@@ -33,7 +33,7 @@
         }]
     };
     if(!window.layout){
-        window.layout = new GoldenLayout(layoutConfig, $('#boss'));
+        window.layout = new GoldenLayout(layoutConfig, $('#glayout'));
         window.layout.init();
     }
 });
