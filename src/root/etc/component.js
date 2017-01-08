@@ -12,7 +12,7 @@
         template: `<div>
                     <div>
                         <nav class="nav">
-                            <a href="#"><span>&#931</span></a>
+                            <a href="#"><span><strong>&#931</strong></span></a>
                             <a href="#"><span>Apps</span></a>
                         </nav>
                     </div>
