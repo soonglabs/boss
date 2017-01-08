@@ -8,6 +8,20 @@
         var result = boss.lib.utils.splitPathFilename(args[1], client);
         path = result.path;
         filename = result.name;
+    } else {
+        path = client.cwd;
+        var count = 1;
+        while(!filename){
+            var attempt = 'untitled' + count;
+            try{
+                boss.fs.get_file(path, attempt);
+            } catch(err){
+                //file doesn't exist nice!
+                filename = attempt;
+            }
+            count++;
+        }
+        boss.fs.set_file(path, filename, '', client.user);
     }
 
     if(filename){
