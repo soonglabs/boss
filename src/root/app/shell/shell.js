@@ -14,7 +14,7 @@
     if(!client){
         client = new boss.lib.TerminalClient();
         client.push(new boss.lib.Login(boss).username);
-        boss.lib.client.setClient(client);
+        boss.lib.navbar.setClient(client);
     } else {
         var newClient = new boss.lib.TerminalClient();
         newClient.user = client.user;

@@ -7,6 +7,7 @@ body {
         font-family: monospace;
         font-size: 1.1em;
         margin-bottom: 4px;
+        color: lightgrey;
 
         .navbar-section {
             padding: 5px;
@@ -40,21 +41,22 @@ body {
 
         .menu {
             margin-top: 2px;
-            background: darkblue;
+            background: lightgrey;
             font-family: monospace;
             border-radius: 0px;
-            box-shadow: 5px 5px darkslategrey;
+            box-shadow: 5px 5px darkblue;
 
             a {
-                color: lightgrey;
+                color: #333333;
             }
 
             a:hover {
-                color: whitesmoke;
+                color: #888888;
             }
 
              a:active {
-                background: darkblue;
+                color: #888888;
+                background: lightgrey;
             }
         }
 
@@ -73,6 +75,18 @@ body {
                 background: darkblue;
                 border-left: 0px;
                 color: lightgrey;
+            }
+
+            .modal-body {
+                padding: 5px;
+            }
+
+            .modal-header {
+                padding: 5px;
+            }
+
+            .modal-footer {
+                padding: 5px;
             }
 
             .btn.btn-clear {

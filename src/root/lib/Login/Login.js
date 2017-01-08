@@ -14,7 +14,6 @@
         if(user){
             client.user = user;
             client.cwd = '/home/' + username;
-
             client.set_mask(false);
             boss.lib.set_prompt( username, client);
             client.pop();

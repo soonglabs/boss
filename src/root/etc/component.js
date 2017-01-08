@@ -6,7 +6,6 @@
     //to know anything about Vuejs and all view
     //code and templates are in the image
 
-
     //register boss component
     Vue.component('boss', {
         template: `<div>
@@ -19,10 +18,13 @@
                                 </a>
                                 <ul class="menu">
                                     <li v-for="app in apps" class="menu-item">
-                                        <a v-on:click="startApp(app)" href="#">{{app}}</a>
+                                        <a v-on:click="startApp(app)" href="#">[ {{app}} ]</a>
                                     </li>
                                 </ul>
                             </div>
+                        </section>
+                         <section class="navbar-section">
+                            <span>{{date}}</span>
                         </section>
                     </header>
 
@@ -49,7 +51,8 @@ Copyright 2017 -- Soong Research Labs</pre>
                   </div>`,
         data: function(){
             return {
-                apps: Object.keys(boss.app)
+                date: new Date().toLocaleDateString(),
+                apps: boss.navbar.apps
             }
         },
         methods: {
@@ -57,10 +60,13 @@ Copyright 2017 -- Soong Research Labs</pre>
                 $('#about-modal').toggleClass('active');
             },
             startApp: function(app){
-                boss.app[app]('', boss.lib.client.getClient());
+                boss.app[app]('', boss.lib.navbar.getClient());
             }
         }
     });
+
+    //register apps with navbar
+    boss.lib.navbar.setApps(Object.keys(boss.app));
 
     //add the boss component
     $('#boss').html('<boss></boss>');
