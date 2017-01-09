@@ -8,10 +8,10 @@ function Boss(root, name, env){
         this.FileSystem = eval(root.dirs.sys.files['FileSystem.js'].data);
     }
 
-    var loadJS = (folder, name) => {
-        var dirs = this.fs.get_dirs('/' + folder);
+    var loadJS = (directory, name) => {
+        var dirs = this.fs.get_dirs('/' + directory);
         for(var dir in dirs){
-            var code = this.fs.get_file('/' + folder + '/' + dirs[dir], dirs[dir] + '.js');
+            var code = this.fs.get_file('/' + directory + '/' + dirs[dir], dirs[dir] + '.js');
             try{
                 this[name][dirs[dir]] = eval(code);
             } catch(err){
@@ -20,19 +20,7 @@ function Boss(root, name, env){
          }
     }
 
-    var loadLibraries = () => {
-        loadJS('lib', 'lib');
-    }
-
-    var loadCommands = () => {
-        loadJS('cmd', 'cmd');
-    }
-
-    var loadApps = () => {
-        loadJS('app', 'app');
-    }
-
-    var runInit = () => {
+    var runJS = () => {
         var files = this.fs.get_files('/etc');
         for(var file in files){
             var code = this.fs.get_file('/etc', files[file]);
@@ -45,10 +33,16 @@ function Boss(root, name, env){
         this.cmd = {};
         this.lib = {};
         this.app = {};
-        loadLibraries();
-        loadCommands();
-        loadApps(); //Should this be at runtime?
-        runInit();
+        loadJS('lib', 'lib');
+        loadJS('cmd', 'cmd');
+        loadJS('app', 'app'); //Should this be at runtime?
+        runJS();
+    }
+
+    this.reloadUser = function(username){
+        console.log('reload user');
+        loadJS('home/' + username + '/cmd', 'cmd');
+        loadJS('home/' + username + '/app', 'app'); //Should this be at runtime?
     }
 
     loadFileSystem(root);
