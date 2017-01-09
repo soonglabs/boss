@@ -18,6 +18,8 @@
             boss.lib.set_prompt( username, client);
             client.pop();
             boss.reloadUser(username);
+            //register apps with navbar
+            boss.lib.navbar.setApps(Object.keys(boss.app));
             client.push(new boss.lib.CommandRunner(boss).exec);
             boss.cmd.about('', client);
             boss.lib.print.log('Hello ' + username + '. Welcome to BOSS. Type [[;orange;]help] to see available commands.', client);

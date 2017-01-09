@@ -13,11 +13,11 @@
                         <section class="navbar-section">
                             <a href="#" v-on:click="toggleAbout"><span><strong>&#931</strong></span></a>
                             <div class="dropdown">
-                                <a href="#" class="dropdown-toggle" tabindex="0">
+                                <a href="#" v-on:click="update" class="dropdown-toggle" tabindex="0">
                                     Apps <i class="icon-caret"></i>
                                 </a>
                                 <ul class="menu">
-                                    <li v-for="app in apps" class="menu-item">
+                                    <li v-for="app in getApps()" class="menu-item">
                                         <a v-on:click="startApp(app)" href="#">[ {{app}} ]</a>
                                     </li>
                                 </ul>
@@ -51,8 +51,7 @@ Copyright 2017 -- Soong Research Labs</pre>
                   </div>`,
         data: function(){
             return {
-                date: new Date().toLocaleDateString(),
-                apps: boss.navbar.apps
+                date: new Date().toLocaleDateString()
             }
         },
         methods: {
@@ -61,6 +60,12 @@ Copyright 2017 -- Soong Research Labs</pre>
             },
             startApp: function(app){
                 boss.app[app]('', boss.lib.navbar.getClient());
+            },
+            getApps: function(){
+                return boss.navbar.apps;
+            },
+            update: function(){
+                this.$forceUpdate();
             }
         }
     });

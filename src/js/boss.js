@@ -40,7 +40,6 @@ function Boss(root, name, env){
     }
 
     this.reloadUser = function(username){
-        console.log('reload user');
         loadJS('home/' + username + '/cmd', 'cmd');
         loadJS('home/' + username + '/app', 'app'); //Should this be at runtime?
     }
