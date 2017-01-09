@@ -18,8 +18,8 @@
     boss.lib.print.log(pad('\tread ', 15, ' ') + "Read File", client);
     boss.lib.print.log(pad('\trm ', 15, ' ') + "Remove", client);
 
-    boss.lib.print.log("[[;Yellow;]User:]", client);
-    boss.lib.print.log(pad('\tadduser ', 15, ' ') + 'Create User', client);
+    //boss.lib.print.log("[[;Yellow;]User:]", client);
+    //boss.lib.print.log(pad('\tadduser ', 15, ' ') + 'Create User', client);
     //boss.lib.print.log(pad('\trmuser ', 15, ' ') + 'Remove User', client);
 
     boss.lib.print.log("[[;Orange;]Apps:]", client);

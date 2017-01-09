@@ -1,1 +1,8 @@
-{"root":{"username":"root","type":"root","password":"3433489"}}
+{
+    "root": {
+        "username":"root","type":"root","password":"3433489"
+    },
+    "scott":{
+        "username":"scott","type":"root","password":"3433489"
+    }
+}
