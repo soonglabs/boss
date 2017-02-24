@@ -31,7 +31,7 @@
                     <div id="glayout"></div>
                     <div id="logo">&#931</div>
 
-                    <!-- about modal -->                    
+                    <!-- about modal -->
                     <div id="about-modal" class="modal">
                         <div class="modal-overlay"></div>
                         <div class="modal-container">

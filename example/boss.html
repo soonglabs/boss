@@ -9,19 +9,16 @@
     <script src="../../node_modules/ace-builds/src-min/ace.js"></script>
     <script src="../../build/js/boss.js"></script>
     <script src="../../build/image.js"></script>
-    <link href="../../node_modules/jquery.terminal/css/jquery.terminal.css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="../../node_modules/jquery.terminal/css/jquery.terminal.css"/>
     <link type="text/css" rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../node_modules/spectre.css/dist/spectre.min.css" />
-    <link type="text/css" rel="stylesheet" href="../../node_modules/golden-layout/src/css/goldenlayout-base.css" />
-    <link type="text/css" rel="stylesheet" href="../../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css" />
-    <link href="../../build/css/boss.css" rel="stylesheet"/>    
+    <link type="text/css" rel="stylesheet" href="../../node_modules/spectre.css/dist/spectre.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../../node_modules/golden-layout/src/css/goldenlayout-base.css"/>
+    <link type="text/css" rel="stylesheet" href="../../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css"/>
+    <link type="text/css" rel="stylesheet" href="../../build/css/boss.css"/>
     <script>
       'use strict';
       ($(document).ready(function() {
-          var boss = new Boss(boss_image, 'BOSS-EX', 'prod');
-          boss.lib.event.subscribe('save', 'save', function(data){
-            console.log('update to filesystem');
-          });
+          var boss = new Boss(boss_image, 'boss v0.0.1', 'prod');
           boss.cmd.shell('', null);
       }));
     </script>           

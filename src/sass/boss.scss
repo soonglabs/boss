@@ -3,7 +3,7 @@ body {
     height: 100%;
 
     .navbar {
-        background: darkblue;
+        background: #4444ff;
         font-family: monospace;
         font-size: 1.1em;
         margin-bottom: 4px;
@@ -44,7 +44,7 @@ body {
             background: lightgrey;
             font-family: monospace;
             border-radius: 0px;
-            box-shadow: 5px 5px darkblue;
+            box-shadow: 5px 5px #4444ff;
 
             a {
                 color: #333333;
@@ -69,10 +69,10 @@ body {
             color: #333333;
             font-family: monospace;
             border-radius: 0px;
-            box-shadow: 5px 5px darkblue;
+            box-shadow: 5px 5px #4444ff;
 
             pre {
-                background: darkblue;
+                background: #4444ff;
                 border-left: 0px;
                 color: lightgrey;
             }

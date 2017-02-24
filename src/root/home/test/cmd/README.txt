@@ -1,0 +1,1 @@
+This directory is for commands. These are user commands that will be loaded after the user logs in.

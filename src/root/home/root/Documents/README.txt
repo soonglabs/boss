@@ -1,3 +1,1 @@
-Welcome to Boss
-
-More to come later.
+This directory is for Documents.

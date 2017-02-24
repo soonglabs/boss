@@ -1,0 +1,1 @@
+This directory is for apps. These are user apps that will be loaded after the user logs in.
