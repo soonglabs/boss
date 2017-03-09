@@ -1,3 +1,5 @@
+[![Build Status](http://ec2-184-72-90-202.compute-1.amazonaws.com:8080/buildStatus/icon?job=boss-ci)](http://ec2-184-72-90-202.compute-1.amazonaws.com:8080/job/boss-ci)
+
 # BOSS Browser Operating System Simulator
 
 ## Usage
