@@ -63,12 +63,12 @@ npm install
 Build and run local dev server on port 8080
 
 ```
-gulp run
+npm start
 ```
 
 ### Run Tests
 
 ```
-gulp test
+npm test
 ```
 
