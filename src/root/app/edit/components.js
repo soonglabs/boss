@@ -12,7 +12,7 @@ Vue.component('editor-app', {
     template: `<div class='editor-app'>
                  <div id='toolbar'>
                     <i class='fa fa-circle'  v-bind:class='{ dirty: changed, clean: !changed }' aria-hidden='true'></i>
-                    {{filename}}
+                    {{path + '/' + filename}}
                  </div>
                  <unique-div :app_number='app_number' class='editor'></unique-div>
 
@@ -27,8 +27,8 @@ Vue.component('editor-app', {
                             <div class="modal-body">
                                 <div class="content">
                                     <form>
-                                        <input v-model="filename" tabindex="0"></input>
-                                        <button v-on:click="save" class="btn" tabindex="1">[Save]</button>
+                                        <input v-model="filename"></input>
+                                        <button v-on:click="save" class="btn">[Save]</button>
                                     </form>
                                 </div>
                             </div>
