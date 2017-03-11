@@ -3,6 +3,7 @@
     var terminal;
 
     this.interpreters = [];
+    this.user;
 
     this.push = function(fn){
         this.interpreters.push(fn);
