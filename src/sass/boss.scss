@@ -63,6 +63,10 @@ body {
             }
         }
 
+        .modal-small {
+            width: 30rem !important;
+        }
+
         .modal-container {
             background: lightgrey;
             color: #333333;
@@ -81,15 +85,34 @@ body {
             }
 
             .modal-header {
+                margin: 5px !important;
                 padding: 5px;
+                border-width: 0px 0px 1px 0px;
+                border-color: #777777 !important;
+                border-style: solid;
             }
 
             .modal-footer {
                 padding: 5px;
             }
 
+            .btn {
+                border: 0px;
+                color: #111111;
+                background: lightgrey !important;
+                border-radius: 0px;
+            }
+
+            .btn:hover {
+                border: 0px;
+                color: lightgrey;
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
             .btn.btn-clear {
                 color: #111111;
+                background: lightgrey !important;
             }
         }
 

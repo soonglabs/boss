@@ -15,11 +15,41 @@ Vue.component('editor-app', {
                     {{filename}}
                  </div>
                  <unique-div :app_number='app_number' class='editor'></unique-div>
+
+                    <!-- save modal -->
+                    <div id="save-modal" class="modal">
+                        <div class="modal-overlay"></div>
+                        <div class="modal-container modal-small">
+                            <div class="modal-header">
+                                <button v-on:click="toggleSave" class="btn btn-clear float-right"></button>
+                                <div class="modal-title">Save As</div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="content">
+                                    <form>
+                                        <input v-model="filename" tabindex="0"></input>
+                                        <button v-on:click="save" class="btn" tabindex="1">[Save]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                </div>`,
     props: ['path', 'filename', 'client', 'app_number'],
     data: function(){ 
         return {
             changed: false
+        }
+    },
+    methods: {
+        toggleSave: function(){
+            $('#save-modal').toggleClass('active');
+        },
+        save: function(){
+            boss.lib.print.log('save file', this.client);
+            boss.fs.set_file(this.path, this.filename, this.editor.getSession().getValue(), this.client.user);
+            this.changed = false;
+            $('#save-modal').toggleClass('active');
         }
     },
     mounted: function(){
@@ -32,8 +62,7 @@ Vue.component('editor-app', {
         //on save
         $(this.$el).keydown((e) => {
             if(e.keyCode === 83 && e.ctrlKey && e.shiftKey){
-                boss.fs.set_file(this.path, this.filename, this.editor.getSession().getValue(), this.client.user);
-                this.changed = false;
+                $('#save-modal').toggleClass('active');
             }
         });
 
