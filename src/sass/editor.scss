@@ -1,0 +1,23 @@
+ .editor-app {
+    margin: 2px;
+    height: 98.5%;
+
+    .dirty {
+        color: orangered;
+    }
+
+    .clean {
+        color: limegreen;
+    }
+                    
+    #toolbar {
+        color: lightgrey;
+        font-family: monospace;
+        padding: 5px;
+    }
+
+    .editor {
+        height: 95.5%;
+        z-index:2;
+    }
+}

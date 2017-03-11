@@ -1,32 +1,35 @@
+@import 'shell';
+@import 'editor';
+
 body {
     margin: 0px;
     height: 100%;
 
-    .navbar {
-        background: #4444ff;
-        font-family: monospace;
-        font-size: 1.1em;
-        margin-bottom: 4px;
-        color: lightgrey;
-
-        .navbar-section {
-            padding: 5px;
-        }
-
-        a {
-            margin-left: 25px;
-            text-decoration: none;
-            color: lightgrey;
-        }
-
-        a:hover {
-            color: whitesmoke;
-        }
-    }
-
     #boss {
         background: black;
         height: 100vh;
+
+         .navbar {
+            background: #4444ff;
+            font-family: monospace;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+            color: lightgrey;
+
+            .navbar-section {
+                padding: 5px;
+            }
+
+            a {
+                margin-left: 25px;
+                text-decoration: none;
+                color: lightgrey;
+            }
+
+            a:hover {
+                color: whitesmoke;
+            }
+        }
 
         #logo {
             position: absolute;
@@ -58,10 +61,6 @@ body {
                 color: #888888;
                 background: lightgrey;
             }
-        }
-
-        .modal-overlay {
-            //background-color: rgba(0,0,0,.25);
         }
 
         .modal-container {
@@ -102,7 +101,7 @@ body {
                 box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
             }
 
-             li.lm_popout {
+            li.lm_popout {
                 margin-top: 0px !important;
             }
 
@@ -116,36 +115,6 @@ body {
 
             .app {
                 height:99%;
-
-                .editor-app {
-                    margin: 2px;
-                    height: 98.5%;
-
-                    .dirty {
-                        color: orangered;
-                    }
-
-                    .clean {
-                        color: limegreen;
-                    }
-                    
-                    #toolbar {
-                        color: lightgrey;
-                        font-family: monospace;
-                        padding: 5px;
-                    }
-
-                    .editor {
-                        height: 95.5%;
-                        z-index:2;
-                    }
-                }
-
-                .shell {
-                    margin: 2px;
-                    padding: 5px;
-                    height: 98.5%;
-                }
             }
         }
     }
