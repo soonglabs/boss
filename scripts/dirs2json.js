@@ -12,10 +12,10 @@ function dirs2Json(rootDir, buildDir){
 function createJDir(path, name, parent){
 
     var jdir = {'dirs': {}, 'files': {}};
-    jdir['name'] = name;
-    jdir['parent'] = parent;
-    jdir['owner'] = 'root';
-    jdir['created'] = Date.now();
+    jdir.name = name;
+    jdir.parent = parent;
+    jdir.ownner = 'root';
+    jdir.created = Date.now();
 
     var dir = fs.readdirSync(path);
 

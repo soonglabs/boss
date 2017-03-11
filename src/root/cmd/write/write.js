@@ -7,7 +7,8 @@
 
     if(filename){
         try{
-            boss.fs.get_file(path, filename) = args[2] ? args[2] : '';
+            var file = boss.fs.get_file(path, filename);
+            file = args[2] ? args[2] : '';
         } catch(err){
             try{
                 boss.fs.set_file(path, filename, args[2] ? args[2] : '', client.user);
@@ -16,6 +17,6 @@
             }
         }
     } else if(!filename) {
-        boss.lib.print.error('error: no file argument', client); 
+        boss.lib.print.error('error: no file argument', client);
     }
 });
