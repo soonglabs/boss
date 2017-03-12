@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var Server = require('karma').Server;
 var connect = require('gulp-connect');
+var cors = require('cors');
 var exec = require('child_process').exec;
 var sass = require('gulp-sass');
 var dirs2json = require('./scripts/dirs2json');
@@ -42,5 +43,9 @@ gulp.task('test', ['build'], function(done) {
 });
 
 gulp.task('run', ['test'], function() {
-  connect.server();
+  connect.server({
+     middleware: function() {
+        return [cors()];
+    }
+  });
 });
