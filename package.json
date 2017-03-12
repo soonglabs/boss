@@ -19,6 +19,7 @@
     "spectre.css": "^0.1.31"
   },
   "devDependencies": {
+    "babel-core": "^6.23.1",
     "fs-extra": "^1.0.0",
     "gulp-connect": "^5.0.0",
     "gulp-sass": "^2.3.2",

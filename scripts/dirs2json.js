@@ -2,6 +2,7 @@
 //a json file
 var _ = require('lodash');
 var fs = require('fs-extra');
+var babel = require("babel-core");
 
 function dirs2Json(rootDir, buildDir){
     var image = createJDir(rootDir, 'root', null);
@@ -37,7 +38,12 @@ function createJDir(path, name, parent){
 }
 
 function createJFile(path){
-    return fs.readFileSync(path, 'utf8');
+    var file = fs.readFileSync(path, 'utf8');
+    if(path.endsWith('.js')){
+        var result = babel.transform(file);
+        file = result.code;
+    }
+    return file;
 }
 
 function writeJSONFile(json, buildDir){
