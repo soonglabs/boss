@@ -1,5 +1,7 @@
 # BOSS Browser Operating System Simulator
 
+[![Build Status](https://travis-ci.org/soonglabs/boss.svg?branch=master)](https://travis-ci.org/soonglabs/boss)
+
 ## Usage
 
 Want to use boss in your project? The following steps should help get you started. 
