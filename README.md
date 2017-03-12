@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/soonglabs/boss.svg?branch=master)](https://travis-ci.org/soonglabs/boss)
 
-## Usage
+BOSS stands for Browser Operating System Simulator. The first thing you probably think is, why? Well, I'm not exactly sure either. Firstly, remember, BOSS is a toy. It wasn't created to solve any real-world problems. But you can do some interesting things. For instance, in Boss, you can edit the application itself, in Boss. And then run your your updated version of Boss. That's cool right?
+
+## Getting Started
 
 Want to use boss in your project? The following steps should help get you started. 
 See the example directory in this repo.
@@ -41,11 +43,7 @@ boss.html
 </html>
 ```
 
-## Development
-
-Want to contribute to boss? The following instructions can help get you up and running/
-
-### Installation
+## Installation
 
 Clone the repo
 
@@ -73,4 +71,5 @@ npm start
 ```
 npm test
 ```
+
 
