@@ -1,5 +1,4 @@
-# BOSS Browser Operating System Simulator
-
+# BOSS - the browser operating system simulator
 [![Build Status](https://travis-ci.org/soonglabs/boss.svg?branch=master)](https://travis-ci.org/soonglabs/boss)
 
 BOSS stands for Browser Operating System Simulator. The first thing you probably think is, why? Well, I'm not exactly sure either. Firstly, remember, BOSS is a toy. It wasn't created to solve any real-world problems. But you can do some interesting things. For instance, in Boss, you can edit the application itself, in Boss. And then run your your updated version of Boss. That's cool right?
