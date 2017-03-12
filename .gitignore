@@ -1,5 +1,7 @@
 node_modules/
 .vscode/
-build/
+build/css
+build/js
+build/image.js
 image.js
 npm-debug.log
