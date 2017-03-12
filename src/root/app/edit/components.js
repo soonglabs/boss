@@ -22,7 +22,7 @@ Vue.component('editor-app', {
                         <div class="modal-container modal-small">
                             <div class="modal-header">
                                 <button v-on:click="toggleSave" class="btn btn-clear float-right"></button>
-                                <div class="modal-title">Save As</div>
+                                <div class="modal-title"><i class="fa fa-floppy-o" aria-hidden="true"></i>Save As</div>
                             </div>
                             <div class="modal-body">
                                 <div class="content">
