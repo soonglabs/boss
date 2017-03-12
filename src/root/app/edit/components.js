@@ -12,7 +12,7 @@ Vue.component('editor-app', {
     template: `<div class='editor-app'>
                  <div id='toolbar'>
                     <i class='fa fa-circle'  v-bind:class='{ dirty: changed, clean: !changed }' aria-hidden='true'></i>
-                    {{path + '/' + filename}}
+                    {{path + '/' + name}}
                  </div>
                  <unique-div :app_number='app_number' class='editor'></unique-div>
 
@@ -27,7 +27,7 @@ Vue.component('editor-app', {
                             <div class="modal-body">
                                 <div class="content">
                                     <form>
-                                        <input v-model="filename"></input>
+                                        <input v-model="name"></input>
                                         <button v-on:click="save" class="btn">[Save]</button>
                                     </form>
                                 </div>
@@ -38,7 +38,8 @@ Vue.component('editor-app', {
     props: ['path', 'filename', 'client', 'app_number'],
     data: function(){ 
         return {
-            changed: false
+            changed: false,
+            name: this.filename
         }
     },
     methods: {
@@ -47,7 +48,7 @@ Vue.component('editor-app', {
         },
         save: function(){
             boss.lib.print.log('save file', this.client);
-            boss.fs.set_file(this.path, this.filename, this.editor.getSession().getValue(), this.client.user);
+            boss.fs.set_file(this.path, this.name, this.editor.getSession().getValue(), this.client.user);
             this.changed = false;
             $('#save-modal').toggleClass('active');
         }
@@ -57,7 +58,7 @@ Vue.component('editor-app', {
         this.editor.$blockScrolling = Infinity;
         this.editor.setTheme('ace/theme/monokai');
         this.editor.getSession().setMode('ace/mode/javascript');
-        this.editor.getSession().setValue(boss.fs.get_file(this.path,this.filename));
+        this.editor.getSession().setValue(boss.fs.get_file(this.path,this.name));
 
         //on save
         $(this.$el).keydown((e) => {
