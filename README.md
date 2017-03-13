@@ -1,4 +1,4 @@
-[[https://github.com/soonglabs/boss/blob/master/assets/soong1.png|alt=soong]]
+[[https://github.com/soonglabs/boss/blob/master/assets/soong1.png]]
 
 # BOSS - the browser operating system simulator
 [![Build Status](https://travis-ci.org/soonglabs/boss.svg?branch=master)](https://travis-ci.org/soonglabs/boss)
