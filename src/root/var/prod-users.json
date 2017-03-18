@@ -2,7 +2,7 @@
     "root": {
         "username":"root","type":"root","password":"3433489"
     },
-    "scott":{
-        "username":"scott","type":"root","password":"3433489"
+    "guest":{
+        "username":"guest","type":"user","password":"3433489"
     }
 }
