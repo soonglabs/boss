@@ -110,6 +110,13 @@ body {
                 border-radius: 0px;
             }
 
+            .btn:focus {
+                border: 0px;
+                color: lightgrey;
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
             .btn.btn-clear {
                 color: #111111;
                 background: lightgrey !important;
