@@ -87,9 +87,10 @@ Vue.component('todo-app', {
             this.save();
         },
         save: function(){
-            //TODO
+            boss.fs.set_file('/home/' + this.client.user.username + '/documents', 'todos.json', JSON.stringify(this.todos), client.user);
         }
     },
+    props: ['client'],
     data: function(){ 
         return {
             todos: [],
@@ -100,6 +101,13 @@ Vue.component('todo-app', {
         }
     },
     mounted: function(){
-        //TODO populate todos
+        let json;
+        try{
+            json = boss.fs.get_file('/home/' + this.client.user.username + '/documents','todos.json');
+        } catch(err){
+            json = "[]";
+            boss.fs.set_file('/home/' + this.client.user.username + '/documents', 'todos.json', json, client.user);
+        }
+        this.todos = JSON.parse(json);
     }
 });

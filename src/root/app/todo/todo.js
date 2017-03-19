@@ -15,7 +15,7 @@
     window.layout.registerComponent('todo-' + counter, function( container, state ){
         container.getElement().html(
             '<div id="app-' + counter + '" class="app">' +
-                '<todo-app>' +
+                '<todo-app :client="client">' +
                 '</todo-app>' +
             '</div>'
         );
@@ -24,6 +24,9 @@
     window.layout.root.contentItems[0].addChild(config);
 
     var vm = new Vue({
-        el: '#app-' + counter
+        el: '#app-' + counter,
+        data: {
+            client: client
+        }
     });
 });
