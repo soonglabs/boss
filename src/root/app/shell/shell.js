@@ -39,7 +39,7 @@
         data: {
             name:  boss.fs.name,
             prompt: boss.fs.name + prompt,
-            greeting: null
+            greeting: '[[b;aqua;]Welcome to BOSS. Please sign in as ][[b;fuchsia;]`guest`][[b;aqua;] if you are not a registered user]'
         },
         methods: {
             client: client.exec,
