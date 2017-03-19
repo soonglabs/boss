@@ -5,10 +5,37 @@
 body {
     margin: 0px;
     height: 100%;
+    font-family: monospace;
 
     #boss {
         background: black;
         height: 100vh;
+
+            .btn {
+                border: 0px;
+                color: #111111;
+                background: lightgrey !important;
+                border-radius: 0px;
+            }
+
+            .btn:hover {
+                border: 0px;
+                color: lightgrey;
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
+            .btn:focus {
+                border: 0px;
+                color: lightgrey;
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
+            .btn.btn-clear {
+                color: #111111;
+                background: lightgrey !important;
+            }
 
          .navbar {
             background: #4444ff;
@@ -104,32 +131,6 @@ body {
 
             .modal-footer {
                 padding: 5px;
-            }
-
-            .btn {
-                border: 0px;
-                color: #111111;
-                background: lightgrey !important;
-                border-radius: 0px;
-            }
-
-            .btn:hover {
-                border: 0px;
-                color: lightgrey;
-                background: #333333 !important;
-                border-radius: 0px;
-            }
-
-            .btn:focus {
-                border: 0px;
-                color: lightgrey;
-                background: #333333 !important;
-                border-radius: 0px;
-            }
-
-            .btn.btn-clear {
-                color: #111111;
-                background: lightgrey !important;
             }
         }
 

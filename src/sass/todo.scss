@@ -1,5 +1,33 @@
 .todo-app {
     margin: 2px;
+    padding:20px;
     height: 98.5%;
-    background-color: #333333;
+    background-color: lightgrey;
+    overflow-y: scroll;
+
+    .todo-container {
+        border: 1px solid #333333;
+        padding: 10px;
+
+        #todos {
+            margin: -35px 0px 10px 0px;
+
+            .todo-task {
+                margin-left: 45px;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .todo-title {
+            display: inline-block;
+            position: relative;
+            top: -30px;
+            background-color: lightgrey;
+            padding: 10px;
+            font-weight: bold;
+        }
+    }
 }
