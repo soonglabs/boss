@@ -29,7 +29,7 @@
                     </header>
 
                     <div id="glayout"></div>
-                    <div id="logo">&#931</div>
+                    <!-- <div id="logo">&#931</div> -->
 
                     <!-- about modal -->
                     <div id="about-modal" class="modal">

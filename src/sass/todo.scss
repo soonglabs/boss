@@ -5,6 +5,56 @@
     background-color: lightgrey;
     overflow-y: scroll;
 
+            .dark-b {
+                border: 0px;
+                color: lightgrey; 
+                background: #4444ff !important;
+                border-radius: 0px;
+            }
+
+            .dark-b:hover {
+                border: 0px;
+                color: #333333;
+                background: lightgrey !important;
+                border-radius: 0px;
+            }
+
+            .dark-b:focus {
+             border: 0px;
+                color: #333333;
+                background: lightgrey !important;
+                border-radius: 0px;
+            }
+
+            .light-b {
+                border: 0px;
+                color: #111111;
+                background: lightgrey !important;
+                border-radius: 0px;
+            }
+
+            .light-b:hover {
+                border: 0px;
+                color: lightgrey;
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
+            .light-b:focus {
+                border: 0px;
+                color: lightgrey;
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
+            input {
+                background-color: lightgrey;
+                color: #333333;
+                border: 0px;
+                padding: 1px;
+                box-shadow: 3px 3px #333333;
+            }
+
     .todo-container {
         border: 1px solid #333333;
         padding: 10px;
@@ -12,8 +62,12 @@
         #todos {
             margin: -35px 0px 10px 0px;
 
-            .todo-task {
-                margin-left: 45px;
+            .btn {
+                padding: 7px 2px;
+            }
+
+            .todo-title {
+                font-weight: bold;
             }
         }
 
@@ -21,13 +75,35 @@
             list-style-type: none;
         }
 
-        .todo-title {
+        .todos-title {
             display: inline-block;
             position: relative;
             top: -30px;
             background-color: lightgrey;
             padding: 10px;
             font-weight: bold;
+        }
+    }
+
+    .add-new-container {
+        margin: 20px 0px;
+        background-color: #4444ff;
+        padding: 10px;
+
+        .add-new {
+            border: 1px solid lightgrey;
+            padding: 10px;
+
+            .add-new-title {
+                padding: 0px 5px;
+
+                color: lightgrey;
+                background-color: #4444ff;
+                display: inline-block;
+                position: relative;
+                top: -20px;
+                font-weight: bold;
+            }
         }
     }
 }
