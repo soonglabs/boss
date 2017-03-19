@@ -36,8 +36,8 @@
                         <div class="modal-overlay"></div>
                         <div class="modal-container">
                             <div class="modal-header">
-                                <button v-on:click="toggleAbout" class="btn btn-clear float-right"></button>
                                 <div class="modal-title">About Boss</div>
+                                <button v-on:click="toggleAbout" class="btn btn-clear float-right"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="content">

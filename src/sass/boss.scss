@@ -72,7 +72,9 @@ body {
             color: #333333;
             font-family: monospace;
             border-radius: 0px;
-            box-shadow: 5px 5px #4444ff;
+            border: 2px solid #4444ff;
+            box-shadow: 25px 25px #4444ff;
+            outline: 20px solid lightgrey;
 
             pre {
                 background: #4444ff;
@@ -85,11 +87,17 @@ body {
             }
 
             .modal-header {
-                margin: 5px !important;
+                margin: 0px !important;
                 padding: 5px;
-                border-width: 0px 0px 1px 0px;
-                border-color: #777777 !important;
-                border-style: solid;
+                height: 0px !important;
+
+                .modal-title {
+                    background: lightgrey;
+                    padding: 5px;
+                    display: inline-block;
+                    position: relative;
+                    top: -20px;
+                }
             }
 
             .modal-footer {
