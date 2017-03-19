@@ -1,4 +1,4 @@
-![Soong Research Labs](assets/soong1.png "Soong Research Labs")
+![Soong Research Labs](assets/soong.png "Soong Research Labs")
 
 # BOSS - the browser operating system simulator
 [![Build Status](https://travis-ci.org/soonglabs/boss.svg?branch=master)](https://travis-ci.org/soonglabs/boss)
