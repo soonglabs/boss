@@ -5,21 +5,21 @@
     background-color: lightgrey;
     overflow-y: scroll;
 
-            .dark-b {
+            .blue-b {
                 border: 0px;
                 color: lightgrey; 
                 background: #4444ff !important;
                 border-radius: 0px;
             }
 
-            .dark-b:hover {
+            .blue-b:hover {
                 border: 0px;
                 color: #333333;
                 background: lightgrey !important;
                 border-radius: 0px;
             }
 
-            .dark-b:focus {
+            .blue-b:focus {
              border: 0px;
                 color: #333333;
                 background: lightgrey !important;
@@ -44,6 +44,27 @@
                 border: 0px;
                 color: lightgrey;
                 background: #333333 !important;
+                border-radius: 0px;
+            }
+
+             .dark-b {
+                border: 0px;
+                color: lightgrey; 
+                background: #333333 !important;
+                border-radius: 0px;
+            }
+
+            .dark-b:hover {
+                border: 0px;
+                color: #333333;
+                background: lightgrey !important;
+                border-radius: 0px;
+            }
+
+            .dark-b:focus {
+                border: 0px;
+                color: #333333;
+                background: lightgrey !important;
                 border-radius: 0px;
             }
 
@@ -86,6 +107,28 @@
     }
 
     .add-new-container {
+        margin: 20px 0px;
+        background-color: #333333;
+        padding: 10px;
+
+        .add-new {
+            border: 1px solid lightgrey;
+            padding: 10px;
+
+            .add-new-title {
+                padding: 0px 5px;
+
+                color: lightgrey;
+                background-color: #333333;
+                display: inline-block;
+                position: relative;
+                top: -20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .edit-container {
         margin: 20px 0px;
         background-color: #4444ff;
         padding: 10px;

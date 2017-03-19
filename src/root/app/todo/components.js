@@ -40,7 +40,7 @@ Vue.component('todo-app', {
                                 </button>
                             </div>
                             <span class="todo-task">{{todo.task}}</span>
-                            <div v-if="todo.editing" class="add-new-container dark-shadow">
+                            <div v-if="todo.editing" class="edit-container dark-shadow">
                                 <div class="add-new">
                                     <div class="add-new-title">Edit Todo</div>
                                     <form>
@@ -48,7 +48,7 @@ Vue.component('todo-app', {
                                             <input v-model="todo.title" placeholder="title"></input>
                                             <input v-model="todo.task" placeholder="description" style="width"></input>
                                             <button 
-                                                class="btn dark-b" 
+                                                class="btn blue-b" 
                                                 v-on:click="closeEdit(todo)" 
                                                 title="edit todo">
                                                 [Save]
@@ -70,18 +70,24 @@ Vue.component('todo-app', {
             });
             this.newTodo.title = 'title';
             this.newTodo.task = 'description';
+            this.save();
         },
         removeTodo: function(todo){
             let index = this.todos.indexOf(todo);
             if(index >= 0){
                 this.todos.splice(index, 1);
             }
+            this.save();
         },
         editTodo: function(todo){
             todo.editing = true;
         },
         closeEdit: function(todo){
             todo.editing = false;
+            this.save();
+        },
+        save: function(){
+            //TODO
         }
     },
     data: function(){ 
@@ -93,4 +99,7 @@ Vue.component('todo-app', {
             }
         }
     },
+    mounted: function(){
+        //TODO populate todos
+    }
 });
