@@ -68,12 +68,21 @@
                 border-radius: 0px;
             }
 
-            input {
+            textarea {
                 background-color: lightgrey;
                 color: #333333;
                 border: 0px;
                 padding: 1px;
                 box-shadow: 3px 3px #333333;
+                font-family: monospace;
+            }
+
+            pre {
+                background-color: lightgrey;
+                border: 0px;
+                display: inline-block;
+                padding: 0px 10px;
+                margin: 10px 0px;
             }
 
     .todo-container {
