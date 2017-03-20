@@ -21,6 +21,7 @@ Vue.component('todo-app', {
                 <div class="todo-container">
                     <div class="todos-title">TODOS</div>
                     <ul id="todos">
+                        <p v-if="todos.length === 0">You haven't created any TODOs yet. Come on, get started!</p>
                         <li v-for="todo in todos">
                             <pre class="todo-title">{{ todo.text }}</pre>
                             <div class="btn-group" style="float:left;">
