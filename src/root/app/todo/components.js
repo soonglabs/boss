@@ -2,28 +2,17 @@
 
 Vue.component('todo-app', {
     template: `<div class='todo-app'>
-                  <div class="add-new-container" style="margin-top: 5px;">
-                    <div class="add-new">
-                        <div class="add-new-title">Add Todo</div>
-                        <form>
-                            <div class="form-group container">
-                                <textarea v-model="newTodo.text" placeholder="text" cols=50 rows=3></textarea>
-                                <button
-                                    class="btn dark-b"
-                                    v-on:click="addTodo()"
-                                    title="add todo">
-                                    [<i class="fa fa-plus" aria-hidden="true">]</i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <button
+                    class="btn light-b"
+                    v-on:click="addTodo()"
+                    title="add todo">
+                    [<i class="fa fa-plus" style="margin-right: 3px;" aria-hidden="true"></i>Add Todo]
+                </button>
                 <div class="todo-container">
                     <div class="todos-title">TODOS</div>
                     <ul id="todos">
                         <p v-if="todos.length === 0">You haven't created any TODOs yet. Come on, get started!</p>
                         <li v-for="todo in todos">
-                            <pre class="todo-title">{{ todo.text }}</pre>
                             <div class="btn-group" style="float:left;">
                                 <button 
                                     class="btn light-b"
@@ -38,6 +27,7 @@ Vue.component('todo-app', {
                                     <i class="fa fa-pencil" aria-hidden="true"></i>]
                                 </button>
                             </div>
+                            <pre class="todo-title">{{ todo.text }}</pre>
                             <div v-if="todo.editing" class="edit-container dark-shadow">
                                 <div class="add-new">
                                     <div class="add-new-title">Edit Todo</div>
@@ -61,10 +51,9 @@ Vue.component('todo-app', {
     methods: {
         addTodo: function(){
             this.todos.push({
-                text: this.newTodo.text,
-                editing: false
+                text: 'task',
+                editing: true
             });
-            this.newTodo.text = 'text';
             this.save();
         },
         removeTodo: function(todo){
@@ -88,10 +77,7 @@ Vue.component('todo-app', {
     props: ['client'],
     data: function(){ 
         return {
-            todos: [],
-            newTodo: {
-                text: 'text'
-            }
+            todos: []
         }
     },
     mounted: function(){
