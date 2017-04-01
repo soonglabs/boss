@@ -4,6 +4,7 @@ var connect = require('gulp-connect');
 var cors = require('cors');
 var exec = require('child_process').exec;
 var sass = require('gulp-sass');
+var debug = require("gulp-debug");
 var dirs2json = require('./scripts/dirs2json');
 
 var BUILD_DIR = './build/';
@@ -11,11 +12,24 @@ var WWW_DIR = './www/';
 var DIST_DIR = './dist/';
 var ROOT_DIR = './src/root';
 
-var paths = {
-    scripts: [
-      '.\build\js\boss.js'
-    ]
-};
+var cssfiles = [
+  'build/css/boss.css',
+  'node_modules/jquery.terminal/css/jquery.terminal.css',
+  'node_modules/spectre.css/dist/spectre.min.css',
+  'node_modules/golden-layout/src/css/goldenlayout-base.css',
+  'node_modules/golden-layout/src/css/goldenlayout-dark-theme.css'
+]
+
+var jsfiles = [
+  'build/js/boss.js',
+  'build/image.js',
+  'node_modules/jquery/dist/jquery.min.js',
+  'node_modules/jquery.terminal/js/jquery.terminal.js',
+  'node_modules/jquery.terminal/js/jquery.mousewheel-min.js',
+  'node_modules/vue/dist/vue.js',
+  'node_modules/golden-layout/dist/goldenlayout.min.js',
+  'node_modules/ace-builds/src-min/ace.js'
+]
 
 gulp.task('build', function() { 
      //create image
@@ -29,13 +43,10 @@ gulp.task('build', function() {
     .pipe(gulp.dest(BUILD_DIR + 'css'));
     
     //move depedencies for demo app
-    console.log('building example');
-     gulp.src(paths.scripts)
-    .pipe(sass().on('error', sass.logError))
+     gulp.src(jsfiles)
     .pipe(gulp.dest(WWW_DIR + 'js'));
 
-    return gulp.src('./src/sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+     gulp.src(cssfiles)
     .pipe(gulp.dest(WWW_DIR + 'css'));
 });
 
