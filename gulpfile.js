@@ -72,6 +72,7 @@ gulp.task('test', ['build'], function(done) {
 
 gulp.task('run', ['test'], function() {
   connect.server({
+     root: 'boss.computer',
      middleware: function() {
         return [cors()];
     }
