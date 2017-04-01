@@ -1,13 +1,15 @@
 {
   "name": "boss",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "browser operating system simulator",
+  "repository": "https://github.com/soonglabs/boss.git",
   "main": "dist/js/boss.js",
   "author": "Scott Russell",
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
-    "start": "gulp run"
+    "start": "gulp run",
+    "prepublish": "gulp release"
   },
   "dependencies": {
     "ace-builds": "^1.2.5",

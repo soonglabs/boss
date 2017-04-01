@@ -8,6 +8,7 @@ var debug = require("gulp-debug");
 var pug = require('gulp-pug');
 var dirs2json = require('./scripts/dirs2json');
 
+var VERSION = "0.0.2"
 var BUILD_DIR = './build/';
 var WWW_DIR = './boss.computer/';
 var DIST_DIR = './dist/';
@@ -15,7 +16,8 @@ var ROOT_DIR = './src/root';
 
 var buildfiles = {
   data: {
-    boss: 'boss/boss.html'
+    boss: 'boss/boss.html',
+    version: VERSION
   },
   indexfiles: [
     'src/html/index.html'
@@ -44,7 +46,8 @@ var buildfiles = {
 
 var distfiles = {
   data: {
-    boss: 's3location'
+    boss: 's3location',
+    version: VERSION
   },
   indexfiles: [
     'src/html/index.html'
