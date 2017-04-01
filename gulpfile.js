@@ -40,7 +40,10 @@ var buildfiles = {
     'node_modules/jquery.terminal/js/jquery.mousewheel-min.js',
     'node_modules/vue/dist/vue.js',
     'node_modules/golden-layout/dist/goldenlayout.min.js',
-    'node_modules/ace-builds/src-min/ace.js'
+    'node_modules/ace-builds/src-min/ace.js',
+    'node_modules/ace-builds/src-min/theme-monokai.js',
+    'node_modules/ace-builds/src-min/mode-javascript.js',
+    'node_modules/ace-builds/src-min/worker-javascript.js'
   ]
 };
 
@@ -70,7 +73,10 @@ var distfiles = {
     'node_modules/jquery.terminal/js/jquery.mousewheel-min.js',
     'node_modules/vue/dist/vue.js',
     'node_modules/golden-layout/dist/goldenlayout.min.js',
-    'node_modules/ace-builds/src-min/ace.js'
+    'node_modules/ace-builds/src-min/ace.js',
+    'node_modules/ace-builds/src-min/theme-monokai.js',
+    'node_modules/ace-builds/src-min/mode-javascript.js',
+    'node_modules/ace-builds/src-min/worker-javascript.js'
   ]
 };
 
