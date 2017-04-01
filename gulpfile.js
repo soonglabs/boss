@@ -46,7 +46,7 @@ var buildfiles = {
 
 var distfiles = {
   data: {
-    boss: 's3location',
+    boss: 'http://boss.computer.s3-website.us-east-2.amazonaws.com/boss.html',
     version: VERSION
   },
   indexfiles: [
