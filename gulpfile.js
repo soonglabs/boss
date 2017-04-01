@@ -44,12 +44,10 @@ gulp.task('build', function() {
     
     //move depedencies for demo app
      gulp.src(jsfiles)
-    .pipe(debug())
-    .pipe(gulp.dest(WWW_DIR + 'js'));
+    .pipe(gulp.dest(WWW_DIR + 'boss/js'));
 
      return gulp.src(cssfiles)
-    .pipe(debug())
-    .pipe(gulp.dest(WWW_DIR + 'css'));
+    .pipe(gulp.dest(WWW_DIR + 'boss/css'));
 });
 
 gulp.task('release', function() { 
