@@ -44,9 +44,10 @@ gulp.task('build', function() {
     
     //move depedencies for demo app
      gulp.src(jsfiles)
+    .pipe(debug())
     .pipe(gulp.dest(WWW_DIR + 'js'));
 
-     gulp.src(cssfiles)
+     return gulp.src(cssfiles)
     .pipe(gulp.dest(WWW_DIR + 'css'));
 });
 
