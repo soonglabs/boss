@@ -18,7 +18,7 @@ var cssfiles = [
   'node_modules/spectre.css/dist/spectre.min.css',
   'node_modules/golden-layout/src/css/goldenlayout-base.css',
   'node_modules/golden-layout/src/css/goldenlayout-dark-theme.css'
-]
+];
 
 var jsfiles = [
   'build/js/boss.js',
@@ -29,7 +29,7 @@ var jsfiles = [
   'node_modules/vue/dist/vue.js',
   'node_modules/golden-layout/dist/goldenlayout.min.js',
   'node_modules/ace-builds/src-min/ace.js'
-]
+];
 
 gulp.task('build', function() { 
      //create image
@@ -48,6 +48,7 @@ gulp.task('build', function() {
     .pipe(gulp.dest(WWW_DIR + 'js'));
 
      return gulp.src(cssfiles)
+    .pipe(debug())
     .pipe(gulp.dest(WWW_DIR + 'css'));
 });
 
