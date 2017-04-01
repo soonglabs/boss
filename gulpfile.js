@@ -17,8 +17,10 @@ var buildfiles = {
   data: {
     boss: 'boss/boss.html'
   },
+  indexfiles: [
+    'src/html/index.html'
+  ],
   htmlfiles: [
-    'src/html/index.html',
     'src/html/boss.html'
   ],
   cssfiles: [
@@ -44,8 +46,10 @@ var distfiles = {
   data: {
     boss: 's3location'
   },
+  indexfiles: [
+    'src/html/index.html'
+  ],
   htmlfiles: [
-    'src/html/index.html',
     'src/html/boss.html'
   ],
   cssfiles: [
@@ -79,17 +83,23 @@ gulp.task('build', function() {
     .pipe(gulp.dest(BUILD_DIR + 'css'));
 
     //move depedencies for demo app
+    gulp.src(buildfiles.indexfiles)
+    .pipe(pug({
+        data: buildfiles.data
+     }))
+    .pipe(gulp.dest(BUILD_DIR + WWW_DIR));
+
     gulp.src(buildfiles.htmlfiles)
     .pipe(pug({
         data: buildfiles.data
      }))
-    .pipe(gulp.dest(WWW_DIR));
+    .pipe(gulp.dest(BUILD_DIR + WWW_DIR + 'boss'));
 
      gulp.src(buildfiles.jsfiles)
-    .pipe(gulp.dest(WWW_DIR + 'boss/js'));
+    .pipe(gulp.dest(BUILD_DIR + WWW_DIR + 'boss/js'));
 
      return gulp.src(buildfiles.cssfiles)
-    .pipe(gulp.dest(WWW_DIR + 'boss/css'));
+    .pipe(gulp.dest(BUILD_DIR + WWW_DIR + 'boss/css'));
 });
 
 gulp.task('release', function() { 
@@ -98,22 +108,28 @@ gulp.task('release', function() {
      gulp.src('./src/js/**')
     .pipe(gulp.dest(DIST_DIR + 'js'));
 
-    return gulp.src('./src/sass/**/*.scss')
+    gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(DIST_DIR + 'css'));
 
     //move depedencies for demo app
+    gulp.src(distfiles.indexfiles)
+    .pipe(pug({
+        data: distfiles.data
+     }))
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR));
+
     gulp.src(distfiles.htmlfiles)
     .pipe(pug({
       data: distfiles.data
      }))
-    .pipe(gulp.dest(WWW_DIR + 'boss'));
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR + 'boss'));
      
      gulp.src(distfiles.jsfiles)
-    .pipe(gulp.dest(WWW_DIR + 'boss/js'));
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR + 'boss/js'));
 
      return gulp.src(distfiles.cssfiles)
-    .pipe(gulp.dest(WWW_DIR + 'boss/css'));
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR + 'boss/css'));
 });
 
 gulp.task('test', ['build'], function(done) {
@@ -127,7 +143,7 @@ gulp.task('test', ['build'], function(done) {
 
 gulp.task('run', ['test'], function() {
   connect.server({
-     root: 'boss.computer',
+     root: 'build/boss.computer',
      middleware: function() {
         return [cors()];
     }
