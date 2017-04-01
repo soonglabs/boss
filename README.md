@@ -10,11 +10,11 @@ The Browser Operating System Simulator. http://www.boss.computer
 Want to use boss in your project? The following steps should help get you started. 
 See the example directory in this repo.
 
-`npm install npm install https://github.com/soonglabs/boss`
+`npm install soonglabs-boss`
 
 Because boss executes js dynamically, it is recomended to always run boss in an sandboxed iframe.
 
-index.js
+index.html
 
 ```
 <iframe sandbox="allow-scripts allow-modals allow-popups" src="./boss.html"></iframe>
