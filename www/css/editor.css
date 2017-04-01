@@ -1,0 +1,17 @@
+.editor-app {
+  margin: 2px;
+  height: 98.5%; }
+  .editor-app .dirty {
+    color: orangered; }
+  .editor-app .clean {
+    color: limegreen; }
+  .editor-app #toolbar {
+    background: #333;
+    color: lightgrey;
+    font-family: monospace;
+    padding: 5px; }
+  .editor-app .editor {
+    height: 95.5%;
+    z-index: 2; }
+  .editor-app i {
+    margin: 0px 5px; }

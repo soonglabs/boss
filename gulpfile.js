@@ -7,19 +7,36 @@ var sass = require('gulp-sass');
 var dirs2json = require('./scripts/dirs2json');
 
 var BUILD_DIR = './build/';
-var EXAMPLE_DIR = './example/';
+var WWW_DIR = './www/';
 var DIST_DIR = './dist/';
 var ROOT_DIR = './src/root';
 
-gulp.task('build', function() { 
-     dirs2json(ROOT_DIR, BUILD_DIR);
+var paths = {
+    scripts: [
+      '.\build\js\boss.js'
+    ]
+};
 
+gulp.task('build', function() { 
+     //create image
+     dirs2json(ROOT_DIR, BUILD_DIR);
+     //move js
      gulp.src('./src/js/**')
     .pipe(gulp.dest(BUILD_DIR + 'js'));
+    //process sass and move css files
+    gulp.src('./src/sass/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(BUILD_DIR + 'css'));
+    
+    //move depedencies for demo app
+    console.log('building example');
+     gulp.src(paths.scripts)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(WWW_DIR + 'js'));
 
     return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(BUILD_DIR + 'css'));
+    .pipe(gulp.dest(WWW_DIR + 'css'));
 });
 
 gulp.task('release', function() { 
