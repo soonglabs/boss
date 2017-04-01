@@ -8,7 +8,7 @@ var debug = require("gulp-debug");
 var dirs2json = require('./scripts/dirs2json');
 
 var BUILD_DIR = './build/';
-var WWW_DIR = './www/';
+var WWW_DIR = './boss.computer/';
 var DIST_DIR = './dist/';
 var ROOT_DIR = './src/root';
 
