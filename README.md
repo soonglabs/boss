@@ -2,6 +2,7 @@
 
 # BOSS - the browser operating system simulator
 [![Build Status](https://travis-ci.org/soonglabs/boss.svg?branch=master)](https://travis-ci.org/soonglabs/boss)
+[![npm version](https://badge.fury.io/js/soonglabs-boss.svg)](https://badge.fury.io/js/soonglabs-boss)
 
 The Browser Operating System Simulator. http://www.boss.computer
 
