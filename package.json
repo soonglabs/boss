@@ -23,6 +23,7 @@
     "fs-extra": "^1.0.0",
     "gulp-connect": "^5.0.0",
     "gulp-debug": "^3.1.0",
+    "gulp-pug": "^3.3.0",
     "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.10",
     "jasmine-core": "^2.5.2",

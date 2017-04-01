@@ -1,0 +1,1 @@
+We're using pug to render our templates so we can inject some environment specific vars. Consequently, we need to use the "script." instead of the usual <script> tag so that the js can be parsed.

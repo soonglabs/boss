@@ -5,6 +5,7 @@ var cors = require('cors');
 var exec = require('child_process').exec;
 var sass = require('gulp-sass');
 var debug = require("gulp-debug");
+var pug = require('gulp-pug');
 var dirs2json = require('./scripts/dirs2json');
 
 var BUILD_DIR = './build/';
@@ -13,6 +14,13 @@ var DIST_DIR = './dist/';
 var ROOT_DIR = './src/root';
 
 var buildfiles = {
+  data: {
+    boss: 'boss/boss.html'
+  },
+  htmlfiles: [
+    'src/html/index.html',
+    'src/html/boss.html'
+  ],
   cssfiles: [
     'build/css/boss.css',
     'node_modules/jquery.terminal/css/jquery.terminal.css',
@@ -33,6 +41,13 @@ var buildfiles = {
 };
 
 var distfiles = {
+  data: {
+    boss: 's3location'
+  },
+  htmlfiles: [
+    'src/html/index.html',
+    'src/html/boss.html'
+  ],
   cssfiles: [
     'dist/css/boss.css',
     'node_modules/jquery.terminal/css/jquery.terminal.css',
@@ -62,8 +77,14 @@ gulp.task('build', function() {
     gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(BUILD_DIR + 'css'));
-    
+
     //move depedencies for demo app
+    gulp.src(buildfiles.htmlfiles)
+    .pipe(pug({
+        data: buildfiles.data
+     }))
+    .pipe(gulp.dest(WWW_DIR));
+
      gulp.src(buildfiles.jsfiles)
     .pipe(gulp.dest(WWW_DIR + 'boss/js'));
 
@@ -82,6 +103,12 @@ gulp.task('release', function() {
     .pipe(gulp.dest(DIST_DIR + 'css'));
 
     //move depedencies for demo app
+    gulp.src(distfiles.htmlfiles)
+    .pipe(pug({
+      data: distfiles.data
+     }))
+    .pipe(gulp.dest(WWW_DIR + 'boss'));
+     
      gulp.src(distfiles.jsfiles)
     .pipe(gulp.dest(WWW_DIR + 'boss/js'));
 
