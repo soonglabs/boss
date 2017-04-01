@@ -3,6 +3,5 @@ node_modules/
 build/css
 build/js
 build/image.js
-image.js
 npm-debug.log
 build/
