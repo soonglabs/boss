@@ -1,26 +1,234 @@
 body {
   margin: 0px;
-  width: 100%; }
-
-#boss {
-  background-color: #111111; }
-  #boss .app {
-    height: 99.2%; }
-    #boss .app .editor-app {
-      margin: 2px;
-      padding: 5px;
-      height: 98.5%; }
-      #boss .app .editor-app .dirty {
-        color: orangered; }
-      #boss .app .editor-app .clean {
-        color: limegreen; }
-      #boss .app .editor-app #toolbar {
-        color: lightgrey;
-        font-family: monospace;
+  height: 100%;
+  font-family: monospace; }
+  body #boss {
+    background: black;
+    height: 100vh; }
+    body #boss .navbar {
+      background: #4444ff;
+      font-family: monospace;
+      font-size: 1.1em;
+      margin-bottom: 4px;
+      color: lightgrey; }
+      body #boss .navbar .navbar-section {
         padding: 5px; }
-      #boss .app .editor-app .editor {
-        height: 95.5%; }
-    #boss .app .shell {
-      margin: 2px;
-      padding: 5px;
-      height: 98.5%; }
+      body #boss .navbar a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: lightgrey; }
+      body #boss .navbar a:hover {
+        color: whitesmoke; }
+    body #boss .dark-shadow {
+      box-shadow: 5px 5px #333333; }
+    body #boss #logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: monospace;
+      font-size: 200px;
+      color: rgba(100, 100, 100, 0.3);
+      z-index: 1; }
+    body #boss .menu {
+      margin-top: 2px;
+      background: lightgrey;
+      font-family: monospace;
+      border-radius: 0px;
+      box-shadow: 5px 5px #4444ff; }
+      body #boss .menu a {
+        color: #333333; }
+      body #boss .menu a:hover {
+        color: lightgrey;
+        background: #333333; }
+      body #boss .menu a:active {
+        color: lightgrey;
+        background: #333333; }
+    body #boss .modal-small {
+      width: 30rem !important; }
+    body #boss .modal-container {
+      background: lightgrey;
+      color: #333333;
+      font-family: monospace;
+      border-radius: 0px;
+      border: 1px solid #4444ff;
+      box-shadow: 20px 20px #4444ff;
+      outline: 15px solid lightgrey; }
+      body #boss .modal-container pre {
+        background: #4444ff;
+        border-left: 0px;
+        color: lightgrey; }
+      body #boss .modal-container .modal-body {
+        padding: 5px; }
+      body #boss .modal-container .modal-header {
+        margin: 0px !important;
+        padding: 5px;
+        height: 0px !important; }
+        body #boss .modal-container .modal-header .modal-title {
+          background: lightgrey;
+          padding: 5px;
+          display: inline-block;
+          position: relative;
+          top: -20px; }
+      body #boss .modal-container .modal-footer {
+        padding: 5px; }
+      body #boss .modal-container .btn {
+        border: 0px;
+        color: #111111;
+        background: lightgrey !important;
+        border-radius: 0px; }
+      body #boss .modal-container .btn:hover {
+        border: 0px;
+        color: lightgrey;
+        background: #333333 !important;
+        border-radius: 0px; }
+      body #boss .modal-container .btn:focus {
+        border: 0px;
+        color: lightgrey;
+        background: #333333 !important;
+        border-radius: 0px; }
+      body #boss .modal-container .btn.btn-clear {
+        color: #111111;
+        background: lightgrey !important; }
+    body #boss #glayout {
+      width: 100%;
+      height: 94.5vh; }
+      body #boss #glayout .lm_content {
+        background: #000000 !important; }
+      body #boss #glayout .lm_header .lm_tab {
+        box-shadow: 0px 0px 0px transparent !important; }
+      body #boss #glayout li.lm_popout {
+        margin-top: 0px !important; }
+      body #boss #glayout li.lm_maximise {
+        margin-top: 0px !important; }
+      body #boss #glayout li.lm_close {
+        margin-top: 0px !important; }
+      body #boss #glayout .app {
+        height: 99%; }
+
+.shell {
+  padding: 5px;
+  height: 98.5%;
+  font-size: 1em !important; }
+  .shell .cmd {
+    font-size: 1em !important; }
+
+.editor-app {
+  margin: 2px;
+  height: 98.5%; }
+  .editor-app .dirty {
+    color: orangered; }
+  .editor-app .clean {
+    color: limegreen; }
+  .editor-app #toolbar {
+    background: #333;
+    color: lightgrey;
+    font-family: monospace;
+    padding: 5px; }
+  .editor-app .editor {
+    height: 95.5%;
+    z-index: 2; }
+  .editor-app i {
+    margin: 0px 5px; }
+
+.todo-app {
+  margin: 2px;
+  padding: 20px;
+  height: 98.5%;
+  background-color: lightgrey;
+  overflow-y: scroll; }
+  .todo-app .blue-b {
+    border: 0px;
+    color: lightgrey;
+    background: #4444ff !important;
+    border-radius: 0px; }
+  .todo-app .blue-b:hover {
+    border: 0px;
+    color: #333333;
+    background: lightgrey !important;
+    border-radius: 0px; }
+  .todo-app .blue-b:focus {
+    border: 0px;
+    color: #333333;
+    background: lightgrey !important;
+    border-radius: 0px; }
+  .todo-app .light-b {
+    border: 0px;
+    color: #111111;
+    background: lightgrey !important;
+    border-radius: 0px; }
+  .todo-app .light-b:hover {
+    border: 0px;
+    color: lightgrey;
+    background: #333333 !important;
+    border-radius: 0px; }
+  .todo-app .light-b:focus {
+    border: 0px;
+    color: lightgrey;
+    background: #333333 !important;
+    border-radius: 0px; }
+  .todo-app .dark-b {
+    border: 0px;
+    color: lightgrey;
+    background: #333333 !important;
+    border-radius: 0px; }
+  .todo-app .dark-b:hover {
+    border: 0px;
+    color: #333333;
+    background: lightgrey !important;
+    border-radius: 0px; }
+  .todo-app .dark-b:focus {
+    border: 0px;
+    color: #333333;
+    background: lightgrey !important;
+    border-radius: 0px; }
+  .todo-app textarea {
+    background-color: lightgrey;
+    color: #333333;
+    border: 0px;
+    padding: 1px;
+    box-shadow: 3px 3px #333333;
+    font-family: monospace; }
+  .todo-app pre {
+    background-color: lightgrey;
+    border: 0px;
+    padding: 10px 10px;
+    min-width: 100px;
+    margin: 10px 0px; }
+  .todo-app .todo-container {
+    border: 1px solid #333333;
+    padding: 10px;
+    margin-top: 25px;
+    min-width: 550px; }
+    .todo-app .todo-container #todos {
+      margin: -35px 0px 10px 0px; }
+      .todo-app .todo-container #todos .btn {
+        padding: 7px 2px; }
+      .todo-app .todo-container #todos .todo-title {
+        font-weight: bold; }
+    .todo-app .todo-container ul {
+      list-style-type: none; }
+    .todo-app .todo-container .todos-title {
+      display: inline-block;
+      position: relative;
+      top: -30px;
+      background-color: lightgrey;
+      padding: 10px;
+      font-weight: bold; }
+  .todo-app .edit-container {
+    margin: 5px 0px;
+    background-color: #4444ff;
+    padding: 10px;
+    display: inline-block; }
+    .todo-app .edit-container .add-new {
+      border: 1px solid lightgrey;
+      padding: 10px;
+      display: inline-block; }
+      .todo-app .edit-container .add-new .add-new-title {
+        padding: 0px 5px;
+        color: lightgrey;
+        background-color: #4444ff;
+        display: inline-block;
+        position: relative;
+        top: -20px;
+        font-weight: bold; }
