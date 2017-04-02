@@ -10,7 +10,7 @@ var dirs2json = require('./scripts/dirs2json');
 var VERSION = require('./package.json').version;
 
 var BUILD_DIR = './build/';
-var WWW_DIR = './boss.computer/';
+var WWW_DIR = './demo/';
 var DIST_DIR = './dist/';
 var ROOT_DIR = './src/root';
 
@@ -152,7 +152,7 @@ gulp.task('test', ['build'], function(done) {
 
 gulp.task('run', ['test'], function() {
   connect.server({
-     root: 'build/boss.computer',
+     root: 'build/demo',
      middleware: function() {
         return [cors()];
     }
