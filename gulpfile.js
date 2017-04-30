@@ -120,6 +120,25 @@ gulp.task('release', function() {
     gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(DIST_DIR + 'css'));
+
+    //move depedencies for demo app
+    gulp.src(buildfiles.indexfiles)
+    .pipe(pug({
+        data: buildfiles.data
+     }))
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR));
+
+    gulp.src(buildfiles.htmlfiles)
+    .pipe(pug({
+        data: buildfiles.data
+     }))
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR + 'boss'));
+
+     gulp.src(buildfiles.jsfiles)
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR + 'boss/js'));
+
+     return gulp.src(buildfiles.cssfiles)
+    .pipe(gulp.dest(DIST_DIR + WWW_DIR + 'boss/css'));
 });
 
 gulp.task('test', ['build'], function(done) {
