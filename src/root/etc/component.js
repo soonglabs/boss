@@ -41,7 +41,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="content">
-                                    <pre>Browser Operating System Simulator (BOSS) v0.0.5
+                                    <pre>Browser Operating System Simulator (BOSS) v0.0.8
 Copyright 2017 -- Soong Research Labs</pre>
                                 </div>
                             </div>
