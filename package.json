@@ -1,6 +1,6 @@
 {
   "name": "soonglabs-boss",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "browser operating system simulator",
   "repository": "https://github.com/soonglabs/boss.git",
   "main": "dist/js/boss.js",
